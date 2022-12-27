@@ -11,11 +11,11 @@
 
     <title>Document</title>
 </head>
-<body>
+<body class="bg-dark">
     <!-- navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-left text-center">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-left text-center" style="background-color: rgb(30, 30, 30);">
         <img src="./assests/images/logo.jpg" alt="logo" class="logo" style="width: 100%;">
-        <div class="d-flex align-content-center bg-success h-100 w-100">
+        <div class="d-flex align-content-center h-100 w-100">
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -25,10 +25,10 @@
                     <a href="#portafolio" class="nav-link">Portafolio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">Sobre mi</a>
+                    <a href="#sobre-mi" class="nav-link">Sobre mi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">Contacto</a>
+                    <a href="#contacto" class="nav-link">Contacto</a>
                 </li>
             </ul>
         </div>
@@ -38,8 +38,8 @@
     <!-- main content -->
     <div class="container">
         <!-- section inicio -->
-        <section id="inicio" class="bg-success d-flex align-items-center" style="height: 100vmin;">
-            <div class="bg-danger">
+        <section id="inicio" class="bg-dark d-flex align-items-center text-white" style="height: 100vmin;">
+            <div class="container">
                 <h1 class="text-size-7">Hola,</h1>
                 <h1 class="text-size-7">Soy Ary,</h1>
                 <h1 class="text-size-6">web developer</h2>
@@ -49,11 +49,11 @@
         </section>
 
         <!-- section portafolio -->
-        <section id="portafolio" class="bg-primary" style="height: 100vmin;">
-            <div class="bg-danger">
+        <section id="portafolio">
+            <div class="bg-dark text-white">
                 <h1 class="text-size-7">Portafolio</h1>
                 <!-- proyectos -->
-                <div class="row d-md-flex flex-md-equal w-100 m-0 p-0 ">
+                <div class="row d-md-flex flex-md-equal w-100 m-0 p-0">
                     <div class="col-12 col-md-6 p-0">
                         <div class="text-bg-dark text-center overflow-hidden">
                         <div class="my-3 py-3">
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-md-6 p-0">
-                        <div class="bg-light text-center overflow-hidden">
+                        <div class="bg-light text-center overflow-hidden text-dark">
                         <div class="my-3 p-3">
                             <h2 class="display-5">Another headline</h2>
                             <p class="lead">And an even wittier subheading.</p>
@@ -74,7 +74,7 @@
                     </div>
 
                     <div class="col-12 col-md-6 p-0">
-                        <div class="bg-light text-center overflow-hidden">
+                        <div class="bg-light text-center overflow-hidden text-dark">
                         <div class="my-3 p-3">
                             <h2 class="display-5">Another headline</h2>
                             <p class="lead">And an even wittier subheading.</p>
@@ -94,6 +94,73 @@
                 </div>
             </div>
         </section>
+
+        <!-- section sobre mi -->
+        <section id="sobre-mi" class="bg-dark" style="min-height: 100vmin;">
+            <div class="container text-white">
+                <h1 class="text-size-7">Sobre mi</h1>
+                <!-- items -->
+                <div class="row">
+                    <div class="col-12 col-md-4 col-lg-3 item-sobre-mi" style="height: 300px;">
+                        <img src="./assests/images/utn.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
+                    </div>
+                    <div class="col-12 col-md-4 col-lg-3 item-sobre-mi" style="height: 300px;">
+                        <img src="./assests/images/utn.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
+                    </div>
+                    <div class="col-12 col-md-4 col-lg-3 item-sobre-mi" style="height: 300px;">
+                        <img src="./assests/images/utn.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
+                    </div>
+                    <div class="col-12 col-md-4 col-lg-3 item-sobre-mi" style="height: 300px;">
+                        <img src="./assests/images/utn.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
+                    </div>
+
+                    <div class="col-12 col-md-4 col-lg-3 item-sobre-mi" style="height: 300px;">
+                        <img src="./assests/images/utn.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
+                    </div>
+                    <div class="col-12 col-md-4 col-lg-3 item-sobre-mi" style="height: 300px;">
+                        <img src="./assests/images/utn.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
+                    </div>
+                    <div class="col-12 col-md-4 col-lg-3 item-sobre-mi" style="height: 300px;">
+                        <img src="./assests/images/utn.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
+                    </div>
+                    <div class="col-12 col-md-4 col-lg-3 item-sobre-mi" style="height: 300px;">
+                        <img src="./assests/images/utn.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- section contacto -->
+        <section id="contacto" class="bg-dark" style="height: 100vmin;">
+            <div class="text-white d-flex align-items-center justify-content-center" style="height: 100vmin;">
+                <!-- formulario -->
+                <div class="row col-6 m-0 p-0">
+                    <h1 class="text-size-7">Contacto</h1>
+                    <form action="">
+                        <div class="row container w-100 p-0 m-0 g-2">
+                            <div class="col-12 col-md-6">    
+                                <input placeholder="Nombre" type="text" class="form-control" id="nombre" aria-describedby="emailHelp">
+                            </div>
+                            <div class="col-12 col-md-6 ">
+                                <input placeholder="Apellido" type="text" class="form-control" id="apellido" aria-describedby="emailHelp">
+                            </div>
+                            <div class="col-12">
+                                <input placeholder="Mensaje" type="text" class="form-control" id="mensaje" aria-describedby="emailHelp">
+                            </div>
+                            <div class="col-12">
+                                <textarea placeholder="Escribe tu mensaje.." id="w3review" name="w3review" class="w-100" style="min-height: 100px;"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Enviar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- mapa -->
+                <div class="col-6 bg-success h-100">
+                    mapa
+                </div>
+            </div>
     </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
