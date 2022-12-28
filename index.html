@@ -11,84 +11,87 @@
 
     <title>Document</title>
 </head>
-<body class="bg-dark">
+<body style="background-color: #1d1d1d;">
     <!-- navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-left text-center" style="background-color: rgb(30, 30, 30);">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-left text-center" style="background-color: #181818">
         <img src="./assests/images/logo.jpg" alt="logo" class="logo" style="width: 100%;">
-        <div class="d-flex align-content-center h-100 w-100">
+        <div class="pt-5 mt-5 h-100 w-100">
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav" style="line-height : 2rem; font-size: 1rem;">
                 <li class="nav-item">
-                    <a href="#inicio" class="nav-link">Inicio</a>
+                    <a href="#inicio" class="nav-link border-top border-secondary">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#portafolio" class="nav-link">Portafolio</a>
+                    <a href="#portafolio" class="nav-link border-top border-secondary">Portafolio</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#sobre-mi" class="nav-link">Sobre mi</a>
+                    <a href="#sobre-mi" class="nav-link border-top border-secondary">Sobre mi</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#contacto" class="nav-link">Contacto</a>
+                    <a href="#contacto" class="nav-link border-top border-bottom border-secondary">Contacto</a>
                 </li>
             </ul>
         </div>
     </div>
     </nav>
 
-    <!-- main content -->
-    <div class="container">
+    
         <!-- section inicio -->
-        <section id="inicio" class="bg-dark d-flex align-items-center text-white" style="height: 100vmin;">
-            <div class="container">
-                <h1 class="text-size-7">Hola,</h1>
-                <h1 class="text-size-7">Soy Ary,</h1>
-                <h1 class="text-size-6">web developer</h2>
-                <p>Full stack developer / Backend - Frontend developer</p>
-                <button class="btn btn-success">Contactame</button>
+        <section id="inicio" class="d-flex align-items-center text-white" style="height: 100vmin;">
+            <div class="container px-4">
+                <p class="p-animated">
+                    <span class="text-size-7 span-animated">Hola,</span>
+                    <span class="text-size-7 span-animated">Soy Ary</span>
+                    <span class="text-size-5 span-animated">Desarrollador web</span>
+                    <span class="text-grey"> Full stack developer / Backend - Frontend developer </span>
+                </p>
+                <a href="#contacto"><button class="btn btn-success">Contactame</button></a>
             </div>
         </section>
 
         <!-- section portafolio -->
-        <section id="portafolio">
-            <div class="bg-dark text-white">
-                <h1 class="text-size-7">Portafolio</h1>
+        <section id="portafolio" class="pb-4">
+            <div class="text-white">
+                <h1 class="text-size-5 fw-bold p-5">Portafolio</h1>
                 <!-- proyectos -->
                 <div class="row d-md-flex flex-md-equal w-100 m-0 p-0">
                     <div class="col-12 col-md-6 p-0">
-                        <div class="text-bg-dark text-center overflow-hidden">
+                        <div class="bg-warning text-center overflow-hidden">
                         <div class="my-3 py-3">
-                            <h2 class="display-5">Another headline</h2>
-                            <p class="lead">And an even wittier subheading.</p>
+                            <h2 class="text-dark display-5">Tienda ecommerce</h2>
+                            <p class="text-dark lead">Proyecto final del curso fullstack UTN</p>
                         </div>
-                        <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+                        <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 p-0">
-                        <div class="bg-light text-center overflow-hidden text-dark">
+                        <div class="bg-green text-center overflow-hidden text-dark">
                         <div class="my-3 p-3">
-                            <h2 class="display-5">Another headline</h2>
-                            <p class="lead">And an even wittier subheading.</p>
+                            <h2 class="text-white display-5">Compasso</h2>
+                            <p class="text-white lead">Fabrica de resistencias</p>
                         </div>
-                        <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+                            <div class="bg-light shadow-sm mx-auto d-flex align-items-center" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
+                                <img src="./assests/images/compasso2.png" alt="" style="width: 100%; border-radius: 21px 21px 0 0;">
+                            </div>
                         </div>
                     </div>
 
                     <div class="col-12 col-md-6 p-0">
-                        <div class="bg-light text-center overflow-hidden text-dark">
+                        <div class="bg-orange text-center overflow-hidden text-dark">
                         <div class="my-3 p-3">
-                            <h2 class="display-5">Another headline</h2>
-                            <p class="lead">And an even wittier subheading.</p>
+                            <h2 class="text-white display-5">Web personal</h2>
+                            <p class="text-white lead">Construccion de mi propia pagina web</p>
                         </div>
-                        <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+                        <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
                         </div>
                     </div>
                     <div class="col-12 col-md-6 p-0">
-                        <div class="text-bg-dark text-center overflow-hidden">
+                        <div class="bg-primary text-center overflow-hidden">
                         <div class="my-3 py-3">
-                            <h2 class="display-5">Another headline</h2>
-                            <p class="lead">And an even wittier subheading.</p>
+                            <h2 class="text-dark display-5">Paradigma PC</h2>
+                            <p class="text-dark lead">Aplicacion movil para asesoramiento</p>
                         </div>
-                        <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+                        <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
                         </div>
                     </div>
                 </div>
@@ -96,72 +99,148 @@
         </section>
 
         <!-- section sobre mi -->
-        <section id="sobre-mi" class="bg-dark" style="min-height: 100vmin;">
-            <div class="container text-white">
-                <h1 class="text-size-7">Sobre mi</h1>
+        <section id="sobre-mi" class="pb-4" style="min-height: 100vmin;">
+            
+                <h1 class="text-size-5 fw-bold text-white p-5">Sobre mi</h1>
                 <!-- items -->
-                <div class="row">
-                    <div class="col-12 col-md-4 col-lg-3 item-sobre-mi" style="height: 300px;">
-                        <img src="./assests/images/utn.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
+                <div class="row m-0 p-0">
+                    <div class="col-12 col-md-4 col-lg-3 flip-container p-0" style="height: 300px;">
+                        <div class="card-flip">
+                            <div class="frente">
+                              <h3>Frente</h3>
+                            </div>
+                            <div class="dorso">
+                              <h3>Dorso</h3>
+                              <p>Más información aquí</p>
+                              <button>Botón</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-12 col-md-4 col-lg-3 item-sobre-mi" style="height: 300px;">
-                        <img src="./assests/images/utn.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
+                    <div class="col-12 col-md-4 col-lg-3 flip-container p-0" style="height: 300px;">
+                        <div class="card-flip">
+                            <div class="frente">
+                                <img src="./assests/images/utn.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
+                            </div>
+                            <div class="dorso">
+                                <h3>Dorso</h3>
+                                <p>Más información aquí</p>
+                                <button>Botón</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-12 col-md-4 col-lg-3 item-sobre-mi" style="height: 300px;">
-                        <img src="./assests/images/utn.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
+                    <div class="col-12 col-md-4 col-lg-3 flip-container p-0" style="height: 300px;">
+                        <div class="card-flip">
+                            <div class="frente">
+                              <h3>Frente</h3>
+                            </div>
+                            <div class="dorso">
+                              <h3>Dorso</h3>
+                              <p>Más información aquí</p>
+                              <button>Botón</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-12 col-md-4 col-lg-3 item-sobre-mi" style="height: 300px;">
-                        <img src="./assests/images/utn.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
+                    <div class="col-12 col-md-4 col-lg-3 flip-container p-0" style="height: 300px;">
+                        <div class="card-flip">
+                            <div class="frente">
+                                <img src="./assests/images/utn.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
+                            </div>
+                            <div class="dorso">
+                                <h3>Dorso</h3>
+                                <p>Más información aquí</p>
+                                <button>Botón</button>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="col-12 col-md-4 col-lg-3 item-sobre-mi" style="height: 300px;">
-                        <img src="./assests/images/utn.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
+                    <div class="col-12 col-md-4 col-lg-3 flip-container p-0" style="height: 300px;">
+                        <div class="card-flip">
+                            <div class="frente">
+                                <img src="./assests/images/utn.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
+                            </div>
+                            <div class="dorso">
+                                <h3>Dorso</h3>
+                                <p>Más información aquí</p>
+                                <button>Botón</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-12 col-md-4 col-lg-3 item-sobre-mi" style="height: 300px;">
-                        <img src="./assests/images/utn.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
+                    <div class="col-12 col-md-4 col-lg-3 flip-container p-0" style="height: 300px;">
+                        <div class="card-flip">
+                            <div class="frente">
+                              <h3>Frente</h3>
+                            </div>
+                            <div class="dorso">
+                              <h3>Dorso</h3>
+                              <p>Más información aquí</p>
+                              <button>Botón</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-12 col-md-4 col-lg-3 item-sobre-mi" style="height: 300px;">
-                        <img src="./assests/images/utn.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
+                    <div class="col-12 col-md-4 col-lg-3 flip-container p-0" style="height: 300px;">
+                        <div class="card-flip">
+                            <div class="frente">
+                                <img src="./assests/images/utn.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
+                            </div>
+                            <div class="dorso">
+                                <h3>Dorso</h3>
+                                <p>Más información aquí</p>
+                                <button>Botón</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-12 col-md-4 col-lg-3 item-sobre-mi" style="height: 300px;">
-                        <img src="./assests/images/utn.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
+                    <div class="col-12 col-md-4 col-lg-3 flip-container p-0" style="height: 300px;">
+                        <div class="card-flip">
+                            <div class="frente">
+                              <h3>Frente</h3>
+                            </div>
+                            <div class="dorso">
+                              <h3>Dorso</h3>
+                              <p>Más información aquí</p>
+                              <button>Botón</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            
         </section>
 
         <!-- section contacto -->
-        <section id="contacto" class="bg-dark" style="height: 100vmin;">
+        <section id="contacto" style="height: 100vmin;">
             <div class="text-white d-flex align-items-center justify-content-center" style="height: 100vmin;">
                 <!-- formulario -->
-                <div class="row col-6 m-0 p-0">
-                    <h1 class="text-size-7">Contacto</h1>
+                <div class="row col-6 m-0 px-4">
+                    <h1 class="text-size-5 fw-bold py-3">Contacto</h1>
+
+                    <p class="px-3">Estoy ansioso por trabajar contigo en tu próximo proyecto. ¡No dudes en contactarme si necesitas ayuda!</p>
+
                     <form action="">
                         <div class="row container w-100 p-0 m-0 g-2">
                             <div class="col-12 col-md-6">    
-                                <input placeholder="Nombre" type="text" class="form-control" id="nombre" aria-describedby="emailHelp">
+                                <input placeholder="Nombre" type="text" class="form-control input" id="nombre" aria-describedby="emailHelp">
                             </div>
                             <div class="col-12 col-md-6 ">
-                                <input placeholder="Apellido" type="text" class="form-control" id="apellido" aria-describedby="emailHelp">
+                                <input placeholder="Apellido" type="text" class="form-control input" id="apellido" aria-describedby="emailHelp">
                             </div>
                             <div class="col-12">
-                                <input placeholder="Mensaje" type="text" class="form-control" id="mensaje" aria-describedby="emailHelp">
+                                <input placeholder="Asunto" type="text" class="form-control input" id="mensaje" aria-describedby="emailHelp">
                             </div>
                             <div class="col-12">
-                                <textarea placeholder="Escribe tu mensaje.." id="w3review" name="w3review" class="w-100" style="min-height: 100px;"></textarea>
+                                <textarea placeholder="Escribe tu mensaje..." id="w3review" name="w3review" class="form-control input w-100" style="min-height: 100px;"></textarea>
                             </div>
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary">Enviar</button>
+                                <button type="submit" class="btn btn-primary" style="background-color: #de682d;">Enviar</button>
                             </div>
                         </div>
                     </form>
                 </div>
                 <!-- mapa -->
-                <div class="col-6 bg-success h-100">
+                <div class="col-12 col-md-6 bg-success h-100">
                     mapa
                 </div>
             </div>
-    </div>
+        </section>
+    
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
