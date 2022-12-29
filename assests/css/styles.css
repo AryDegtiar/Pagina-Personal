@@ -2,6 +2,10 @@ body{
   font-family: "Oswald", sans-serif;
 }
 
+.of-cover{
+  object-fit: cover;
+}
+
 .nav-border-button{
   border-bottom: 1px solid #6c757d41;
 }
@@ -229,15 +233,19 @@ body{
 }
 
 .dorso {
-  background-color: #198754;
+  background-color: #de682d;
   color: #faebd7;
   /*transform: rotateX(180deg);*/
   transform: rotateY(180deg);
   text-align:center;
 }
 
+.dorso h3 {
+  font-size:1em;
+}
+
 .dorso p {
-  font-size:0.65em;
+  font-size:0.6em;
 }
 
 .dorso button { 
