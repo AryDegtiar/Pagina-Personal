@@ -2,10 +2,25 @@ body{
   font-family: "Oswald", sans-serif;
 }
 
+.nav-border-button{
+  border-bottom: 1px solid #6c757d41;
+}
+
+.nav-border-top{
+  border-top: 1px solid #6c757d41;
+}
+
+.item-portafolio:hover{
+  opacity: 0.4;
+}
+
+.ocultar{
+  display: none;
+}
 .c1{
   display: inline-block;
 }
-.type{
+.type0{
     font-size: 2.5rem;
     font-family: monospace;
     overflow: hidden;
@@ -14,7 +29,7 @@ body{
     animation: 
       typing 2s steps(25, end) forwards;
 }
-.type2{
+.type1{
     font-size: 2.5rem; 
     font-family: monospace;
     overflow: hidden;
@@ -24,9 +39,7 @@ body{
       typing 2s steps(25, end) forwards;
     animation-delay: 2s;
 }
-.type3{
-    font-size: 2.5rem; 
-    font-family: monospace;
+.type2{
     overflow: hidden;
     white-space: nowrap; 
     width: 0;
@@ -34,7 +47,7 @@ body{
       typing 2s steps(25, end) forwards;
     animation-delay: 4s;
 }
-.type4{
+.type3{
     font-size: 2.5rem; 
     font-family: monospace;
     overflow: hidden;
@@ -44,7 +57,7 @@ body{
       typing 2s steps(25, end) forwards;
     animation-delay: 6s;
 }
-.type5{
+.type4{
   font-size: 2.5rem; 
   font-family: monospace;
   overflow: hidden;
@@ -54,7 +67,7 @@ body{
     typing 2s steps(25, end) forwards;
   animation-delay: 8s;
 }
-.type6{
+.type5{
   font-size: 2.5rem; 
   font-family: monospace;
   overflow: hidden;
@@ -64,7 +77,6 @@ body{
     typing 1s steps(25, end) forwards;
   animation-delay: 10s;
 }
-
 
 @keyframes typing {
   from { width: 0 }
@@ -106,7 +118,8 @@ body{
 
 /* Clip Background Image */
 
-	  background: url(https://i.ibb.co/RDTnNrT/animated-text-fill.png) repeat-y;
+	  /*background: url(https://i.ibb.co/RDTnNrT/animated-text-fill.png) repeat-y;*/
+    background: url("../images/animated-text-fill.png") repeat-y;
 	  -webkit-background-clip: text;
 	  background-clip: text;
 
@@ -241,6 +254,24 @@ body{
   color:#de682d;
   border-color:#de682d;
   font-weight:bold;
+}
+
+ul li{
+  --b: 0.2em;   /* the thickness of the line */
+  --c: #de682d; /* the color */
+  
+  color: #0000;
+  padding-block: var(--b);
+  background: 
+    linear-gradient(var(--c) 50%,#000 0) 0% calc(100% - var(--_p,0%))/100% 200%,
+    linear-gradient(var(--c) 0 0) 0% var(--_p,0%)/var(--_p,0%) var(--b) no-repeat;
+  -webkit-background-clip: text,padding-box;
+          background-clip: text,padding-box;
+  transition: .3s var(--_s,0s) linear,background-size .3s calc(.3s - var(--_s,0s));
+}
+ul li:hover {
+  --_p: 100%;
+  --_s: .3s;
 }
 
 @media (min-width: 768px) {

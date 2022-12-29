@@ -12,6 +12,7 @@
     <title>Document</title>
 </head>
 <body style="background-color: #1d1d1d;">
+    <div id="particles-js"></div>
     <!-- navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-left text-center" style="background-color: #181818">
         <img src="./assests/images/logo.jpg" alt="logo" class="logo" style="width: 100%;">
@@ -19,16 +20,19 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav" style="line-height : 2rem; font-size: 1rem;">
                 <li class="nav-item">
-                    <a href="#inicio" class="nav-link border-top border-secondary">Inicio</a>
+                    <a href="#inicio" class="nav-link nav-border-button nav-border-top">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#portafolio" class="nav-link border-top border-secondary">Portafolio</a>
+                    <a href="#portafolio" class="nav-link nav-border-button">Portafolio</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#sobre-mi" class="nav-link border-top border-secondary">Sobre mi</a>
+                    <a href="#conocimientos" class="nav-link nav-border-button">Conocimientos</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#contacto" class="nav-link border-top border-bottom border-secondary">Contacto</a>
+                    <a href="#sobre-mi" class="nav-link nav-border-button">Sobre mi</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contacto" class="nav-link nav-border-button">Contacto</a>
                 </li>
             </ul>
         </div>
@@ -51,11 +55,11 @@
 
         <!-- section portafolio -->
         <section id="portafolio" class="pb-4">
-            <div class="text-white">
+            <div class="text-white px-4">
                 <h1 class="text-size-5 fw-bold p-5">Portafolio</h1>
                 <!-- proyectos -->
                 <div class="row d-md-flex flex-md-equal w-100 m-0 p-0">
-                    <div class="col-12 col-md-6 p-0">
+                    <div class="col-12 col-md-6 p-2 item-portafolio">
                         <div class="bg-warning text-center overflow-hidden">
                         <div class="my-3 py-3">
                             <h2 class="text-dark display-5">Tienda ecommerce</h2>
@@ -64,7 +68,7 @@
                         <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 p-0">
+                    <div class="col-12 col-md-6 p-2">
                         <div class="bg-green text-center overflow-hidden text-dark">
                         <div class="my-3 p-3">
                             <h2 class="text-white display-5">Compasso</h2>
@@ -76,7 +80,7 @@
                         </div>
                     </div>
 
-                    <div class="col-12 col-md-6 p-0">
+                    <div class="col-12 col-md-6 p-2">
                         <div class="bg-orange text-center overflow-hidden text-dark">
                         <div class="my-3 p-3">
                             <h2 class="text-white display-5">Web personal</h2>
@@ -85,7 +89,7 @@
                         <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 p-0">
+                    <div class="col-12 col-md-6 p-2">
                         <div class="bg-primary text-center overflow-hidden">
                         <div class="my-3 py-3">
                             <h2 class="text-dark display-5">Paradigma PC</h2>
@@ -104,62 +108,16 @@
                 <div class="row w-100" style="position: relative;">
                     <h1 class="col-12 text-size-5 fw-bold d-flex justify-content-center w-100">Conocimientos</h1>
 
-                       <!--
-                        <span class="animated-machine-text"> <span class="text-primary-emphasis">var</span> <span class="text-success-emphasis">conocimiento</span> = {<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lenguajes: <span class="text-warning">[ java, javascript, python, c# ]</span>, <br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entornos: <span class="text-warning">[ spring, angular, hibernate ]</span>, <br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maquetado: <span class="text-warning">[ bootstrap, html, css ]</span>, <br> 
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;diseño: <span class="text-warning">[ photoshop, illustrator ]</span>, <br>
-                        };</span>
-                        
-                        
-                        <span> <span class="text-primary-emphasis">var</span> <span class="text-success-emphasis">conocimiento</span> = {<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lenguajes: <span class="text-warning">[ java, javascript, python, c# ]</span>, <br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;entornos: <span class="text-warning">[ spring, angular, hibernate ]</span>, <br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maquetado: <span class="text-warning">[ bootstrap, html, css ]</span>, <br> 
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;diseño: <span class="text-warning">[ photoshop, illustrator ]</span>, <br>
-                        };</span>-->
-                        <!--
-                        <div class="bg-danger "style="  position: absolute;
-                        left: 50%;
-                        transform: translate(-50%, -50%);">
-                            <div class="col-12">
-                                <span>var conocimiento = {</span>
-                            </div>
-                            <div class="col-12">
-                                <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lenguajes: [ java, javascript, python, c# ],</span>
-                            </div>
-                            <div class="col-12">
-                                <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; entornos: [ spring, angular, hibernate ],</span>
-                            </div>
-                            <div class="col-12">
-                                <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; maquetado: [ bootstrap, html, css ],</span>
-                            </div>
-                            <div class="col-12">
-                                <span class="col-12"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; diseño: [ photoshop, illustrator ]</span>
-                            </div>
-                            <div class="col-12">
-                                <span class="col-12">};</span>
-                            </div>
-                        </div>
-                    -->
                         <div class="col-12 pt-5 d-flex justify-content-center" style="flex-wrap:wrap;">
-                            <div class="d-block">
-                                <div class="c1"><div class="type"><span class="text-primary-emphasis">var</span> <span class="text-success-emphasis">conocimiento</span> = {</div>
-                                <div class="type2"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">lenguajes:</span> <span class="text-warning">[ java, javascript, python, c# ]</span>,</div>
-                                <div class="type3"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">entornos:</span> <span class="text-warning">[ spring, angular, hibernate ]</span>,</div>
-                                <div class="type4"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">maquetado:</span> <span class="text-warning">[ bootstrap, html, css ]</span>,</div>
-                                <div class="type5"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">diseño:</span> <span class="text-warning">[ photoshop, illustrator ]</span></div>
-                                <div class="type6">};</div>
+                            <div class="c1" style="font-size: 2.5rem; font-family: monospace;">
+                                <div class="machine"><span class="text-primary-emphasis">var</span> <span class="text-success-emphasis">conocimiento</span> = {</div>
+                                <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">lenguajes:</span> <span class="text-warning">[ java, javascript, python, c# ]</span>,</div>
+                                <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">entornos:</span> <span class="text-warning">[ spring, angular, hibernate ]</span>,</div>
+                                <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">maquetado:</span> <span class="text-warning">[ bootstrap, html, css ]</span>,</div>
+                                <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">disenio:</span> <span class="text-warning">[ photoshop, illustrator ]</span></div>
+                                <div class="machine">};</div>
                             </div>
                         </div>
-                        <!--
-                        <div class="col-12">
-                         <p class="text-machine">hi folks, this is typing animation using CSS</p>
-                         <p class="text-machine">test 2</p>
-                         <p class="text-machine">1234<span>|</span></p>
-                        </div>
-                        -->
 
                 </div>
 
@@ -168,8 +126,8 @@
 
         <!-- section sobre mi -->
         <section id="sobre-mi" class="pb-4" style="min-height: 100vmin;">
-            
-                <h1 class="text-size-5 fw-bold text-white p-5">Sobre mi</h1>
+            <h1 class="text-size-5 fw-bold text-white p-5">Sobre mi</h1>
+            <div class="px-4">
                 <!-- items -->
                 <div class="row m-0 p-0">
                     <div class="col-12 col-md-4 col-lg-3 flip-container p-0" style="height: 300px;">
@@ -270,7 +228,7 @@
                         </div>
                     </div>
                 </div>
-            
+            </div>
         </section>
 
         <!-- section contacto -->
@@ -297,7 +255,7 @@
                                 <textarea placeholder="Escribe tu mensaje..." id="w3review" name="w3review" class="form-control input w-100" style="min-height: 100px;"></textarea>
                             </div>
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary" style="background-color: #de682d;">Enviar</button>
+                                <button type="submit" class="btn btn-primary mt-2 py-2 px-4" style="background-color: #de682d; border:none;">Enviar</button>
                             </div>
                         </div>
                     </form>
@@ -309,7 +267,7 @@
             </div>
         </section>
     
-
+  <script src="./assests/js/main.js" ></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>
