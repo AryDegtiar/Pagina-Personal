@@ -2,6 +2,79 @@ body{
   font-family: "Oswald", sans-serif;
 }
 
+.c1{
+  display: inline-block;
+}
+.type{
+    font-size: 2.5rem;
+    font-family: monospace;
+    overflow: hidden;
+    white-space: nowrap; 
+    width: 0;
+    animation: 
+      typing 2s steps(25, end) forwards;
+}
+.type2{
+    font-size: 2.5rem; 
+    font-family: monospace;
+    overflow: hidden;
+    white-space: nowrap; 
+    width: 0;
+    animation: 
+      typing 2s steps(25, end) forwards;
+    animation-delay: 2s;
+}
+.type3{
+    font-size: 2.5rem; 
+    font-family: monospace;
+    overflow: hidden;
+    white-space: nowrap; 
+    width: 0;
+    animation: 
+      typing 2s steps(25, end) forwards;
+    animation-delay: 4s;
+}
+.type4{
+    font-size: 2.5rem; 
+    font-family: monospace;
+    overflow: hidden;
+    white-space: nowrap; 
+    width: 0;
+    animation: 
+      typing 2s steps(25, end) forwards;
+    animation-delay: 6s;
+}
+.type5{
+  font-size: 2.5rem; 
+  font-family: monospace;
+  overflow: hidden;
+  white-space: nowrap; 
+  width: 0;
+  animation: 
+    typing 2s steps(25, end) forwards;
+  animation-delay: 8s;
+}
+.type6{
+  font-size: 2.5rem; 
+  font-family: monospace;
+  overflow: hidden;
+  white-space: nowrap; 
+  width: 0;
+  animation: 
+    typing 1s steps(25, end) forwards;
+  animation-delay: 10s;
+}
+
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+@keyframes blink {
+  from { border-color: transparent }
+  to { border-color: orange; }
+}
+
 .text-orange{
   color: #de682d;
 }
