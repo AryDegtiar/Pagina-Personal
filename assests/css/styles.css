@@ -1,5 +1,6 @@
 body{
   font-family: "Oswald", sans-serif;
+  background-color: #1d1d1d;
 }
 
 .overlay {
@@ -39,6 +40,7 @@ body{
   bottom: 0;
   height: 100%;
 }
+
 
 .text-orange{
   color: #de682d;

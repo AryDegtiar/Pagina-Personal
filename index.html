@@ -7,12 +7,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!--    particulas   -->
+    <link rel="stylesheet" href="plugins/particles/css/style.css">
+
     <link rel="stylesheet" href="./assests/css/styles.css">
 
     <title>Document</title>
 </head>
-<body style="background-color: #1d1d1d;">
-    <div id="particles-js"></div>
+<body>
     <!-- navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-left text-center" style="background-color: #181818">
         <img src="./assests/images/logo.jpg" alt="logo" class="logo" style="width: 100%;">
@@ -23,7 +25,7 @@
                     <a href="#inicio" class="nav-link nav-border-button nav-border-top">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#portafolio" class="nav-link nav-border-button">Portafolio</a>
+                    <a href="#portafolio" class="nav-link nav-border-button nav-border-top">Portafolio</a>
                 </li>
                 <li class="nav-item">
                     <a href="#conocimientos" class="nav-link nav-border-button">Conocimientos</a>
@@ -40,8 +42,11 @@
     </nav>
 
     
+        <!-- particles.js container -->
+        <div id="particles-js"></div>
+
         <!-- section inicio -->
-        <section id="inicio" class="d-flex align-items-center text-white" style="height: 100vmin;">
+        <section id="inicio" class="d-flex align-items-center text-white" style="height: 100vmin; position: relative;">
             <div class="container px-4">
                 <p class="p-animated">
                     <span class="text-size-7 span-animated">Hola,</span>
@@ -52,6 +57,7 @@
                 <a href="#contacto"><button class="btn btn-success">Contactame</button></a>
             </div>
         </section>
+    
 
         <!-- section portafolio -->
         <section id="portafolio" class="pb-4">
@@ -71,6 +77,18 @@
                                     <div class="text-overlay">
                                         <a href="#" class="btn btn-success me-2">Ver proyecto</a>
                                         <a href="#" class="btn btn-success"> <img src="./assests/images/logoGitHub.png" alt="" style="width: 20px;"> </a>
+                                        <p class="pt-2">
+                                            Conexion base de datos<br>
+                                            Autenticacion de usuarios<br>
+                                            Carrito e historial de compras<br>
+                                            CRUD de productos, categorias, usuarios<br>
+                                        </p>
+                                        <div>
+                                            <img src="./assests/images/spring.png" alt="" style="width: 40px; height: 40px;">
+                                            <img src="./assests/images/javaLogo.png" alt="" style="width: 40px; height: 40px;">
+                                            <img src="./assests/images/mysql.png" alt="" style="width: 40px; height: 40px;">
+                                            <img src="./assests/images/angular.png" alt="" style="width: 40px; height: 40px;">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -193,10 +211,11 @@
                             <div class="frente">
                                 <img src="./assests/images/ary2.jpg" alt="" class="w-100 h-100 of-cover">
                             </div>
-                            <div class="dorso">
-                              <h3>Dorso</h3>
-                              <p>Más información aquí</p>
-                              <button>Botón</button>
+                            <div class="dorso d-flex align-items-center container">
+                                <div class="row m-0 p-0">
+                                    <div class="col-12"><h3>Combinado con hardware</h3></div>
+                                    <div class="col-12"><p>A parte de la programacion web, realice proyectos personales de programacion combinado con hardware, como domotica, macropads, lista inteligente y bateria electronica</p></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -234,10 +253,12 @@
                             <div class="frente">
                                 <img src="./assests/images/ary3.jpg" alt="" class="w-100 h-100 of-cover">
                             </div>
-                            <div class="dorso">
-                              <h3>Dorso</h3>
-                              <p>Más información aquí</p>
-                              <button>Botón</button>
+                            <div class="dorso d-flex align-items-center container">
+                                <div class="row m-0 p-0">
+                                    <div class="col-12"><h3>Ultimo empleo</h3></div>
+                                    <div class="col-12"><h6>2021</h6></div>
+                                    <div class="col-12"><p>Integrante del grupo de soporte tecnico para Maxirest</p></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -250,7 +271,7 @@
                                 <div class="row m-0 p-0">
                                     <div class="col-12"><h3>Creactivis</h3></div>
                                     <div class="col-12"><h6>2012-2014</h6></div>
-                                    <div class="col-12"><p>Taller de programación y emprendorismo para chicos</p></div>
+                                    <div class="col-12"><p>Taller de programación para chicos realizando apps para blackberry</p></div>
                                 </div>
                             </div>
                         </div>
@@ -278,7 +299,7 @@
                 <div class="row col-6 m-0 px-4">
                     <h1 class="text-size-5 fw-bold py-3">Contacto</h1>
 
-                    <p class="px-3">Estoy ansioso por trabajar contigo en tu próximo proyecto. ¡No dudes en contactarme si necesitas ayuda!</p>
+                    <p class="px-3">Estoy ansioso por trabajar en un nuevo proyecto. ¡No dudes en contactarme si necesitas ayuda!</p>
 
                     <form action="">
                         <div class="row container w-100 p-0 m-0 g-2">
@@ -306,7 +327,13 @@
                 </div>
             </div>
         </section>
-    
+
+
+    <!--    particulas   -->   
+    <script src="plugins/particles/js/particles.js"></script>   
+    <script src="plugins/particles/js/lib/stats.js"></script>     
+    <script src="plugins/particles/js/app.js"></script>  
+
   <script src="./assests/js/main.js" ></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
