@@ -82,6 +82,10 @@ body{
   box-shadow: 0 0 10px #de682d;
 }
 
+.hover-text-white:hover{
+  color: #de682d;
+}
+
 /* animacion inicio */
 .p-animated {
 	letter-spacing: .5em;
@@ -109,8 +113,8 @@ body{
 
 /* Clip Background Image */
 
-	  /*background: url(https://i.ibb.co/RDTnNrT/animated-text-fill.png) repeat-y;*/
-    background: url("../images/animated-text-fill2.png") repeat-y;
+	  background: url(https://i.ibb.co/RDTnNrT/animated-text-fill.png) repeat-y;
+    /*background: url("../images/animated-text-fill.png") repeat-y;*/
 	  -webkit-background-clip: text;
 	  background-clip: text;
 
