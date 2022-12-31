@@ -16,4 +16,16 @@ window.addEventListener('scroll', function(){
             animationMachine[i].classList.remove(animacion);
         }
     }
-})
+});
+
+$("#menu-toggle").click(function(e) {
+  e.preventDefault();
+  alert("click");
+  $("#wrapper").toggleClass("toggled");
+}); 
+
+function toggle(){
+    let slider = document.getElementById('wrapper');
+
+    slider.classList.toggle("toggled");
+}

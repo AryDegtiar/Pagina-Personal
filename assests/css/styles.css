@@ -1,6 +1,7 @@
 body{
   font-family: "Oswald", sans-serif;
   background-color: #1d1d1d;
+  overflow-x: hidden; 
 }
 
 .overlay {
@@ -303,9 +304,98 @@ body{
 
 
 /* navbar */
+
 ul li{
   --b: 0.2em;   /* the thickness of the line */
   --c: #de682d; /* the color */
+  
+  color: #0000;
+  padding-block: var(--b);
+  background: 
+    linear-gradient(var(--c) 50%,#000 0) 0% calc(100% - var(--_p,0%))/100% 200%,
+    linear-gradient(var(--c) 0 0) 0% var(--_p,0%)/var(--_p,0%) var(--b) no-repeat;
+  -webkit-background-clip: text,padding-box;
+          background-clip: text,padding-box;
+  transition: .3s var(--_s,0s) linear,background-size .3s calc(.3s - var(--_s,0s));
+}
+ul li:hover {
+  --_p: 100%;
+  --_s: .3s;
+}
+
+.nav-border-button{
+  border-bottom: 1px solid #6c757d41;
+}
+
+.nav-border-top{
+  border-top: 1px solid #6c757d41;
+}
+
+.nav-link{
+  width: 130px;
+}
+
+.flotante{
+    position:absolute;
+        top:10px;
+        right:30px;
+}
+
+#sidebar-wrapper {
+  height: 100vh;
+  /* Add height */
+  overflow-y: auto;
+  /* Add overflow-y */
+  overflow-x: hidden;
+  /* Add overflow-x */
+  /* min-height: 100vh; */
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 1300px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+  .flotante{
+    display: none;
+    position: absolute;
+  }
+  #page-content-wrapper{
+    margin-left: 130px;
+  }
+}
+/*
+ul li{
+  --b: 0.2em;   
+  --c: #de682d; 
   
   color: #0000;
   padding-block: var(--b);
@@ -352,7 +442,6 @@ ul li:hover {
   }
   .navbar.fixed-left .navbar-collapse {
     flex-grow: 0;
-    /* flex-direction: column; */
     width: 100%;
   }
   .navbar.fixed-left .navbar-collapse .navbar-nav {
@@ -381,3 +470,4 @@ ul li:hover {
     left: 100%;
   }
 }
+*/
