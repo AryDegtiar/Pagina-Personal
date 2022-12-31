@@ -60,13 +60,13 @@ body{
 }
 
 .text-size-7{
-  font-size: 7rem;
-  line-height : 3rem;
+  font-size: 3rem;
+  line-height : 2rem;
 }
 
 .text-size-5{
-  font-size: 5rem;
-  line-height : 3rem;
+  font-size: 2rem;
+  line-height : 1rem;
 }
 
 .input{
@@ -402,6 +402,15 @@ ul li:hover {
   #sidebar-wrapper{
     position: fixed;
     width: 130px;
+  }
+  .text-size-7{
+    font-size: 7rem;
+    line-height : 3rem;
+  }
+  
+  .text-size-5{
+    font-size: 5rem;
+    line-height : 3rem;
   }
 }
 
