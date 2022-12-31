@@ -85,6 +85,10 @@ body{
 /* animacion inicio */
 .p-animated {
 	letter-spacing: .5em;
+  -webkit-user-select: none;/* Chrome  y Safari */ 
+  -moz-user-select: none;/* Firefox */
+   -ms-user-select: none;/* IE 10+ */ 
+       user-select: none;
 }  
 .span-animated {
 
@@ -110,7 +114,7 @@ body{
 
 /* Activate hardware acceleration for smoother animations */
 
-	  -webkit-transform: translate3d(0,0,0);
+	  /*-webkit-transform: translate3d(0,0,0);*/
 	  -webkit-backface-visibility: hidden;
 
   }
