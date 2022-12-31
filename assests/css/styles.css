@@ -85,11 +85,18 @@ body{
 /* animacion inicio */
 .p-animated {
 	letter-spacing: .5em;
-  -webkit-user-select: none;/* Chrome  y Safari */ 
-  -moz-user-select: none;/* Firefox */
-   -ms-user-select: none;/* IE 10+ */ 
-       user-select: none;
 }  
+
+.no-seleccionable{
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                        supported by Chrome and Opera */
+}
+
 .span-animated {
 
   	/* font: 700 4em/1 "Oswald", sans-serif; */
