@@ -232,7 +232,7 @@ body{
   display: inline-block;
 }
 .type0{
-    font-size: 2.5rem;
+    font-size: 3vw;
     font-family: monospace;
     overflow: hidden;
     white-space: nowrap; 
@@ -241,7 +241,7 @@ body{
       typing 2s steps(25, end) forwards;
 }
 .type1{
-    font-size: 2.5rem; 
+    font-size: 3vw; 
     font-family: monospace;
     overflow: hidden;
     white-space: nowrap; 
@@ -251,6 +251,8 @@ body{
     animation-delay: 2s;
 }
 .type2{
+    font-size: 3vw; 
+    font-family: monospace;
     overflow: hidden;
     white-space: nowrap; 
     width: 0;
@@ -259,7 +261,7 @@ body{
     animation-delay: 4s;
 }
 .type3{
-    font-size: 2.5rem; 
+    font-size: 3vw; 
     font-family: monospace;
     overflow: hidden;
     white-space: nowrap; 
@@ -269,7 +271,7 @@ body{
     animation-delay: 6s;
 }
 .type4{
-  font-size: 2.5rem; 
+  font-size: 3vw; 
   font-family: monospace;
   overflow: hidden;
   white-space: nowrap; 
@@ -279,7 +281,7 @@ body{
   animation-delay: 8s;
 }
 .type5{
-  font-size: 2.5rem; 
+  font-size: 3vw; 
   font-family: monospace;
   overflow: hidden;
   white-space: nowrap; 
@@ -309,7 +311,7 @@ ul li{
   --b: 0.2em;   /* the thickness of the line */
   --c: #de682d; /* the color */
   
-  color: #0000;
+  color: grey;
   padding-block: var(--b);
   background: 
     linear-gradient(var(--c) 50%,#000 0) 0% calc(100% - var(--_p,0%))/100% 200%,
@@ -332,24 +334,27 @@ ul li:hover {
 }
 
 .nav-link{
-  width: 130px;
+  width: 100%;
 }
 
 .flotante{
-    position:absolute;
+    position:fixed;
         top:10px;
         right:30px;
 }
 
 #sidebar-wrapper {
-  height: 100vh;
+  background-color: #181818;
+  height: 100%;
+  width: 100%;
+  z-index: 1009;
   /* Add height */
   overflow-y: auto;
   /* Add overflow-y */
   overflow-x: hidden;
   /* Add overflow-x */
   /* min-height: 100vh; */
-  margin-left: -15rem;
+  margin-left: -100%;
   -webkit-transition: margin .25s ease-out;
   -moz-transition: margin .25s ease-out;
   -o-transition: margin .25s ease-out;
@@ -362,7 +367,7 @@ ul li:hover {
 }
 
 #sidebar-wrapper .list-group {
-  width: 15rem;
+  width: 100%;
 }
 
 #page-content-wrapper {
@@ -382,7 +387,7 @@ ul li:hover {
     width: 100%;
   }
   #wrapper.toggled #sidebar-wrapper {
-    margin-left: -15rem;
+    margin-left: -100%;
   }
   .flotante{
     display: none;
@@ -391,7 +396,15 @@ ul li:hover {
   #page-content-wrapper{
     margin-left: 130px;
   }
+  .nav-link{
+    width: 130px;
+  }
+  #sidebar-wrapper{
+    position: fixed;
+    width: 130px;
+  }
 }
+
 /*
 ul li{
   --b: 0.2em;   

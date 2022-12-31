@@ -22,7 +22,8 @@
 <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
-    <div class="bg-dark border-right text-center" id="sidebar-wrapper" style="position: fixed; width: 130px;">
+    <div class="border-right text-center" id="sidebar-wrapper" style="position: fixed;">
+        <button class="btn btn-primary flotante" id="menu-toggle" onclick="toggle()">+</button>
         <div class="bg-black w-100" style="height: 150px;"></div>
 
         <div class="list-group list-group-flush mt-5 pt-5">
@@ -227,13 +228,13 @@
         </section>
         
         <!-- section conocimientos -->
-        <section id="conocimientos" class="no-seleccionable" style="height: 100vmin;">
+        <section id="conocimientos" class="no-seleccionable" style="height: 100vmin; width: 100%;">
             <div class="text-white  d-flex align-items-center w-100 justify-content-center " style="height: 100vmin;">
                 <div class="row w-100" style="position: relative;">
                     <h1 class="col-12 text-size-5 fw-bold d-flex justify-content-center w-100">Conocimientos</h1>
 
                         <div class="col-12 pt-5 d-flex justify-content-center" style="flex-wrap:wrap;">
-                            <div class="c1" style="font-size: 2.5rem; font-family: monospace;">
+                            <div class="c1">
                                 <div class="machine"><span class="text-primary-emphasis">var</span> <span class="text-success-emphasis">conocimiento</span> = {</div>
                                 <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">lenguajes:</span> <span class="text-warning">[ java, javascript, python, c# ]</span>,</div>
                                 <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">entornos:</span> <span class="text-warning">[ spring, angular, hibernate ]</span>,</div>
@@ -370,37 +371,40 @@
 
         <!-- section contacto -->
         <section id="contacto" class="no-seleccionable" style="height: 100vmin;">
-            <div class="text-white d-flex align-items-center justify-content-center" style="height: 100vmin;">
+            
                 <!-- formulario -->
-                <div class="row col-6 m-0 px-4">
-                    <h1 class="text-size-5 fw-bold py-3">Contacto</h1>
+                <div class="row m-0 d-flex align-items-center text-white">
+                    <div class="col-12 col-lg-6">
+                        <h1 class="text-size-5 fw-bold py-3">Contacto</h1>
 
-                    <p class="px-3">Estoy ansioso por trabajar en un nuevo proyecto. ¡No dudes en contactarme si necesitas ayuda!</p>
+                        <p class="px-3">Estoy ansioso por trabajar en un nuevo proyecto. ¡No dudes en contactarme si necesitas ayuda!</p>
 
-                    <form action="">
-                        <div class="row container w-100 p-0 m-0 g-2">
-                            <div class="col-12 col-md-6">    
-                                <input placeholder="Nombre" type="text" class="form-control input" id="nombre" aria-describedby="emailHelp">
+                        <form action="">
+                            <div class="row container w-100 p-0 m-0 g-2">
+                                <div class="col-12 col-md-6">    
+                                    <input placeholder="Nombre" type="text" class="form-control input" id="nombre" aria-describedby="emailHelp">
+                                </div>
+                                <div class="col-12 col-md-6 ">
+                                    <input placeholder="Apellido" type="text" class="form-control input" id="apellido" aria-describedby="emailHelp">
+                                </div>
+                                <div class="col-12">
+                                    <input placeholder="Asunto" type="text" class="form-control input" id="mensaje" aria-describedby="emailHelp">
+                                </div>
+                                <div class="col-12">
+                                    <textarea placeholder="Escribe tu mensaje..." id="w3review" name="w3review" class="form-control input w-100" style="min-height: 100px;"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary mt-2 py-2 px-4" style="background-color: #de682d; border:none;">Enviar</button>
+                                </div>
                             </div>
-                            <div class="col-12 col-md-6 ">
-                                <input placeholder="Apellido" type="text" class="form-control input" id="apellido" aria-describedby="emailHelp">
-                            </div>
-                            <div class="col-12">
-                                <input placeholder="Asunto" type="text" class="form-control input" id="mensaje" aria-describedby="emailHelp">
-                            </div>
-                            <div class="col-12">
-                                <textarea placeholder="Escribe tu mensaje..." id="w3review" name="w3review" class="form-control input w-100" style="min-height: 100px;"></textarea>
-                            </div>
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary mt-2 py-2 px-4" style="background-color: #de682d; border:none;">Enviar</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <!-- mapa -->
-                <div class="col-12 col-md-6 bg-success h-100">
-                    mapa
-                </div>
+                        </form>
+                    </div>
+                    <!-- mapa -->
+                    <div class="col-12 col-lg-6 p-0 m-0  bg-success" style="height: 100vmin;">
+                        mapa
+                    </div>
+                
+                
             </div>
         </section>
     
