@@ -4,23 +4,6 @@
 
 var Stats = function () {
 
-	var setMode = function ( value ) {
-
-		mode = value;
-
-		switch ( mode ) {
-
-			case 0:
-				fpsDiv.style.display = 'block';
-				msDiv.style.display = 'none';
-				break;
-			case 1:
-				fpsDiv.style.display = 'none';
-				msDiv.style.display = 'block';
-				break;
-		}
-
-	};
 
 	var updateGraph = function ( dom, value ) {
 
@@ -32,10 +15,6 @@ var Stats = function () {
 	return {
 
 		REVISION: 12,
-
-		domElement: container,
-
-		setMode: setMode,
 
 		begin: function () {
 
