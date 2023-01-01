@@ -18,12 +18,6 @@ window.addEventListener('scroll', function(){
     }
 });
 
-$("#menu-toggle").click(function(e) {
-  e.preventDefault();
-  alert("click");
-  $("#wrapper").toggleClass("toggled");
-}); 
-
 function toggle(){
     let slider = document.getElementById('wrapper');
 
