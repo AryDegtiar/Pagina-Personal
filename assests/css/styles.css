@@ -344,7 +344,7 @@ ul li:hover {
 #sidebar-wrapper {
   background-color: #181818;
   height: 100%;
-  width: 100%;
+  width: 70%;
   z-index: 1009;
   /* Add height */
   overflow-y: auto;
@@ -385,7 +385,7 @@ ul li:hover {
     width: 100%;
   }
   #wrapper.toggled #sidebar-wrapper {
-    margin-left: -100%;
+    margin-left: -70%;
   }
   .flotante{
     display: none;
