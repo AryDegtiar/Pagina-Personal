@@ -231,9 +231,12 @@ body{
 .c1{
   display: inline-block;
 }
+.machine{
+  font-size: 3.3vw;
+  font-family: monospace;
+}
 .type0{
-    font-size: 3vw;
-    font-family: monospace;
+
     overflow: hidden;
     white-space: nowrap; 
     width: 0;
@@ -241,8 +244,7 @@ body{
       typing 2s steps(25, end) forwards;
 }
 .type1{
-    font-size: 3vw; 
-    font-family: monospace;
+
     overflow: hidden;
     white-space: nowrap; 
     width: 0;
@@ -251,8 +253,7 @@ body{
     animation-delay: 2s;
 }
 .type2{
-    font-size: 3vw; 
-    font-family: monospace;
+
     overflow: hidden;
     white-space: nowrap; 
     width: 0;
@@ -261,8 +262,7 @@ body{
     animation-delay: 4s;
 }
 .type3{
-    font-size: 3vw; 
-    font-family: monospace;
+
     overflow: hidden;
     white-space: nowrap; 
     width: 0;
@@ -271,8 +271,6 @@ body{
     animation-delay: 6s;
 }
 .type4{
-  font-size: 3vw; 
-  font-family: monospace;
   overflow: hidden;
   white-space: nowrap; 
   width: 0;
@@ -281,8 +279,6 @@ body{
   animation-delay: 8s;
 }
 .type5{
-  font-size: 3vw; 
-  font-family: monospace;
   overflow: hidden;
   white-space: nowrap; 
   width: 0;
@@ -407,10 +403,13 @@ ul li:hover {
     font-size: 7rem;
     line-height : 3rem;
   }
-  
   .text-size-5{
     font-size: 5rem;
     line-height : 3rem;
+  }
+  .machine{
+    font-size: 2.2vw;
+    font-family: monospace;
   }
 }
 
