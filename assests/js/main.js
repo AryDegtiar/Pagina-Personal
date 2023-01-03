@@ -25,3 +25,7 @@ function toggle(){
         slider.classList.toggle("toggled");
     }
 }
+
+function contacto(){
+    alert("gracias")
+}
