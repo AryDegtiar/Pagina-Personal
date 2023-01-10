@@ -13,6 +13,9 @@
     <!--    particulas   -->
     <link rel="stylesheet" href="plugins/particles/css/style.css">
 
+    <!-- animations with scrool -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <link rel="stylesheet" href="./assests/css/styles.css">
 
     <title>Ary Degtiar</title>
@@ -37,7 +40,7 @@
                 <a href="#portafolio" class="nav-link nav-border-button nav-border-top" onclick="toggle()">Portafolio</a>
             </li>
             <li class="nav-item">
-                <a href="#conocimientos" class="nav-link nav-border-button" onclick="toggle()">Conocimientos</a>
+                <a href="#conocimientos" class="nav-link nav-border-button" onclick="toggle()">Habilidades</a>
             </li>
             <li class="nav-item">
                 <a href="#sobre-mi" class="nav-link nav-border-button" onclick="toggle()">Sobre mi</a>
@@ -49,7 +52,8 @@
           
           <div class="mt-4">
             <a href="https://www.linkedin.com/in/arydegtiar/" target="_blank" class="p-2"><i class="bi bi-linkedin text-grey hover-text-white"></i></a>
-            <a href="" target="_blank" class="p-2"><i class="bi bi-github text-grey hover-text-white"></i></a>
+            <a href="https://github.com/AryDegtiar?tab=repositories" target="_blank" class="p-2"><i class="bi bi-github text-grey hover-text-white"></i></a>
+            <a href="https://drive.google.com/file/d/1dWyyAQ5qtix7uHRq27tYM7czJyxKr49x/view?usp=sharing" target="_blank" class="p-2"><i class="bi bi-file-earmark-person-fill text-grey hover-text-white"></i></a>
           </div>
           
         </div>
@@ -70,7 +74,7 @@
                     <span class="text-size-7 span-animated">Hola,</span>
                     <span class="text-size-7 span-animated">Soy Ary</span>
                     <span class="text-size-5 span-animated">Desarrollador web</span>
-                    <span class="text-grey" style="font-size: 1.3rem;"> Full stack developer / Backend - Frontend developer </span>
+                    <span class="text-grey" style="font-size: 1.3rem;"> Backend - Frontend developer </span>
                 </p>
    
                 <a href="#contacto"><button class="btn btn-success" style="position: absolute;">Contactame</button></a>
@@ -81,12 +85,12 @@
         <!-- section portafolio -->
         <section id="portafolio" class="pb-4 no-seleccionable">
             <div class="text-white px-4">
-                <h1 class="text-size-5 fw-bold text-white p-lg-5 pb-lg-0 p-4 pt-5 ps-0 pb-0">Portafolio</h1>
-                <p class="text-grey pb-0 pt-1 ps-lg-5 pt-lg-3">Toque en cada etiqueta para ver en el GitHub la explicacion del proyecto</p>
+                <h1 class="text-size-5 fw-bold text-white p-lg-5 pb-lg-0 p-4 pt-5 ps-0 pb-0" data-aos="fade-right">Portafolio</h1>
+                <p class="text-grey pb-0 pt-1 ps-lg-5 pt-lg-3" data-aos="fade-right">Toque en cada etiqueta para ver en el GitHub la explicacion del proyecto</p>
                 <!--<h1 class="text-size-5 fw-bold p-lg-5 p-4 ps-2">Portafolio</h1>-->
                 <!-- proyectos -->
                 <div class="row d-md-flex flex-md-equal w-100 m-0 p-0">
-                    <div class="col-12 col-md-6 p-0 m m-0 pt-3 p-lg-2 m-lg-0 item-portafolio">
+                    <div class="col-12 col-md-6 p-0 m m-0 pt-3 p-lg-2 m-lg-0 item-portafolio" data-aos="fade-up">
                         <div class="bg-warning text-center overflow-hidden">
                             <div class="my-3 py-3">
                                 <h2 class="text-dark display-5">Tienda ecommerce</h2>
@@ -104,7 +108,7 @@
                                             Conexion base de datos <br>
                                             Autenticacion de usuarios <br>
                                             Carrito e historial de compras <br>
-                                           CRUD de productos, categorias, usuarios <br>
+                                            CRUD de productos, categorias, usuarios <br>
                                         </p>
                                         <div>
                                             <img src="./assests/images/spring.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
@@ -118,7 +122,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 p-0 m-0 pt-3 p-lg-2 m-lg-0 item-portafolio">
+                    <div class="col-12 col-md-6 p-0 m-0 pt-3 p-lg-2 m-lg-0 item-portafolio" data-aos="fade-up">
                         <div class="bg-green text-center overflow-hidden text-dark">
                             <div class="my-3 p-3">
                                 <h2 class="text-white display-5">Compasso</h2>
@@ -132,11 +136,15 @@
                                             <a href="#" class="btn btn-success m-2">Ver proyecto</a>
                                             <a href="#" class="btn btn-success"> <img src="./assests/images/logoGitHub.png" alt="" style="width: 20px;"> </a>
                                         </div>
-                                        <p class="pt-2 text-white">
-                                            Pagina web front end para <br>
-                                            un fabricante de resistencias
+                                        <p class="w-100 text-white">
+                                            Conexion base de datos <br>
+                                            Autenticacion de usuarios <br>
+                                            CRUD de productos<br>
                                         </p>
-                                        <div class="w-100">
+                                        <div>
+                                            <img src="./assests/images/spring.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
+                                            <img src="./assests/images/javaLogo.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
+                                            <img src="./assests/images/mysql.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
                                             <img src="./assests/images/angular.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
                                             <img src="./assests/images/boostrapLogo.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
                                         </div>
@@ -146,7 +154,7 @@
                         </div>
                     </div>
 
-                    <div class="col-12 col-md-6 p-0 m-0 pt-3 p-lg-2 m-lg-0 item-portafolio">
+                    <div class="col-12 col-md-6 p-0 m-0 pt-3 p-lg-2 m-lg-0 item-portafolio" data-aos="fade-up">
                         <div class="bg-orange text-center overflow-hidden text-dark">
                             <div class="my-3 p-3">
                                 <h2 class="text-white display-5">Web personal</h2>
@@ -165,15 +173,15 @@
                                             front end
                                         </p>
                                         <div class="w-100">
-                                            <img src="./assests/images/angular.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
                                             <img src="./assests/images/boostrapLogo.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
+                                            <img src="./assests/images/jsLogo.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 p-0 m-0 pt-3 p-lg-2 m-lg-0 item-portafolio">
+                    <div class="col-12 col-md-6 p-0 m-0 pt-3 p-lg-2 m-lg-0 item-portafolio" data-aos="fade-up">
                         <div class="bg-primary text-center overflow-hidden">
                             <div class="my-3 py-3">
                                 <h2 class="text-dark display-5">Paradigma PC</h2>
@@ -209,15 +217,15 @@
         <section id="conocimientos" class="no-seleccionable" style="height: 100vh; width: 100%;">
             <div class="text-white  d-flex align-items-center w-100 justify-content-center " style="height: 100vh;">
                 <div class="row w-100" style="position: relative;">
-                    <h1 class="col-12 text-size-5 fw-bold d-flex justify-content-center w-100">Conocimientos</h1>
+                    <h1 class="col-12 text-size-5 fw-bold d-flex justify-content-center w-100" data-aos="fade-down">Habilidades</h1>
 
                         <div class="col-12 pt-5 d-flex justify-content-center" style="flex-wrap:wrap;">
                             <div class="c1">
-                                <div class="machine"><span class="text-primary-emphasis">var</span> <span class="text-success-emphasis">conocimiento</span> = {</div>
-                                <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">lenguajes:</span> <span class="text-warning">[ java, javascript, python, c# ]</span>,</div>
-                                <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">entornos:</span> <span class="text-warning">[ spring, angular, hibernate ]</span>,</div>
-                                <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">maquetado:</span> <span class="text-warning">[ bootstrap, html, css ]</span>,</div>
-                                <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">disenio:</span> <span class="text-warning">[ photoshop, illustrator ]</span></div>
+                                <div class="machine"><span class="text-primary-emphasis">const</span> <span class="text-success-emphasis">skills</span> = {</div>
+                                <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">languages:</span> <span class="text-warning">[ java, javascript, python, c# ]</span>,</div>
+                                <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">frameworks:</span> <span class="text-warning">[ spring, angular, hibernate ]</span>,</div>
+                                <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">layout:</span> <span class="text-warning">[ bootstrap, html, css ]</span>,</div>
+                                <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">design:</span> <span class="text-warning">[ photoshop, illustrator ]</span></div>
                                 <div class="machine">};<span class="blink">|</span></div>
                             </div>
                         </div>
@@ -230,11 +238,11 @@
         <!-- section sobre mi -->
         <section id="sobre-mi" class="pb-4 no-seleccionable" style="min-height: 100vh;">
             <div class="px-4">
-                <h1 class="text-size-5 fw-bold text-white p-lg-5 pb-lg-0 p-4 ps-0 pb-0">Sobre mi</h1>
-                <p class="text-grey pb-2 pt-1 ps-lg-5 pt-lg-3">Toque en cada etiqueta para ver la informacion</p>
+                <h1 class="text-size-5 fw-bold text-white p-lg-5 pb-lg-0 p-4 ps-0 pb-0" data-aos="fade-right">Sobre mi</h1>
+                <p class="text-grey pb-2 pt-1 ps-lg-5 pt-lg-3" data-aos="fade-right">Toque en cada etiqueta para ver la informacion</p>
                 <!-- items -->
                 <div class="row m-0 p-0">
-                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;">
+                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
                         <div class="card-flip">
                             <div class="frente">
                               <img src="./assests/images/ary1.jpg" alt="" class="w-100 h-100 of-cover">
@@ -247,7 +255,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;">
+                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
                         <div class="card-flip">
                             <div class="frente">
                                 <img src="./assests/images/utn.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
@@ -261,7 +269,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;">
+                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
                         <div class="card-flip">
                             <div class="frente">
                                 <img src="./assests/images/ary2.jpg" alt="" class="w-100 h-100 of-cover">
@@ -274,7 +282,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;">
+                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
                         <div class="card-flip">
                             <div class="frente">
                                 <img src="./assests/images/ort.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
@@ -289,7 +297,7 @@
                         </div>
                     </div>
 
-                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;">
+                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
                         <div class="card-flip">
                             <div class="frente">
                                 <img src="./assests/images/utnJava.jpg" alt="" class="w-100 h-100 of-cover">
@@ -303,7 +311,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;">
+                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
                         <div class="card-flip">
                             <div class="frente">
                                 <img src="./assests/images/ary3.jpg" alt="" class="w-100 h-100 of-cover">
@@ -317,7 +325,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;">
+                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
                         <div class="card-flip">
                             <div class="frente">
                                 <img src="./assests/images/creactivis.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
@@ -331,7 +339,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;">
+                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
                         <div class="card-flip">
                             <div class="frente">
                                 <img src="./assests/images/ary4.jpg" alt="" class="w-100 h-100 of-cover">
@@ -381,16 +389,12 @@
                     </div>
                     <!-- mapa -->
                     <div class="col-12 col-lg-6 p-0 m-0 mt-4 mt-lg-0" style="height: 100vh;">
-                        <!--Google map-->
-                    
+                        <!--Google map-->    
                         <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
                             src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=Av.%20Bartolom%C3%A9%20Mitre%201500,%20florida%20oeste+(test)&amp;t=&amp;z=10&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
-                
-
                     </div>
                 
-                
-            </div>
+                </div>
         </section>
     
         <!-- page content -->
@@ -398,10 +402,22 @@
     <!--wrapper-->
     </div>
 
+
+    <!-- WHATSAPP -->
+    <a href="https://wa.me/+541134912793" 
+        class="whatsapp bg-green" target="_blank"> <i class="bi bi-whatsapp"></i> 
+    </a>
+
     <!--    particulas   -->   
     <script src="plugins/particles/js/particles.js"></script>   
     <script src="plugins/particles/js/lib/stats.js"></script>     
     <script src="plugins/particles/js/app.js"></script>  
+
+    <!-- animations with scrool -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
 
   <script src="./assests/js/main.js" ></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
