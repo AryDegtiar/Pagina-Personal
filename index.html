@@ -26,40 +26,41 @@
 <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
-    <div class="border-right text-center no-seleccionable" id="sidebar-wrapper" style="position: fixed;">
+    <div class="border-right text-center no-seleccionable p-fixed" id="sidebar-wrapper">
         <button class="btn btn-light flotante" id="menu-toggle" onclick="toggle()"><i class="bi bi-list"></i></button>
-        <div class="bg-black w-100" style="height: 150px;">
-            <img src="./assests/images/logo.png" alt="" style="height: 150px;">
+        
+        <div class="bg-black navbar-logo w-100">
+            <img src="./assests/images/logo.png" alt="" class="navbar-logo">
         </div>
 
         <div class="list-group list-group-flush mt-5 pt-5">
-          <ul class="navbar-nav" style="line-height : 2rem; font-size: 1rem;">
-            <li class="nav-item">
-                <a href="#inicio" class="nav-link nav-border-button nav-border-top" onclick="toggle()">Inicio</a>
-            </li>
-            <li class="nav-item">
-                <a href="#portafolio" class="nav-link nav-border-button nav-border-top" onclick="toggle()">Portafolio</a>
-            </li>
-            <li class="nav-item">
-                <a href="#conocimientos" class="nav-link nav-border-button" onclick="toggle()">Habilidades</a>
-            </li>
-            <li class="nav-item">
-                <a href="#sobre-mi" class="nav-link nav-border-button" onclick="toggle()">Sobre mi</a>
-            </li>
-            <li class="nav-item">
-                <a href="#contacto" class="nav-link nav-border-button" onclick="toggle()">Contacto</a>
-            </li>
-          </ul>
-          
-          <div class="mt-4">
-            <a href="https://www.linkedin.com/in/arydegtiar/" target="_blank" class="p-2"><i class="bi bi-linkedin text-grey hover-text-white"></i></a>
-            <a href="https://github.com/AryDegtiar?tab=repositories" target="_blank" class="p-2"><i class="bi bi-github text-grey hover-text-white"></i></a>
-            <a href="https://drive.google.com/file/d/1dWyyAQ5qtix7uHRq27tYM7czJyxKr49x/view?usp=sharing" target="_blank" class="p-2"><i class="bi bi-file-earmark-person-fill text-grey hover-text-white"></i></a>
-          </div>
-          
+            <ul class="navbar-nav" style="line-height : 2rem; font-size: 1rem;">
+                <li class="nav-item">
+                    <a href="#inicio" class="nav-link nav-border-button nav-border-top" onclick="toggle()">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#portafolio" class="nav-link nav-border-button nav-border-top" onclick="toggle()">Portafolio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#conocimientos" class="nav-link nav-border-button" onclick="toggle()">Habilidades</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#sobre-mi" class="nav-link nav-border-button" onclick="toggle()">Sobre mi</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contacto" class="nav-link nav-border-button" onclick="toggle()">Contacto</a>
+                </li>
+            </ul>
+            
+            <div class="mt-4">
+                <a href="https://www.linkedin.com/in/arydegtiar/" target="_blank" class="p-2"><i class="bi bi-linkedin text-grey hover-text-white"></i></a>
+                <a href="https://github.com/AryDegtiar?tab=repositories" target="_blank" class="p-2"><i class="bi bi-github text-grey hover-text-white"></i></a>
+                <a href="https://drive.google.com/file/d/1dWyyAQ5qtix7uHRq27tYM7czJyxKr49x/view?usp=sharing" target="_blank" class="p-2"><i class="bi bi-file-earmark-person-fill text-grey hover-text-white"></i></a>
+            </div>
+            
         </div>
-      </div>
-      <!-- /#sidebar-wrapper -->
+    </div>
+    <!-- /#sidebar-wrapper -->
     
     <!-- Page Content -->
     <div id="page-content-wrapper">
@@ -68,7 +69,7 @@
         <div id="particles-js"></div>
 
         <!-- section inicio -->
-        <section id="inicio" class="d-flex align-items-center text-white" style="height: 100vh;">
+        <section id="inicio" class="d-flex align-items-center text-white">
             <div class="container">
                 
                 <p class="p-animated no-seleccionable">
@@ -215,12 +216,12 @@
         </section>
         
         <!-- section conocimientos -->
-        <section id="conocimientos" class="no-seleccionable" style="height: 100vh; width: 100%;">
-            <div class="text-white  d-flex align-items-center w-100 justify-content-center " style="height: 100vh;">
+        <section id="conocimientos" class="no-seleccionable w-100">
+            <div class="text-white  d-flex align-items-center w-100 justify-content-center" style="height: 100vh;">
                 <div class="row w-100" style="position: relative;">
                     <h1 class="col-12 text-size-5 fw-bold d-flex justify-content-center w-100" data-aos="fade-down">Habilidades</h1>
 
-                        <div class="col-12 pt-5 d-flex justify-content-center" style="flex-wrap:wrap;">
+                        <div class="col-12 pt-5 f-wrap justify-content-center">
                             <div class="c1">
                                 <div class="machine"><span class="text-primary-emphasis">const</span> <span class="text-success-emphasis">skills</span> = {</div>
                                 <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">languages:</span> <span class="text-warning">[ java, javascript, python, c# ]</span>,</div>
@@ -237,12 +238,13 @@
         </section>
 
         <!-- section sobre mi -->
-        <section id="sobre-mi" class="pb-4 no-seleccionable" style="min-height: 100vh;">
+        <section id="sobre-mi" class="pb-4 no-seleccionable">
             <div class="px-4">
                 <h1 class="text-size-5 fw-bold text-white p-lg-5 pb-lg-0 p-4 ps-0 pb-0" data-aos="fade-right">Sobre mi</h1>
                 <p class="text-grey pb-2 pt-1 ps-lg-5 pt-lg-3" data-aos="fade-right">Toque en cada etiqueta para ver la informacion</p>
                 <!-- items -->
                 <div class="row m-0 p-0">
+
                     <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
                         <div class="card-flip">
                             <div class="frente">
@@ -353,6 +355,7 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </section>
@@ -398,10 +401,10 @@
                 </div>
         </section>
     
-        <!-- page content -->
-        </div>
-    <!--wrapper-->
+    <!-- page content -->
     </div>
+<!--wrapper-->
+</div>
 
 
     <!-- WHATSAPP -->

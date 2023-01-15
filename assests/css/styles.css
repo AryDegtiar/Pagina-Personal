@@ -3,6 +3,23 @@ body{
   background-color: #1d1d1d;
 }
 
+.p-fixed{
+  position: fixed;
+}
+
+.navbar-logo{
+  height: 150px;
+}
+
+section{
+  min-height: 100vh;
+}
+
+.f-wrap{
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .overlay {
   position: absolute;
   bottom: 100%;
