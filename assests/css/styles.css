@@ -3,16 +3,17 @@ body{
   background-color: #1d1d1d;
 }
 
+
+section{
+  min-height: 100vh;
+}
+
 .p-fixed{
   position: fixed;
 }
 
 .navbar-logo{
   height: 150px;
-}
-
-section{
-  min-height: 100vh;
 }
 
 .f-wrap{
@@ -57,7 +58,6 @@ section{
   bottom: 0;
   height: 100%;
 }
-
 
 .text-orange{
   color: #de682d;
@@ -456,83 +456,3 @@ ul li:hover {
     font-family: monospace;
   }
 }
-
-/*
-ul li{
-  --b: 0.2em;   
-  --c: #de682d; 
-  
-  color: #0000;
-  padding-block: var(--b);
-  background: 
-    linear-gradient(var(--c) 50%,#000 0) 0% calc(100% - var(--_p,0%))/100% 200%,
-    linear-gradient(var(--c) 0 0) 0% var(--_p,0%)/var(--_p,0%) var(--b) no-repeat;
-  -webkit-background-clip: text,padding-box;
-          background-clip: text,padding-box;
-  transition: .3s var(--_s,0s) linear,background-size .3s calc(.3s - var(--_s,0s));
-}
-ul li:hover {
-  --_p: 100%;
-  --_s: .3s;
-}
-
-.navbar.fixed-left {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1030;
-}
-
-.nav-border-button{
-  border-bottom: 1px solid #6c757d41;
-}
-
-.nav-border-top{
-  border-top: 1px solid #6c757d41;
-}
-
-@media (min-width: 768px) {
-  body {
-    margin-left: 130px;
-  }
-}
-
-@media (min-width: 768px) {
-  .navbar.fixed-left {
-    bottom: 0;
-    width: 130px;
-    flex-flow: column nowrap;
-    align-items: flex-start;
-  }
-  .navbar.fixed-left .navbar-collapse {
-    flex-grow: 0;
-    width: 100%;
-  }
-  .navbar.fixed-left .navbar-collapse .navbar-nav {
-    flex-direction: column;
-    width: 100%;
-  }
-  .navbar.fixed-left .navbar-collapse .navbar-nav .nav-item {
-    width: 100%;
-  }
-  .navbar.fixed-left .navbar-collapse .navbar-nav .nav-item .dropdown-menu {
-    top: 0;
-  }
-}
-@media (min-width: 768px) {
-  .navbar.fixed-left {
-    right: auto;
-  }
-  .navbar.fixed-left .navbar-nav .nav-item .dropdown-toggle:after {
-    border-top: 0.3em solid transparent;
-    border-left: 0.3em solid;
-    border-bottom: 0.3em solid transparent;
-    border-right: none;
-    vertical-align: baseline;
-  }
-  .navbar.fixed-left .navbar-nav .nav-item .dropdown-menu {
-    left: 100%;
-  }
-}
-*/
