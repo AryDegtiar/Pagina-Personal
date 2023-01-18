@@ -111,6 +111,18 @@ iframe{
 -moz-filter: sepia(20%) brightness(80%);
 }
 
+/* Estilo para la barra de desplazamiento */
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: #1d1d1d;
+}
+
+/* Estilo para el cursor de la barra de desplazamiento */
+::-webkit-scrollbar-thumb {
+  background-color: #de682d;
+  border-radius: 5px;
+}
+
 /*  loading  */
 #loading {
   position: fixed;
