@@ -54,6 +54,10 @@ section{
   opacity: 0.5;
 }
 
+.tamanioItemPortafolio{
+  max-height: 500px
+}
+
 .preview-portafolio:hover .overlay {
   bottom: 0;
   height: 100%;
@@ -69,6 +73,15 @@ section{
 
 .bg-green{
   background-color: #198754;
+}
+
+/* Morado oscuro */
+.bg-purple {
+  background-color: #8E44AD;
+}
+
+.bg-light-gray {
+  background-color: #898989;
 }
 
 .bg-orange{
@@ -309,7 +322,7 @@ iframe{
     white-space: nowrap; 
     width: 0;
     animation: 
-      typing 2s steps(25, end) forwards;
+      typing 0.5s steps(25, end) forwards;
 }
 .type1{
 
@@ -317,8 +330,8 @@ iframe{
     white-space: nowrap; 
     width: 0;
     animation: 
-      typing 2s steps(25, end) forwards;
-    animation-delay: 2s;
+      typing 1s steps(25, end) forwards;
+    animation-delay: 0.5s;
 }
 .type2{
 
@@ -326,8 +339,8 @@ iframe{
     white-space: nowrap; 
     width: 0;
     animation: 
-      typing 2s steps(25, end) forwards;
-    animation-delay: 4s;
+      typing 1s steps(25, end) forwards;
+    animation-delay: 1.5s;
 }
 .type3{
 
@@ -335,16 +348,16 @@ iframe{
     white-space: nowrap; 
     width: 0;
     animation: 
-      typing 2s steps(25, end) forwards;
-    animation-delay: 6s;
+      typing 1s steps(25, end) forwards;
+    animation-delay: 2.5s;
 }
 .type4{
   overflow: hidden;
   white-space: nowrap; 
   width: 0;
   animation: 
-    typing 2s steps(25, end) forwards;
-  animation-delay: 8s;
+    typing 1s steps(25, end) forwards;
+  animation-delay: 3.5s;
 }
 .type5{
   overflow: hidden;
@@ -352,7 +365,7 @@ iframe{
   width: 0;
   animation: 
     typing 1s steps(25, end) forwards;
-  animation-delay: 10s;
+  animation-delay: 4.5s;
 }
 
 .blink{
