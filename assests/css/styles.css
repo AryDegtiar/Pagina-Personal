@@ -7,8 +7,12 @@
   --accent: #ff5e00;
   --accent-glow: rgba(255, 94, 0, 0.4);
   --text-main: #ffffff;
-  --text-muted: #ffffff;
-  /* Made much brighter for contrast */
+  --text-muted: rgba(255, 255, 255, 0.85);
+}
+
+/* Override Bootstrap's unreadable default gray */
+.text-muted {
+  color: var(--text-muted) !important;
 }
 
 /* Ambient Seamless 3D Background */
