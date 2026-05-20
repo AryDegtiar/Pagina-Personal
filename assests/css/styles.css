@@ -7,7 +7,7 @@
   --accent: #ff5e00;
   --accent-glow: rgba(255, 94, 0, 0.4);
   --text-main: #ffffff;
-  --text-muted: #cbd5e1;
+  --text-muted: #ffffff;
   /* Made much brighter for contrast */
 }
 
@@ -16,21 +16,51 @@ body {
   background-color: var(--bg-color);
   color: var(--text-main);
   overflow-x: hidden;
+  position: relative;
 }
 
-/* Background Glowing Mesh */
-body::before {
+/* Ambient Seamless Background (Apple style) */
+body::before,
+body::after {
   content: '';
   position: fixed;
-  top: -20%;
-  left: -20%;
-  width: 140%;
-  height: 140%;
-  background: radial-gradient(circle at 60% 40%, var(--accent-glow) 0%, transparent 50%),
-    radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 40%);
-  opacity: 0.8;
+  width: 150vmax;
+  height: 150vmax;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: -1;
   pointer-events: none;
+}
+
+body::before {
+  background: radial-gradient(circle, rgba(255, 94, 0, 0.15) 0%, transparent 40%);
+  animation: floatOrb1 25s infinite linear;
+}
+
+body::after {
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 40%);
+  animation: floatOrb2 30s infinite linear;
+}
+
+@keyframes floatOrb1 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) translate(15vw) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) translate(15vw) rotate(-360deg);
+  }
+}
+
+@keyframes floatOrb2 {
+  0% {
+    transform: translate(-50%, -50%) rotate(180deg) translate(20vw) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(540deg) translate(20vw) rotate(-360deg);
+  }
 }
 
 h1,
@@ -48,6 +78,8 @@ h6,
 section {
   min-height: 100vh;
   position: relative;
+  padding: 120px 0;
+  /* Add deep padding for seamless vertical flow */
 }
 
 .p-fixed {
