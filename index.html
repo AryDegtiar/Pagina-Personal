@@ -307,174 +307,86 @@
             </h1>
             <p class="text-muted pb-4 pt-1 ps-lg-5 pt-lg-2 cli-cursor" style="font-family: monospace;">Fetching user
                 profile data...</p>
-            <!-- items -->
-            <div class="row m-0 p-0">
+            <!-- IDE / Terminal Profile Output -->
+            <div class="row m-0 p-0 justify-content-center">
+                <div class="c1 b-glass rounded-4 p-5 mt-3"
+                    style="width: 100%; max-width: 1300px; text-align: left; font-family: monospace; font-size: 1.2rem; line-height: 2.0; box-shadow: 0 0 40px rgba(0,0,0,0.5);">
 
-                <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
-                    <div class="card-flip">
-                        <div class="frente">
-                            <img src="./assests/images/ary1.jpg" alt="" class="w-100 h-100 of-cover">
-                        </div>
-                        <div class="dorso d-flex align-items-center container">
-                            <div class="row m-0 p-0">
-                                <div class="col-12">
-                                    <h3 class="text-dark">Presentacion</h3>
-                                </div>
-                                <div class="col-12">
-                                    <p>Tengo 24 años, me gusta entender como es el funcionamiento de las cosas,
-                                        en el mundo tecnologico me permitio ampliar el conocimiento aprendido de
-                                        manera autodidacta</p>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="d-flex text-muted mb-4 pb-3"
+                        style="border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 0.95rem; cursor: pointer; user-select: none;">
+                        <span id="tab-readme" class="text-accent me-4 hover-text-white"
+                            onclick="switchProfileTab('readme')">✓ README.md</span>
+                        <span id="tab-edu" class="me-4 opacity-50 hover-text-white"
+                            onclick="switchProfileTab('edu')">education.yml</span>
+                        <span id="tab-hob" class="opacity-50 hover-text-white"
+                            onclick="switchProfileTab('hob')">hobbies.txt</span>
                     </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
-                    <div class="card-flip">
-                        <div class="frente">
-                            <img src="./assests/images/utn.jpg" alt=""
-                                style=" width:100%; height:100%; object-fit: cover;">
-                        </div>
-                        <div class="dorso d-flex align-items-center container">
-                            <div class="row m-0 p-0">
-                                <div class="col-12">
-                                    <h3 class="text-dark">Ingenieria en sistemas de informacion</h3>
-                                </div>
-                                <div class="col-12">
-                                    <h6 class="text-dark">En curso</h6>
-                                </div>
-                                <div class="col-12">
-                                    <p>Ya cursadas las materias de algoritmos y paradigmas de programacion</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
-                    <div class="card-flip">
-                        <div class="frente">
-                            <img src="./assests/images/ary2.jpg" alt="" class="w-100 h-100 of-cover">
-                        </div>
-                        <div class="dorso d-flex align-items-center container">
-                            <div class="row m-0 p-0">
-                                <div class="col-12">
-                                    <h3 class="text-dark">Combinado con hardware</h3>
-                                </div>
-                                <div class="col-12">
-                                    <p>A parte de la programacion web, realice proyectos personales de
-                                        programacion combinado con hardware, como domotica, macropads, lista
-                                        inteligente y bateria electronica</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
-                    <div class="card-flip">
-                        <div class="frente">
-                            <img src="./assests/images/ort.jpg" alt=""
-                                style=" width:100%; height:100%; object-fit: cover;">
-                        </div>
-                        <div class="dorso d-flex align-items-center container">
-                            <div class="row m-0 p-0">
-                                <div class="col-12">
-                                    <h3 class="text-dark">Bachiller Técnico con Orientación en TIC</h3>
-                                </div>
-                                <div class="col-12">
-                                    <h6 class="text-dark">2012 - 2017</h6>
-                                </div>
-                                <div class="col-12">
-                                    <p>Me permitio tener un primer acercamiento al hardware y la programacion
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
-                    <div class="card-flip">
-                        <div class="frente">
-                            <img src="./assests/images/utnJava.jpg" alt="" class="w-100 h-100 of-cover">
-                        </div>
-                        <div class="dorso d-flex align-items-center container">
-                            <div class="row m-0 p-0">
-                                <div class="col-12">
-                                    <h3 class="text-dark">Academia full stack / Java</h3>
-                                </div>
-                                <div class="col-12">
-                                    <h6 class="text-dark">2022</h6>
-                                </div>
-                                <div class="col-12">
-                                    <p>Fui seleccionado por Capgemini para una academia fullstack dirigida por
-                                        la UTN</p>
-                                </div>
-                            </div>
-                        </div>
+                    <div id="content-readme" class="pe-3 profile-content" style="padding-bottom: 20px;">
+                        <span class="text-primary-emphasis fs-2 fw-bold"># Ary Degtiar</span> <br><br>
+                        <span class="text-info fw-bold">## 👤 Presentación</span><br>
+                        Tengo 24 años. Mi obsesión principal es entender cómo funcionan las cosas desde la raíz.
+                        Expandirme en el mundo tecnológico me permitió consolidar este conocimiento tanto de manera
+                        empírica, académica como autodidacta.<br><br>
+                        <span class="text-info fw-bold">## 💼 Historial Profesional</span><br>
+                        <span class="text-warning"> > Desarrollador Backend Java (Sistemas Activos)</span> —
+                        [Actualidad]<br>
+                        <i class="opacity-75 ms-3">↳ Capacitaciones intensivas en: Spring Boot, Microservicios, BFF,
+                            API-Rest, Spring Security.</i><br><br>
                     </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
-                    <div class="card-flip">
-                        <div class="frente">
-                            <img src="./assests/images/ary3.jpg" alt="" class="w-100 h-100 of-cover">
-                        </div>
-                        <div class="dorso d-flex align-items-center container">
-                            <div class="row m-0 p-0">
-                                <div class="col-12">
-                                    <h3 class="text-dark">Ultimo empleo</h3>
-                                </div>
-                                <div class="col-12">
-                                    <h6 class="text-dark">Actualidad</h6>
-                                </div>
-                                <div class="col-12">
-                                    <p>Desarrollador backend java en Sistemas Activos</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
-                    <div class="card-flip">
-                        <div class="frente">
-                            <img src="./assests/images/saJava.png" alt=""
-                                style=" width:100%; height:100%; object-fit: cover;">
-                        </div>
-                        <div class="dorso d-flex align-items-center container">
-                            <div class="row m-0 p-0">
-                                <div class="col-12">
-                                    <h3 class="text-dark">Capacitaciones Java</h3>
-                                </div>
-                                <div class="col-12">
-                                    <h6 class="text-dark">2023</h6>
-                                </div>
-                                <div class="col-12">
-                                    <p>
-                                        Fui seleccionado por Sistemas Activos para capacitaciones de Java
-                                        (Spring Boot, Microservicios, BFF, API-Rest, Spring Security)
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
-                    <div class="card-flip">
-                        <div class="frente">
-                            <img src="./assests/images/ary4.jpg" alt="" class="w-100 h-100 of-cover">
-                        </div>
-                        <div class="dorso d-flex align-items-center container">
-                            <div class="row m-0 p-0">
-                                <div class="col-12">
-                                    <h3 class="text-dark">Hobbies</h3>
-                                </div>
-                                <div class="col-12">
-                                    <p>Me gusta practicar deportes como escalar, boxeo, gimnasio y skate</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
+                    <div id="content-edu" class="pe-3 profile-content d-none" style="padding-bottom: 20px;">
+                        <span class="text-primary-emphasis fs-2 fw-bold">education:</span> <br><br>
+                        <span class="text-info fw-bold"> university:</span><br>
+                        <span class="text-warning"> name: "Ingeniería en Sistemas de Información (UTN)"</span><br>
+                        <span class="text-muted"> status: "En Curso"</span><br>
+                        <span class="text-muted"> milestones: <br> - "Algoritmos aprobados" <br> - "Paradigmas de
+                            Programación superados"</span><br><br>
+
+                        <span class="text-info fw-bold"> academy:</span><br>
+                        <span class="text-warning"> name: "Fullstack Java (Capgemini & UTN)"</span><br>
+                        <span class="text-muted"> year: 2022</span><br>
+                        <span class="text-muted"> status: "Graduado"</span><br><br>
+
+                        <span class="text-info fw-bold"> high_school:</span><br>
+                        <span class="text-warning"> name: "Bachiller Técnico con Orientación en TIC (ORT)"</span><br>
+                        <span class="text-muted"> period: "2012 - 2017"</span><br>
+                        <span class="text-muted"> note: "Primer contacto nativo con programación y hardware"</span><br>
+                    </div>
+
+                    <div id="content-hob" class="pe-3 profile-content d-none"
+                        style="padding-bottom: 20px; color: #a1a1aa;">
+                        [SYSTEM] Loading hardware bindings... OK.<br><br>
+                        <span class="text-success-emphasis">>> 🔌 HARDWARE_ROOT/PROJECTS</span><br>
+                        ├── Domótica_Home_System<br>
+                        ├── Custom_Macropads<br>
+                        ├── Listas_Inteligentes_IoT<br>
+                        └── Batería_Electrónica_Integrada<br><br>
+
+                        <span class="text-success-emphasis">>> 🧗 ANALOG_HOBBIES (Disconnect mode)</span><br>
+                        ├── Escalar (Bouldering / Rock Climbing)<br>
+                        ├── Entrenamiento / Gimnasio<br>
+                        ├── Boxeo<br>
+                        └── Surf / Skateboarding<br>
+                    </div>
+
+                    <script>
+                        function switchProfileTab(tab) {
+                            ['readme', 'edu', 'hob'].forEach(t => {
+                                document.getElementById('content-' + t).classList.add('d-none');
+                                let tabEl = document.getElementById('tab-' + t);
+                                tabEl.classList.remove('text-accent');
+                                tabEl.classList.add('opacity-50');
+                                tabEl.innerText = tabEl.innerText.replace('✓ ', '');
+                            });
+                            document.getElementById('content-' + tab).classList.remove('d-none');
+                            let activeTab = document.getElementById('tab-' + tab);
+                            activeTab.classList.remove('opacity-50');
+                            activeTab.classList.add('text-accent');
+                            activeTab.innerText = '✓ ' + activeTab.innerText;
+                        }
+                    </script>
+                </div>
             </div>
         </div>
     </section>

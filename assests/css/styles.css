@@ -423,9 +423,9 @@ iframe:hover {
   position: relative;
   overflow: hidden;
   width: 100%;
-  max-width: 650px;
-  height: 380px;
-  /* FIXED DIMENSIONS TO PREVENT GROWING */
+  max-width: 100%;
+  height: auto;
+  min-height: 400px;
 }
 
 /* macOS style terminal dots */
@@ -657,7 +657,35 @@ iframe:hover {
 /* Push image and card-body down to accommodate absolute terminal header */
 .card.b-glass>.position-relative,
 .card.b-glass>.card-body {
-  margin-top: 25px;
+  margin-top: 20px;
+}
+
+/* Rediseño de Trabajos (Portafolio Terminal Theme) */
+.card.b-glass .card-body h4 {
+  font-family: monospace !important;
+  font-size: 1.25rem !important;
+  color: var(--accent) !important;
+}
+
+.card.b-glass .card-body p,
+.card.b-glass .card-body .badge {
+  font-family: monospace !important;
+}
+
+.card.b-glass .portfolio-img-modern {
+  filter: grayscale(100%) contrast(150%) opacity(0.3) sepia(100%) hue-rotate(180deg);
+  transition: all 0.4s ease;
+  mix-blend-mode: screen;
+}
+
+.card.b-glass:hover .portfolio-img-modern {
+  filter: grayscale(0%) contrast(100%) opacity(1) sepia(0%);
+  mix-blend-mode: normal;
+}
+
+.card.b-glass .position-relative {
+  height: 140px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .bg-glass {
