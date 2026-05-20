@@ -661,7 +661,13 @@ iframe:hover {
   justify-content: center;
 }
 
-/* Let's ensure AOS animations play nicely with transitions */
+/* Let's remove AOS interfering transitions because JS handles 3D physics per-frame now */
 [data-aos] {
-  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+section {
+  will-change: transform, opacity, filter;
 }
