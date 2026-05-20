@@ -106,21 +106,22 @@ function initThreeJS() {
             if (rect.top <= screenCenter && rect.bottom >= screenCenter) {
                 ratio = 0;
             } else if (rect.top > screenCenter) {
-                ratio = (rect.top - screenCenter) / window.innerHeight;
+                // Divided by 2.5 to drastically stretch the scroll distance, making the transition super long
+                ratio = (rect.top - screenCenter) / (window.innerHeight * 2.5);
             } else if (rect.bottom < screenCenter) {
-                ratio = (rect.bottom - screenCenter) / window.innerHeight;
+                ratio = (rect.bottom - screenCenter) / (window.innerHeight * 2.5);
             }
 
             // Calculate pseudo-Z depth values based on updated bounded ratio
-            const scale = 1 - Math.abs(ratio) * 0.35;
-            const opacity = 1 - Math.abs(ratio) * 1.5;
-            const translateY = ratio * 150;
-            const translateZ = -Math.abs(ratio) * 400;
+            const scale = 1 - Math.abs(ratio) * 0.55;
+            const opacity = 1 - Math.abs(ratio) * 0.85;
+            const translateY = ratio * 200;
+            const translateZ = -Math.abs(ratio) * 1100;
 
-            sec.style.transform = `perspective(1000px) translate3d(0, ${translateY}px, ${translateZ}px) scale(${Math.max(0.6, scale)})`;
+            sec.style.transform = `perspective(1000px) translate3d(0, ${translateY}px, ${translateZ}px) scale(${Math.max(0.4, scale)})`;
             sec.style.opacity = Math.max(0, Math.min(1, opacity));
 
-            const blur = Math.max(0, Math.abs(ratio) * 8 - 1);
+            const blur = Math.max(0, Math.abs(ratio) * 12 - 3);
             sec.style.filter = `blur(${blur}px)`;
         });
 
