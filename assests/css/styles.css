@@ -234,19 +234,19 @@ section {
   cursor: pointer;
 }
 
-/* Map Iframe */
+/* Map Iframe UX Fix: Force Night Mode / HUD Hologram */
 iframe {
   width: 100%;
   height: 100%;
   border-radius: 24px;
-  filter: grayscale(0.8) contrast(1.2) sepia(0.3) hue-rotate(180deg) opacity(0.8);
+  filter: invert(90%) hue-rotate(180deg) grayscale(40%) contrast(1.1) opacity(0.85);
   transition: filter 0.5s ease;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-  border: 1px solid var(--border-glass);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 iframe:hover {
-  filter: grayscale(0.3) contrast(1.1) sepia(0.1) hue-rotate(180deg) opacity(1);
+  filter: invert(90%) hue-rotate(180deg) grayscale(10%) contrast(1.2) opacity(1);
 }
 
 /* Scrollbar */
