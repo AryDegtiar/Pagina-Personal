@@ -11,19 +11,23 @@
   /* Made much brighter for contrast */
 }
 
-/* Ambient Seamless Background (Apple style Parallax) */
+/* Ambient Seamless 3D Background */
 body {
   font-family: "Inter", sans-serif;
   background-color: var(--bg-color);
-  background-image:
-    radial-gradient(circle at 15% 20%, rgba(255, 94, 0, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 85% 80%, rgba(37, 99, 235, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 80% 10%, rgba(255, 0, 127, 0.06) 0%, transparent 30%);
-  background-attachment: fixed;
-  background-size: cover;
   color: var(--text-main);
   overflow-x: hidden;
   position: relative;
+}
+
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
 }
 
 h1,
