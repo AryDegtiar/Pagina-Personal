@@ -41,48 +41,37 @@ function initThreeJS() {
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-    // Objects mapping
-    const geometry = new THREE.IcosahedronGeometry(1.5, 0); // Apple-like mathematical geometry
-    const material = new THREE.MeshBasicMaterial({
-        color: 0xff5e00, // orange accent
-        wireframe: true,
-        transparent: true,
-        opacity: 0.15
-    });
-
+    // Objects mapping: Replaced Wireframes with a dense, pristine Stardust galaxy
     const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 700;
+    const particlesCount = 2000;
     const posArray = new Float32Array(particlesCount * 3);
+    const colorArray = new Float32Array(particlesCount * 3);
 
-    for (let i = 0; i < particlesCount * 3; i++) {
-        posArray[i] = (Math.random() - 0.5) * 80;
+    for (let i = 0; i < particlesCount * 3; i += 3) {
+        // Broad distribution
+        posArray[i] = (Math.random() - 0.5) * 100;
+        posArray[i + 1] = (Math.random() - 0.5) * 100;
+        posArray[i + 2] = (Math.random() - 0.5) * 100 - 10;
+
+        // Randomly assign Blue or Orange accent to stars
+        const isOrange = Math.random() > 0.5;
+        colorArray[i] = isOrange ? 1.0 : 0.23; // R
+        colorArray[i + 1] = isOrange ? 0.36 : 0.5; // G (0.36 for orange 0xff5e00)
+        colorArray[i + 2] = isOrange ? 0.0 : 0.96; // B
     }
+
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
 
     const particlesMaterial = new THREE.PointsMaterial({
-        size: 0.05,
-        color: 0x3b82f6, // blue accent
+        size: 0.1,
+        vertexColors: true,
         transparent: true,
-        opacity: 0.6
+        opacity: 0.8
     });
 
     const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
     scene.add(particlesMesh);
-
-    // Add main flying floating shapes
-    const shapes = [];
-    for (let i = 0; i < 15; i++) {
-        const mesh = new THREE.Mesh(geometry, material);
-        mesh.position.x = (Math.random() - 0.5) * 40;
-        mesh.position.y = (Math.random() - 0.5) * 40;
-        mesh.position.z = (Math.random() - 0.5) * 40 - 15;
-
-        const scale = Math.random() * 2 + 1;
-        mesh.scale.set(scale, scale, scale);
-
-        scene.add(mesh);
-        shapes.push(mesh);
-    }
 
     // Scroll Logic Interaction
     let currentScroll = 0;
@@ -99,39 +88,39 @@ function initThreeJS() {
         requestAnimationFrame(animate);
         const elapsedTime = clock.getElapsedTime();
 
-        // Slowly rotate shapes
-        shapes.forEach((shape, index) => {
-            shape.rotation.x += 0.001 * (index % 2 === 0 ? 1 : -1);
-            shape.rotation.y += 0.0015;
-        });
-
         // Rotate particles globally very slowly
         particlesMesh.rotation.y = elapsedTime * 0.02;
+        particlesMesh.rotation.x = elapsedTime * 0.005;
 
-        // Reactive Camera based on Scroll (The "Zoom into world" effect)
+        // Reactive Camera based on Scroll
         camera.position.z = 30 - (currentScroll * 0.025);
         camera.position.y = -(currentScroll * 0.005);
 
         // SYNC HTML DOM CONTENT WITH THE 3D WORLD
-        // Make sections float towards the camera (scale up/down, fade in/out) organically like the particles
         sections.forEach((sec) => {
             const rect = sec.getBoundingClientRect();
-            // Distance from center of the screen
-            const centerOffset = (rect.top + rect.height / 2) - (window.innerHeight / 2);
-            const ratio = centerOffset / window.innerHeight; // Negative if above center, Positive if below
+            const screenCenter = window.innerHeight / 2;
+            let ratio = 0;
 
-            // Calculate depth pseudo-3D values
-            // When ratio is 0 (dead center), scale is 1, opacity is 1
-            const scale = 1 - Math.abs(ratio) * 0.4;
+            // Logic Fix: If the screen center is ANYWHERE inside the section top/bottom boundaries, it remains fully visible
+            if (rect.top <= screenCenter && rect.bottom >= screenCenter) {
+                ratio = 0;
+            } else if (rect.top > screenCenter) {
+                ratio = (rect.top - screenCenter) / window.innerHeight;
+            } else if (rect.bottom < screenCenter) {
+                ratio = (rect.bottom - screenCenter) / window.innerHeight;
+            }
+
+            // Calculate pseudo-Z depth values based on updated bounded ratio
+            const scale = 1 - Math.abs(ratio) * 0.35;
             const opacity = 1 - Math.abs(ratio) * 1.5;
-            const translateY = ratio * 150; // Move it slightly opposite to scroll to float
-            const translateZ = -Math.abs(ratio) * 500; // Pushes it "back" visually into the mesh
+            const translateY = ratio * 150;
+            const translateZ = -Math.abs(ratio) * 400;
 
-            // Apply calculated pseudo-Z depth physics directly to the DOM in real-time
             sec.style.transform = `perspective(1000px) translate3d(0, ${translateY}px, ${translateZ}px) scale(${Math.max(0.6, scale)})`;
             sec.style.opacity = Math.max(0, Math.min(1, opacity));
-            // Add subtle blur to stuff far away
-            const blur = Math.max(0, Math.abs(ratio) * 10 - 2);
+
+            const blur = Math.max(0, Math.abs(ratio) * 8 - 1);
             sec.style.filter = `blur(${blur}px)`;
         });
 
