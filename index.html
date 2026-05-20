@@ -86,9 +86,10 @@
     <!-- section portafolio -->
     <section id="portafolio" class="py-5 no-seleccionable">
         <div class="container px-4 mt-5">
-            <h1 class="text-size-5 fw-bold text-white mb-2" data-aos="fade-right">Mi Trabajo</h1>
-            <p class="text-muted mb-5" data-aos="fade-right" data-aos-delay="100">Explora algunos de mis
-                proyectos más recientes y destacados.</p>
+            <h1 class="text-size-5 fw-bold text-white mb-2" style="font-family: monospace;">➜ ~ <span
+                    class="text-accent">ls</span> -la ./portafolio</h1>
+            <p class="text-muted mb-5 cli-cursor" style="font-family: monospace;">Executing query... Found 6 active
+                projects.</p>
 
             <div class="row g-4">
                 <!-- Card 1 -->
@@ -267,11 +268,12 @@
     <section id="conocimientos" class="no-seleccionable w-100">
         <div class="text-white  d-flex align-items-center w-100 justify-content-center" style="height: 100vh;">
             <div class="row w-100" style="position: relative;">
-                <h1 class="col-12 text-size-5 fw-bold d-flex justify-content-center w-100" data-aos="fade-down">
-                    Habilidades</h1>
+                <h1 class="col-12 text-size-5 fw-bold d-flex justify-content-center w-100 mb-4"
+                    style="font-family: monospace;">
+                    ➜ ~ <span class="text-accent">cat</span> skills.json</h1>
 
-                <div class="col-12 pt-5 f-wrap justify-content-center">
-                    <div class="c1">
+                <div class="col-12 pt-3 f-wrap justify-content-center">
+                    <div class="c1 b-glass rounded-4 p-4" style="width: 100%; max-width: 650px;">
                         <div class="machine"><span class="text-primary-emphasis">const</span> <span
                                 class="text-success-emphasis">skills</span> = {</div>
                         <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">languages:</span>
@@ -300,10 +302,11 @@
     <!-- section sobre mi -->
     <section id="sobre-mi" class="pb-4 no-seleccionable">
         <div class="px-4">
-            <h1 class="text-size-5 fw-bold text-white p-lg-5 pb-lg-0 p-4 ps-0 pb-0" data-aos="fade-right">Sobre
-                mi</h1>
-            <p class="text-grey pb-2 pt-1 ps-lg-5 pt-lg-3" data-aos="fade-right">Toque en cada etiqueta para ver
-                la informacion</p>
+            <h1 class="text-size-5 fw-bold text-white p-lg-5 pb-lg-0 p-4 ps-0 pb-0" style="font-family: monospace;">➜ ~
+                <span class="text-accent">whoami</span>
+            </h1>
+            <p class="text-muted pb-4 pt-1 ps-lg-5 pt-lg-2 cli-cursor" style="font-family: monospace;">Fetching user
+                profile data...</p>
             <!-- items -->
             <div class="row m-0 p-0">
 
@@ -483,10 +486,11 @@
         <div class="row m-0 d-flex align-items-center text-white">
             <div class="col-12 col-lg-6 py-5 pt-lg-0 px-lg-5" data-aos="fade-right">
 
-                <h1 class="text-size-5 fw-bold p-3">Contacto</h1>
+                <h1 class="text-size-5 fw-bold p-3" style="font-family: monospace;">➜ ~ <span
+                        class="text-accent">mail</span> -s "Contacto" root@ary</h1>
 
-                <p class="px-3">Estoy ansioso por trabajar en un nuevo proyecto. ¡No dudes en contactarme si
-                    necesitas ayuda!</p>
+                <p class="text-muted px-3 cli-cursor" style="font-family: monospace;">Enter message below. Press send to
+                    dispatch.</p>
 
                 <form action="gracias.html" name="contacto" netlify>
                     <div class="row container w-100 p-0 m-0 g-2">
