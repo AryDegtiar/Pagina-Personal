@@ -45,535 +45,483 @@
         </div>
     </div>
 
-    <div class="d-flex" id="wrapper">
+    <!-- Floating Navbar (2026 Style) -->
+    <nav class="floating-navbar">
+        <a href="#inicio">Inicio</a>
+        <a href="#portafolio">Portafolio</a>
+        <a href="#conocimientos">Habilidades</a>
+        <a href="#sobre-mi">Perfil</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
 
-        <!-- Sidebar -->
-        <div class="border-right text-center no-seleccionable p-fixed" id="sidebar-wrapper">
-            <button class="btn btn-light flotante" id="menu-toggle" onclick="toggle()"><i
-                    class="bi bi-list"></i></button>
+    <!-- particles.js container -->
+    <div id="particles-js"></div>
 
-            <div class="bg-black navbar-logo w-100">
-                <img src="./assests/images/logo.png" alt="" class="navbar-logo">
+    <!-- section inicio -->
+    <section id="inicio" class="d-flex align-items-center overflow-hidden position-relative" style="min-height: 100vh;">
+        <div class="container px-4 position-relative z-1">
+            <div class="row w-100 justify-content-center">
+                <div class="col-12 col-md-10 text-center" data-aos="fade-in" data-aos-duration="1500">
+                    <h1 class="text-white mb-2"
+                        style="font-family: 'Outfit'; font-weight: 800; font-size: clamp(3rem, 8vw, 7rem); letter-spacing: -3px; line-height: 1;">
+                        Ary<span class="text-accent">.</span>
+                    </h1>
+                    <p class="text-muted fs-4 mb-5 mx-auto" style="font-weight: 300;">
+                        Desarrollador Fullstack
+                    </p>
+                    <div class="d-flex justify-content-center gap-4">
+                        <a href="#portafolio" class="text-white text-uppercase"
+                            style="text-decoration:none; font-weight: 500; font-size: 0.9rem; letter-spacing: 2px;">Proyectos</a>
+                        <a href="https://github.com/AryDegtiar" target="_blank"
+                            class="text-muted hover-text-white text-uppercase"
+                            style="text-decoration:none; font-weight: 500; font-size: 0.9rem; letter-spacing: 2px;">GitHub</a>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="list-group list-group-flush mt-5 pt-5">
-                <ul class="navbar-nav" style="line-height : 2rem; font-size: 1rem;">
-                    <li class="nav-item">
-                        <a href="#inicio" class="nav-link nav-border-button nav-border-top"
-                            onclick="toggle()">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#portafolio" class="nav-link nav-border-button nav-border-top"
-                            onclick="toggle()">Portafolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#conocimientos" class="nav-link nav-border-button" onclick="toggle()">Habilidades</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#sobre-mi" class="nav-link nav-border-button" onclick="toggle()">Sobre mi</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#contacto" class="nav-link nav-border-button" onclick="toggle()">Contacto</a>
-                    </li>
-                </ul>
 
-                <div class="mt-4">
-                    <a href="https://www.linkedin.com/in/arydegtiar/" target="_blank" class="p-2"><i
-                            class="bi bi-linkedin text-grey hover-text-white"></i></a>
-                    <a href="https://github.com/AryDegtiar" target="_blank" class="p-2"><i
-                            class="bi bi-github text-grey hover-text-white"></i></a>
-                    <a href="https://drive.google.com/file/d/1bsggzVcRtcb5KFtFETALGr76SZrT-ePD/view?usp=sharing"
-                        target="_blank" class="p-2"><i
-                            class="bi bi-file-earmark-person-fill text-grey hover-text-white"></i></a>
+    <!-- section portafolio -->
+    <section id="portafolio" class="py-5 no-seleccionable" style="background: rgba(255,255,255,0.01);">
+        <div class="container px-4 mt-5">
+            <h1 class="text-size-5 fw-bold text-white mb-2" data-aos="fade-right">Mi Trabajo</h1>
+            <p class="text-muted mb-5" data-aos="fade-right" data-aos-delay="100">Explora algunos de mis
+                proyectos más recientes y destacados.</p>
+
+            <div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-12 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card bg-glass text-white h-100 b-glass border-0" style="border-radius: 20px;">
+                        <div class="position-relative overflow-hidden w-100"
+                            style="height: 220px; border-radius: 20px 20px 0 0;">
+                            <img src="./assests/images/imgGrafana.jpg" class="w-100 h-100 of-cover portfolio-img-modern"
+                                alt="Microservicios">
+                        </div>
+                        <div class="card-body d-flex flex-column p-4">
+                            <span class="badge text-uppercase text-accent mb-2"
+                                style="width: max-content; background: rgba(255,94,0,0.1);">Backend API</span>
+                            <h4 class="card-title fw-bold" style="font-family: 'Outfit';">Toolkit Microservicios
+                            </h4>
+                            <p class="card-text text-muted small mt-2 flex-grow-1">BFF, Tomcat + thymeleaf,
+                                Reactor Core, Basic Auth, Actuator, Grafana, JPA, JDBC.</p>
+                            <div class="d-flex align-items-center justify-content-between mt-3">
+                                <div class="tech-stack-icons d-flex gap-2">
+                                    <img src="./assests/images/spring.png" height="24">
+                                    <img src="./assests/images/javaLogo.png" height="24">
+                                    <img src="./assests/images/grafanalogo.png" height="24">
+                                </div>
+                                <a href="https://github.com/AryDegtiar/Java-Microservices-Toolkit-SA" target="_blank"
+                                    class="btn btn-outline-light rounded-circle btn-icon"><i
+                                        class="bi bi-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-12 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card bg-glass text-white h-100 b-glass border-0" style="border-radius: 20px;">
+                        <div class="position-relative overflow-hidden w-100"
+                            style="height: 220px; border-radius: 20px 20px 0 0;">
+                            <img src="./assests/images/imgRecetas.jpg" class="w-100 h-100 of-cover portfolio-img-modern"
+                                alt="Busca Recetas">
+                        </div>
+                        <div class="card-body d-flex flex-column p-4">
+                            <span class="badge text-uppercase text-accent mb-2"
+                                style="width: max-content; background: rgba(255,94,0,0.1);">Fullstack
+                                Agile</span>
+                            <h4 class="card-title fw-bold" style="font-family: 'Outfit';">Buscador de Recetas
+                            </h4>
+                            <p class="card-text text-muted small mt-2 flex-grow-1">Proyecto SCRUM de 2 días.
+                                Integración ágil entre frontend interactivo y base de datos con Java.</p>
+                            <div class="d-flex align-items-center justify-content-between mt-3">
+                                <div class="tech-stack-icons d-flex gap-2">
+                                    <img src="./assests/images/javaLogo.png" height="24">
+                                    <img src="./assests/images/reactlogo.png" height="24">
+                                    <img src="./assests/images/mysql.png" height="24">
+                                </div>
+                                <a href="https://github.com/AryDegtiar/tpScrumRecetas.git" target="_blank"
+                                    class="btn btn-outline-light rounded-circle btn-icon"><i
+                                        class="bi bi-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-12 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card bg-glass text-white h-100 b-glass border-0" style="border-radius: 20px;">
+                        <div class="position-relative overflow-hidden w-100"
+                            style="height: 220px; border-radius: 20px 20px 0 0;">
+                            <img src="./assests/images/karmashop.png" class="w-100 h-100 of-cover portfolio-img-modern"
+                                alt="Shop">
+                        </div>
+                        <div class="card-body d-flex flex-column p-4">
+                            <span class="badge text-uppercase text-accent mb-2"
+                                style="width: max-content; background: rgba(255,94,0,0.1);">E-Commerce</span>
+                            <h4 class="card-title fw-bold" style="font-family: 'Outfit';">Tienda E-commerce</h4>
+                            <p class="card-text text-muted small mt-2 flex-grow-1">Proyecto final curso UTN.
+                                Autenticación de usuarios, historial, crud en Angular y DB estructurada.</p>
+                            <div class="d-flex align-items-center justify-content-between mt-3">
+                                <div class="tech-stack-icons d-flex gap-2">
+                                    <img src="./assests/images/javaLogo.png" height="24">
+                                    <img src="./assests/images/angular.png" height="24">
+                                    <img src="./assests/images/mysql.png" height="24">
+                                </div>
+                                <a href="https://github.com/AryDegtiar/TPCAPGEMINI" target="_blank"
+                                    class="btn btn-outline-light rounded-circle btn-icon"><i
+                                        class="bi bi-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-12 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card bg-glass text-white h-100 b-glass border-0" style="border-radius: 20px;">
+                        <div class="position-relative overflow-hidden w-100"
+                            style="height: 220px; border-radius: 20px 20px 0 0;">
+                            <img src="./assests/images/compasso.png" class="w-100 h-100 of-cover portfolio-img-modern"
+                                alt="Compasso">
+                        </div>
+                        <div class="card-body d-flex flex-column p-4">
+                            <span class="badge text-uppercase text-accent mb-2"
+                                style="width: max-content; background: rgba(255,94,0,0.1);">Gestión App</span>
+                            <h4 class="card-title fw-bold" style="font-family: 'Outfit';">Panel Fábrica Compasso
+                            </h4>
+                            <p class="card-text text-muted small mt-2 flex-grow-1">Panel de administración para
+                                resistencias. Manejo de autenticación y carga de productos segura.</p>
+                            <div class="d-flex align-items-center justify-content-between mt-3">
+                                <div class="tech-stack-icons d-flex gap-2">
+                                    <img src="./assests/images/spring.png" height="24">
+                                    <img src="./assests/images/angular.png" height="24">
+                                </div>
+                                <a href="https://github.com/AryDegtiar/Compasso-JAVA" target="_blank"
+                                    class="btn btn-outline-light rounded-circle btn-icon"><i
+                                        class="bi bi-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="col-12 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card bg-glass text-white h-100 b-glass border-0" style="border-radius: 20px;">
+                        <div class="position-relative overflow-hidden w-100"
+                            style="height: 220px; border-radius: 20px 20px 0 0;">
+                            <img src="./assests/images/webPersonal.png"
+                                class="w-100 h-100 of-cover portfolio-img-modern" alt="Web">
+                        </div>
+                        <div class="card-body d-flex flex-column p-4">
+                            <span class="badge text-uppercase text-accent mb-2"
+                                style="width: max-content; background: rgba(255,94,0,0.1);">Frontend</span>
+                            <h4 class="card-title fw-bold" style="font-family: 'Outfit';">Web Personal (v1)</h4>
+                            <p class="card-text text-muted small mt-2 flex-grow-1">Construcción estructural de
+                                mi primera web usando puro HTML, Vanilla JS puro y Bootstrap v5.0.</p>
+                            <div class="d-flex align-items-center justify-content-between mt-3">
+                                <div class="tech-stack-icons d-flex gap-2">
+                                    <img src="./assests/images/boostrapLogo.png" height="24">
+                                    <img src="./assests/images/jsLogo.png" height="24">
+                                </div>
+                                <a href="https://github.com/AryDegtiar/Pagina-Personal" target="_blank"
+                                    class="btn btn-outline-light rounded-circle btn-icon"><i
+                                        class="bi bi-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="col-12 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card bg-glass text-white h-100 b-glass border-0" style="border-radius: 20px;">
+                        <div class="position-relative overflow-hidden w-100"
+                            style="height: 220px; border-radius: 20px 20px 0 0;">
+                            <img src="./assests/images/paradigmaPc.jpg"
+                                class="w-100 h-100 of-cover portfolio-img-modern" alt="Android">
+                        </div>
+                        <div class="card-body d-flex flex-column p-4">
+                            <span class="badge text-uppercase text-accent mb-2"
+                                style="width: max-content; background: rgba(255,94,0,0.1);">Mobile App</span>
+                            <h4 class="card-title fw-bold" style="font-family: 'Outfit';">Paradigma PC</h4>
+                            <p class="card-text text-muted small mt-2 flex-grow-1">Aplicación nativa móvil con
+                                interfaz fluida para ayudar en el asesoramiento y armado de computadoras.</p>
+                            <div class="d-flex align-items-center justify-content-between mt-3">
+                                <div class="tech-stack-icons d-flex gap-2">
+                                    <img src="./assests/images/androidStudioLogo.png" height="24">
+                                </div>
+                                <a href="https://github.com/AryDegtiar/ParadigmaPC" target="_blank"
+                                    class="btn btn-outline-light rounded-circle btn-icon"><i
+                                        class="bi bi-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
         </div>
-        <!-- /#sidebar-wrapper -->
+    </section>
 
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
+    <!-- section conocimientos -->
+    <section id="conocimientos" class="no-seleccionable w-100">
+        <div class="text-white  d-flex align-items-center w-100 justify-content-center" style="height: 100vh;">
+            <div class="row w-100" style="position: relative;">
+                <h1 class="col-12 text-size-5 fw-bold d-flex justify-content-center w-100" data-aos="fade-down">
+                    Habilidades</h1>
 
-            <!-- particles.js container -->
-            <div id="particles-js"></div>
-
-            <!-- section inicio -->
-            <section id="inicio" class="d-flex align-items-center overflow-hidden position-relative"
-                style="min-height: 100vh;">
-                <div class="container px-4 position-relative z-1">
-                    <div class="row w-100 justify-content-center">
-                        <div class="col-12 col-md-10 text-center" data-aos="fade-in" data-aos-duration="1500">
-                            <h1 class="text-white mb-2"
-                                style="font-family: 'Outfit'; font-weight: 800; font-size: clamp(3rem, 8vw, 7rem); letter-spacing: -3px; line-height: 1;">
-                                Ary<span class="text-accent">.</span>
-                            </h1>
-                            <p class="text-muted fs-4 mb-5 mx-auto" style="font-weight: 300;">
-                                Desarrollador Fullstack
-                            </p>
-                            <div class="d-flex justify-content-center gap-4">
-                                <a href="#portafolio" class="text-white text-uppercase"
-                                    style="text-decoration:none; font-weight: 500; font-size: 0.9rem; letter-spacing: 2px;">Proyectos</a>
-                                <a href="https://github.com/AryDegtiar" target="_blank"
-                                    class="text-muted hover-text-white text-uppercase"
-                                    style="text-decoration:none; font-weight: 500; font-size: 0.9rem; letter-spacing: 2px;">GitHub</a>
-                            </div>
-                        </div>
+                <div class="col-12 pt-5 f-wrap justify-content-center">
+                    <div class="c1">
+                        <div class="machine"><span class="text-primary-emphasis">const</span> <span
+                                class="text-success-emphasis">skills</span> = {</div>
+                        <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">languages:</span>
+                            <span class="text-warning">[ java,
+                                javascript, python, c# ]</span>,</div>
+                        <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">frameworks:</span>
+                            <span class="text-warning">[ spring,
+                                angular, hibernate ]</span>,</div>
+                        <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">layout:</span> <span
+                                class="text-warning">[ bootstrap, html,
+                                css ]</span>,</div>
+                        <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">design:</span> <span
+                                class="text-warning">[ photoshop,
+                                illustrator ]</span></div>
+                        <div class="machine">};<span class="blink">|</span></div>
                     </div>
                 </div>
-            </section>
 
+            </div>
 
-            <!-- section portafolio -->
-            <section id="portafolio" class="py-5 no-seleccionable" style="background: rgba(255,255,255,0.01);">
-                <div class="container px-4 mt-5">
-                    <h1 class="text-size-5 fw-bold text-white mb-2" data-aos="fade-right">Mi Trabajo</h1>
-                    <p class="text-muted mb-5" data-aos="fade-right" data-aos-delay="100">Explora algunos de mis
-                        proyectos más recientes y destacados.</p>
-
-                    <div class="row g-4">
-                        <!-- Card 1 -->
-                        <div class="col-12 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                            <div class="card bg-glass text-white h-100 b-glass border-0" style="border-radius: 20px;">
-                                <div class="position-relative overflow-hidden w-100"
-                                    style="height: 220px; border-radius: 20px 20px 0 0;">
-                                    <img src="./assests/images/imgGrafana.jpg"
-                                        class="w-100 h-100 of-cover portfolio-img-modern" alt="Microservicios">
-                                </div>
-                                <div class="card-body d-flex flex-column p-4">
-                                    <span class="badge text-uppercase text-accent mb-2"
-                                        style="width: max-content; background: rgba(255,94,0,0.1);">Backend API</span>
-                                    <h4 class="card-title fw-bold" style="font-family: 'Outfit';">Toolkit Microservicios
-                                    </h4>
-                                    <p class="card-text text-muted small mt-2 flex-grow-1">BFF, Tomcat + thymeleaf,
-                                        Reactor Core, Basic Auth, Actuator, Grafana, JPA, JDBC.</p>
-                                    <div class="d-flex align-items-center justify-content-between mt-3">
-                                        <div class="tech-stack-icons d-flex gap-2">
-                                            <img src="./assests/images/spring.png" height="24">
-                                            <img src="./assests/images/javaLogo.png" height="24">
-                                            <img src="./assests/images/grafanalogo.png" height="24">
-                                        </div>
-                                        <a href="https://github.com/AryDegtiar/Java-Microservices-Toolkit-SA"
-                                            target="_blank" class="btn btn-outline-light rounded-circle btn-icon"><i
-                                                class="bi bi-github"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 2 -->
-                        <div class="col-12 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                            <div class="card bg-glass text-white h-100 b-glass border-0" style="border-radius: 20px;">
-                                <div class="position-relative overflow-hidden w-100"
-                                    style="height: 220px; border-radius: 20px 20px 0 0;">
-                                    <img src="./assests/images/imgRecetas.jpg"
-                                        class="w-100 h-100 of-cover portfolio-img-modern" alt="Busca Recetas">
-                                </div>
-                                <div class="card-body d-flex flex-column p-4">
-                                    <span class="badge text-uppercase text-accent mb-2"
-                                        style="width: max-content; background: rgba(255,94,0,0.1);">Fullstack
-                                        Agile</span>
-                                    <h4 class="card-title fw-bold" style="font-family: 'Outfit';">Buscador de Recetas
-                                    </h4>
-                                    <p class="card-text text-muted small mt-2 flex-grow-1">Proyecto SCRUM de 2 días.
-                                        Integración ágil entre frontend interactivo y base de datos con Java.</p>
-                                    <div class="d-flex align-items-center justify-content-between mt-3">
-                                        <div class="tech-stack-icons d-flex gap-2">
-                                            <img src="./assests/images/javaLogo.png" height="24">
-                                            <img src="./assests/images/reactlogo.png" height="24">
-                                            <img src="./assests/images/mysql.png" height="24">
-                                        </div>
-                                        <a href="https://github.com/AryDegtiar/tpScrumRecetas.git" target="_blank"
-                                            class="btn btn-outline-light rounded-circle btn-icon"><i
-                                                class="bi bi-github"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 3 -->
-                        <div class="col-12 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                            <div class="card bg-glass text-white h-100 b-glass border-0" style="border-radius: 20px;">
-                                <div class="position-relative overflow-hidden w-100"
-                                    style="height: 220px; border-radius: 20px 20px 0 0;">
-                                    <img src="./assests/images/karmashop.png"
-                                        class="w-100 h-100 of-cover portfolio-img-modern" alt="Shop">
-                                </div>
-                                <div class="card-body d-flex flex-column p-4">
-                                    <span class="badge text-uppercase text-accent mb-2"
-                                        style="width: max-content; background: rgba(255,94,0,0.1);">E-Commerce</span>
-                                    <h4 class="card-title fw-bold" style="font-family: 'Outfit';">Tienda E-commerce</h4>
-                                    <p class="card-text text-muted small mt-2 flex-grow-1">Proyecto final curso UTN.
-                                        Autenticación de usuarios, historial, crud en Angular y DB estructurada.</p>
-                                    <div class="d-flex align-items-center justify-content-between mt-3">
-                                        <div class="tech-stack-icons d-flex gap-2">
-                                            <img src="./assests/images/javaLogo.png" height="24">
-                                            <img src="./assests/images/angular.png" height="24">
-                                            <img src="./assests/images/mysql.png" height="24">
-                                        </div>
-                                        <a href="https://github.com/AryDegtiar/TPCAPGEMINI" target="_blank"
-                                            class="btn btn-outline-light rounded-circle btn-icon"><i
-                                                class="bi bi-github"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 4 -->
-                        <div class="col-12 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                            <div class="card bg-glass text-white h-100 b-glass border-0" style="border-radius: 20px;">
-                                <div class="position-relative overflow-hidden w-100"
-                                    style="height: 220px; border-radius: 20px 20px 0 0;">
-                                    <img src="./assests/images/compasso.png"
-                                        class="w-100 h-100 of-cover portfolio-img-modern" alt="Compasso">
-                                </div>
-                                <div class="card-body d-flex flex-column p-4">
-                                    <span class="badge text-uppercase text-accent mb-2"
-                                        style="width: max-content; background: rgba(255,94,0,0.1);">Gestión App</span>
-                                    <h4 class="card-title fw-bold" style="font-family: 'Outfit';">Panel Fábrica Compasso
-                                    </h4>
-                                    <p class="card-text text-muted small mt-2 flex-grow-1">Panel de administración para
-                                        resistencias. Manejo de autenticación y carga de productos segura.</p>
-                                    <div class="d-flex align-items-center justify-content-between mt-3">
-                                        <div class="tech-stack-icons d-flex gap-2">
-                                            <img src="./assests/images/spring.png" height="24">
-                                            <img src="./assests/images/angular.png" height="24">
-                                        </div>
-                                        <a href="https://github.com/AryDegtiar/Compasso-JAVA" target="_blank"
-                                            class="btn btn-outline-light rounded-circle btn-icon"><i
-                                                class="bi bi-github"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 5 -->
-                        <div class="col-12 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                            <div class="card bg-glass text-white h-100 b-glass border-0" style="border-radius: 20px;">
-                                <div class="position-relative overflow-hidden w-100"
-                                    style="height: 220px; border-radius: 20px 20px 0 0;">
-                                    <img src="./assests/images/webPersonal.png"
-                                        class="w-100 h-100 of-cover portfolio-img-modern" alt="Web">
-                                </div>
-                                <div class="card-body d-flex flex-column p-4">
-                                    <span class="badge text-uppercase text-accent mb-2"
-                                        style="width: max-content; background: rgba(255,94,0,0.1);">Frontend</span>
-                                    <h4 class="card-title fw-bold" style="font-family: 'Outfit';">Web Personal (v1)</h4>
-                                    <p class="card-text text-muted small mt-2 flex-grow-1">Construcción estructural de
-                                        mi primera web usando puro HTML, Vanilla JS puro y Bootstrap v5.0.</p>
-                                    <div class="d-flex align-items-center justify-content-between mt-3">
-                                        <div class="tech-stack-icons d-flex gap-2">
-                                            <img src="./assests/images/boostrapLogo.png" height="24">
-                                            <img src="./assests/images/jsLogo.png" height="24">
-                                        </div>
-                                        <a href="https://github.com/AryDegtiar/Pagina-Personal" target="_blank"
-                                            class="btn btn-outline-light rounded-circle btn-icon"><i
-                                                class="bi bi-github"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 6 -->
-                        <div class="col-12 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-                            <div class="card bg-glass text-white h-100 b-glass border-0" style="border-radius: 20px;">
-                                <div class="position-relative overflow-hidden w-100"
-                                    style="height: 220px; border-radius: 20px 20px 0 0;">
-                                    <img src="./assests/images/paradigmaPc.jpg"
-                                        class="w-100 h-100 of-cover portfolio-img-modern" alt="Android">
-                                </div>
-                                <div class="card-body d-flex flex-column p-4">
-                                    <span class="badge text-uppercase text-accent mb-2"
-                                        style="width: max-content; background: rgba(255,94,0,0.1);">Mobile App</span>
-                                    <h4 class="card-title fw-bold" style="font-family: 'Outfit';">Paradigma PC</h4>
-                                    <p class="card-text text-muted small mt-2 flex-grow-1">Aplicación nativa móvil con
-                                        interfaz fluida para ayudar en el asesoramiento y armado de computadoras.</p>
-                                    <div class="d-flex align-items-center justify-content-between mt-3">
-                                        <div class="tech-stack-icons d-flex gap-2">
-                                            <img src="./assests/images/androidStudioLogo.png" height="24">
-                                        </div>
-                                        <a href="https://github.com/AryDegtiar/ParadigmaPC" target="_blank"
-                                            class="btn btn-outline-light rounded-circle btn-icon"><i
-                                                class="bi bi-github"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <!-- section conocimientos -->
-            <section id="conocimientos" class="no-seleccionable w-100">
-                <div class="text-white  d-flex align-items-center w-100 justify-content-center" style="height: 100vh;">
-                    <div class="row w-100" style="position: relative;">
-                        <h1 class="col-12 text-size-5 fw-bold d-flex justify-content-center w-100" data-aos="fade-down">
-                            Habilidades</h1>
-
-                        <div class="col-12 pt-5 f-wrap justify-content-center">
-                            <div class="c1">
-                                <div class="machine"><span class="text-primary-emphasis">const</span> <span
-                                        class="text-success-emphasis">skills</span> = {</div>
-                                <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                        class="text-info">languages:</span> <span class="text-warning">[ java,
-                                        javascript, python, c# ]</span>,</div>
-                                <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                        class="text-info">frameworks:</span> <span class="text-warning">[ spring,
-                                        angular, hibernate ]</span>,</div>
-                                <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                        class="text-info">layout:</span> <span class="text-warning">[ bootstrap, html,
-                                        css ]</span>,</div>
-                                <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                        class="text-info">design:</span> <span class="text-warning">[ photoshop,
-                                        illustrator ]</span></div>
-                                <div class="machine">};<span class="blink">|</span></div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- section sobre mi -->
-            <section id="sobre-mi" class="pb-4 no-seleccionable">
-                <div class="px-4">
-                    <h1 class="text-size-5 fw-bold text-white p-lg-5 pb-lg-0 p-4 ps-0 pb-0" data-aos="fade-right">Sobre
-                        mi</h1>
-                    <p class="text-grey pb-2 pt-1 ps-lg-5 pt-lg-3" data-aos="fade-right">Toque en cada etiqueta para ver
-                        la informacion</p>
-                    <!-- items -->
-                    <div class="row m-0 p-0">
-
-                        <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;"
-                            data-aos="zoom-in">
-                            <div class="card-flip">
-                                <div class="frente">
-                                    <img src="./assests/images/ary1.jpg" alt="" class="w-100 h-100 of-cover">
-                                </div>
-                                <div class="dorso d-flex align-items-center container">
-                                    <div class="row m-0 p-0">
-                                        <div class="col-12">
-                                            <h3 class="text-dark">Presentacion</h3>
-                                        </div>
-                                        <div class="col-12">
-                                            <p>Tengo 24 años, me gusta entender como es el funcionamiento de las cosas,
-                                                en el mundo tecnologico me permitio ampliar el conocimiento aprendido de
-                                                manera autodidacta</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;"
-                            data-aos="zoom-in">
-                            <div class="card-flip">
-                                <div class="frente">
-                                    <img src="./assests/images/utn.jpg" alt=""
-                                        style=" width:100%; height:100%; object-fit: cover;">
-                                </div>
-                                <div class="dorso d-flex align-items-center container">
-                                    <div class="row m-0 p-0">
-                                        <div class="col-12">
-                                            <h3 class="text-dark">Ingenieria en sistemas de informacion</h3>
-                                        </div>
-                                        <div class="col-12">
-                                            <h6 class="text-dark">En curso</h6>
-                                        </div>
-                                        <div class="col-12">
-                                            <p>Ya cursadas las materias de algoritmos y paradigmas de programacion</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;"
-                            data-aos="zoom-in">
-                            <div class="card-flip">
-                                <div class="frente">
-                                    <img src="./assests/images/ary2.jpg" alt="" class="w-100 h-100 of-cover">
-                                </div>
-                                <div class="dorso d-flex align-items-center container">
-                                    <div class="row m-0 p-0">
-                                        <div class="col-12">
-                                            <h3 class="text-dark">Combinado con hardware</h3>
-                                        </div>
-                                        <div class="col-12">
-                                            <p>A parte de la programacion web, realice proyectos personales de
-                                                programacion combinado con hardware, como domotica, macropads, lista
-                                                inteligente y bateria electronica</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;"
-                            data-aos="zoom-in">
-                            <div class="card-flip">
-                                <div class="frente">
-                                    <img src="./assests/images/ort.jpg" alt=""
-                                        style=" width:100%; height:100%; object-fit: cover;">
-                                </div>
-                                <div class="dorso d-flex align-items-center container">
-                                    <div class="row m-0 p-0">
-                                        <div class="col-12">
-                                            <h3 class="text-dark">Bachiller Técnico con Orientación en TIC</h3>
-                                        </div>
-                                        <div class="col-12">
-                                            <h6 class="text-dark">2012 - 2017</h6>
-                                        </div>
-                                        <div class="col-12">
-                                            <p>Me permitio tener un primer acercamiento al hardware y la programacion
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;"
-                            data-aos="zoom-in">
-                            <div class="card-flip">
-                                <div class="frente">
-                                    <img src="./assests/images/utnJava.jpg" alt="" class="w-100 h-100 of-cover">
-                                </div>
-                                <div class="dorso d-flex align-items-center container">
-                                    <div class="row m-0 p-0">
-                                        <div class="col-12">
-                                            <h3 class="text-dark">Academia full stack / Java</h3>
-                                        </div>
-                                        <div class="col-12">
-                                            <h6 class="text-dark">2022</h6>
-                                        </div>
-                                        <div class="col-12">
-                                            <p>Fui seleccionado por Capgemini para una academia fullstack dirigida por
-                                                la UTN</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;"
-                            data-aos="zoom-in">
-                            <div class="card-flip">
-                                <div class="frente">
-                                    <img src="./assests/images/ary3.jpg" alt="" class="w-100 h-100 of-cover">
-                                </div>
-                                <div class="dorso d-flex align-items-center container">
-                                    <div class="row m-0 p-0">
-                                        <div class="col-12">
-                                            <h3 class="text-dark">Ultimo empleo</h3>
-                                        </div>
-                                        <div class="col-12">
-                                            <h6 class="text-dark">Actualidad</h6>
-                                        </div>
-                                        <div class="col-12">
-                                            <p>Desarrollador backend java en Sistemas Activos</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;"
-                            data-aos="zoom-in">
-                            <div class="card-flip">
-                                <div class="frente">
-                                    <img src="./assests/images/saJava.png" alt=""
-                                        style=" width:100%; height:100%; object-fit: cover;">
-                                </div>
-                                <div class="dorso d-flex align-items-center container">
-                                    <div class="row m-0 p-0">
-                                        <div class="col-12">
-                                            <h3 class="text-dark">Capacitaciones Java</h3>
-                                        </div>
-                                        <div class="col-12">
-                                            <h6 class="text-dark">2023</h6>
-                                        </div>
-                                        <div class="col-12">
-                                            <p>
-                                                Fui seleccionado por Sistemas Activos para capacitaciones de Java
-                                                (Spring Boot, Microservicios, BFF, API-Rest, Spring Security)
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;"
-                            data-aos="zoom-in">
-                            <div class="card-flip">
-                                <div class="frente">
-                                    <img src="./assests/images/ary4.jpg" alt="" class="w-100 h-100 of-cover">
-                                </div>
-                                <div class="dorso d-flex align-items-center container">
-                                    <div class="row m-0 p-0">
-                                        <div class="col-12">
-                                            <h3 class="text-dark">Hobbies</h3>
-                                        </div>
-                                        <div class="col-12">
-                                            <p>Me gusta practicar deportes como escalar, boxeo, gimnasio y skate</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <!-- section contacto -->
-            <section id="contacto" class="no-seleccionable">
-
-                <!-- formulario -->
-                <div class="row m-0 d-flex align-items-center text-white">
-                    <div class="col-12 col-lg-6 py-5 pt-lg-0 px-lg-5" data-aos="fade-right">
-
-                        <h1 class="text-size-5 fw-bold p-3">Contacto</h1>
-
-                        <p class="px-3">Estoy ansioso por trabajar en un nuevo proyecto. ¡No dudes en contactarme si
-                            necesitas ayuda!</p>
-
-                        <form action="gracias.html" name="contacto" netlify>
-                            <div class="row container w-100 p-0 m-0 g-2">
-                                <div class="col-12 col-md-6">
-                                    <input placeholder="Nombre" type="text" class="form-control input" id="nombre"
-                                        name="nombre">
-                                </div>
-                                <div class="col-12 col-md-6 ">
-                                    <input placeholder="Email" type="text" class="form-control input" id="email"
-                                        name="email">
-                                </div>
-                                <div class="col-12">
-                                    <input placeholder="Asunto" type="text" class="form-control input" id="mensaje"
-                                        name="asunto">
-                                </div>
-                                <div class="col-12">
-                                    <textarea placeholder="Escribe tu mensaje..." id="mensaje" name="mensaje"
-                                        class="form-control input w-100" style="min-height: 100px;"></textarea>
-                                </div>
-                                <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" class="btn mt-3 py-3 px-5 text-uppercase fw-bold rounded-pill"
-                                        style="background: linear-gradient(135deg, #ff5e00, #ea580c); border:none; box-shadow: 0 10px 25px rgba(255,94,0,0.4); color: #fff;">Enviar
-                                        mensaje</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- mapa -->
-                    <div class="col-12 col-lg-6 p-0 m-0 mt-4 mt-lg-0" style="height: 100vh;">
-                        <!--Google map-->
-                        <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-                            src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=Av.%20Bartolom%C3%A9%20Mitre%201500,%20florida%20oeste+(test)&amp;t=&amp;z=10&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- page content -->
         </div>
-        <!--wrapper-->
-    </div>
+    </section>
+
+    <!-- section sobre mi -->
+    <section id="sobre-mi" class="pb-4 no-seleccionable">
+        <div class="px-4">
+            <h1 class="text-size-5 fw-bold text-white p-lg-5 pb-lg-0 p-4 ps-0 pb-0" data-aos="fade-right">Sobre
+                mi</h1>
+            <p class="text-grey pb-2 pt-1 ps-lg-5 pt-lg-3" data-aos="fade-right">Toque en cada etiqueta para ver
+                la informacion</p>
+            <!-- items -->
+            <div class="row m-0 p-0">
+
+                <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
+                    <div class="card-flip">
+                        <div class="frente">
+                            <img src="./assests/images/ary1.jpg" alt="" class="w-100 h-100 of-cover">
+                        </div>
+                        <div class="dorso d-flex align-items-center container">
+                            <div class="row m-0 p-0">
+                                <div class="col-12">
+                                    <h3 class="text-dark">Presentacion</h3>
+                                </div>
+                                <div class="col-12">
+                                    <p>Tengo 24 años, me gusta entender como es el funcionamiento de las cosas,
+                                        en el mundo tecnologico me permitio ampliar el conocimiento aprendido de
+                                        manera autodidacta</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
+                    <div class="card-flip">
+                        <div class="frente">
+                            <img src="./assests/images/utn.jpg" alt=""
+                                style=" width:100%; height:100%; object-fit: cover;">
+                        </div>
+                        <div class="dorso d-flex align-items-center container">
+                            <div class="row m-0 p-0">
+                                <div class="col-12">
+                                    <h3 class="text-dark">Ingenieria en sistemas de informacion</h3>
+                                </div>
+                                <div class="col-12">
+                                    <h6 class="text-dark">En curso</h6>
+                                </div>
+                                <div class="col-12">
+                                    <p>Ya cursadas las materias de algoritmos y paradigmas de programacion</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
+                    <div class="card-flip">
+                        <div class="frente">
+                            <img src="./assests/images/ary2.jpg" alt="" class="w-100 h-100 of-cover">
+                        </div>
+                        <div class="dorso d-flex align-items-center container">
+                            <div class="row m-0 p-0">
+                                <div class="col-12">
+                                    <h3 class="text-dark">Combinado con hardware</h3>
+                                </div>
+                                <div class="col-12">
+                                    <p>A parte de la programacion web, realice proyectos personales de
+                                        programacion combinado con hardware, como domotica, macropads, lista
+                                        inteligente y bateria electronica</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
+                    <div class="card-flip">
+                        <div class="frente">
+                            <img src="./assests/images/ort.jpg" alt=""
+                                style=" width:100%; height:100%; object-fit: cover;">
+                        </div>
+                        <div class="dorso d-flex align-items-center container">
+                            <div class="row m-0 p-0">
+                                <div class="col-12">
+                                    <h3 class="text-dark">Bachiller Técnico con Orientación en TIC</h3>
+                                </div>
+                                <div class="col-12">
+                                    <h6 class="text-dark">2012 - 2017</h6>
+                                </div>
+                                <div class="col-12">
+                                    <p>Me permitio tener un primer acercamiento al hardware y la programacion
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
+                    <div class="card-flip">
+                        <div class="frente">
+                            <img src="./assests/images/utnJava.jpg" alt="" class="w-100 h-100 of-cover">
+                        </div>
+                        <div class="dorso d-flex align-items-center container">
+                            <div class="row m-0 p-0">
+                                <div class="col-12">
+                                    <h3 class="text-dark">Academia full stack / Java</h3>
+                                </div>
+                                <div class="col-12">
+                                    <h6 class="text-dark">2022</h6>
+                                </div>
+                                <div class="col-12">
+                                    <p>Fui seleccionado por Capgemini para una academia fullstack dirigida por
+                                        la UTN</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
+                    <div class="card-flip">
+                        <div class="frente">
+                            <img src="./assests/images/ary3.jpg" alt="" class="w-100 h-100 of-cover">
+                        </div>
+                        <div class="dorso d-flex align-items-center container">
+                            <div class="row m-0 p-0">
+                                <div class="col-12">
+                                    <h3 class="text-dark">Ultimo empleo</h3>
+                                </div>
+                                <div class="col-12">
+                                    <h6 class="text-dark">Actualidad</h6>
+                                </div>
+                                <div class="col-12">
+                                    <p>Desarrollador backend java en Sistemas Activos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
+                    <div class="card-flip">
+                        <div class="frente">
+                            <img src="./assests/images/saJava.png" alt=""
+                                style=" width:100%; height:100%; object-fit: cover;">
+                        </div>
+                        <div class="dorso d-flex align-items-center container">
+                            <div class="row m-0 p-0">
+                                <div class="col-12">
+                                    <h3 class="text-dark">Capacitaciones Java</h3>
+                                </div>
+                                <div class="col-12">
+                                    <h6 class="text-dark">2023</h6>
+                                </div>
+                                <div class="col-12">
+                                    <p>
+                                        Fui seleccionado por Sistemas Activos para capacitaciones de Java
+                                        (Spring Boot, Microservicios, BFF, API-Rest, Spring Security)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
+                    <div class="card-flip">
+                        <div class="frente">
+                            <img src="./assests/images/ary4.jpg" alt="" class="w-100 h-100 of-cover">
+                        </div>
+                        <div class="dorso d-flex align-items-center container">
+                            <div class="row m-0 p-0">
+                                <div class="col-12">
+                                    <h3 class="text-dark">Hobbies</h3>
+                                </div>
+                                <div class="col-12">
+                                    <p>Me gusta practicar deportes como escalar, boxeo, gimnasio y skate</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- section contacto -->
+    <section id="contacto" class="no-seleccionable">
+
+        <!-- formulario -->
+        <div class="row m-0 d-flex align-items-center text-white">
+            <div class="col-12 col-lg-6 py-5 pt-lg-0 px-lg-5" data-aos="fade-right">
+
+                <h1 class="text-size-5 fw-bold p-3">Contacto</h1>
+
+                <p class="px-3">Estoy ansioso por trabajar en un nuevo proyecto. ¡No dudes en contactarme si
+                    necesitas ayuda!</p>
+
+                <form action="gracias.html" name="contacto" netlify>
+                    <div class="row container w-100 p-0 m-0 g-2">
+                        <div class="col-12 col-md-6">
+                            <input placeholder="Nombre" type="text" class="form-control input" id="nombre"
+                                name="nombre">
+                        </div>
+                        <div class="col-12 col-md-6 ">
+                            <input placeholder="Email" type="text" class="form-control input" id="email" name="email">
+                        </div>
+                        <div class="col-12">
+                            <input placeholder="Asunto" type="text" class="form-control input" id="mensaje"
+                                name="asunto">
+                        </div>
+                        <div class="col-12">
+                            <textarea placeholder="Escribe tu mensaje..." id="mensaje" name="mensaje"
+                                class="form-control input w-100" style="min-height: 100px;"></textarea>
+                        </div>
+                        <div class="col-12 d-flex justify-content-end">
+                            <button type="submit" class="btn mt-3 py-3 px-5 text-uppercase fw-bold rounded-pill"
+                                style="background: linear-gradient(135deg, #ff5e00, #ea580c); border:none; box-shadow: 0 10px 25px rgba(255,94,0,0.4); color: #fff;">Enviar
+                                mensaje</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- mapa -->
+            <div class="col-12 col-lg-6 p-0 m-0 mt-4 mt-lg-0" style="height: 100vh;">
+                <!--Google map-->
+                <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                    src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=Av.%20Bartolom%C3%A9%20Mitre%201500,%20florida%20oeste+(test)&amp;t=&amp;z=10&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- page content -->
+
 
 
     <!-- WHATSAPP -->
