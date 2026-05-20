@@ -625,16 +625,58 @@ iframe:hover {
   box-shadow: 0 8px 20px var(--accent-glow);
 }
 
-/* Portafolio Cards & Custom Utilities */
+/* Portafolio Cards & Custom Utilities - Terminal Window Injection */
 .b-glass {
-  border: 1px solid rgba(255, 255, 255, 0.06) !important;
-  background: rgba(15, 20, 30, 0.6) !important;
-  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: rgba(11, 15, 25, 0.7) !important;
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* macOS Terminal UI Header injected to all b-glass cards */
+.card.b-glass::before {
+  content: "zsh — root@server";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 35px;
+  background: rgba(255, 255, 255, 0.05) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="54" height="14"><circle cx="12" cy="7" r="5" fill="%23ff5f56"/><circle cx="28" cy="7" r="5" fill="%23ffbd2e"/><circle cx="44" cy="7" r="5" fill="%2327c93f"/></svg>') no-repeat 5px center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-family: monospace;
+  font-size: 0.70rem;
+  letter-spacing: 0.5px;
+}
+
+/* Push image and card-body down to accommodate absolute terminal header */
+.card.b-glass>.position-relative,
+.card.b-glass>.card-body {
+  margin-top: 25px;
 }
 
 .bg-glass {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
+}
+
+/* Blinking Cursor for text-muted to make it look like a CLI prompt */
+.cli-cursor::after {
+  content: "█";
+  color: var(--accent);
+  animation: blink 1s step-start infinite;
+  margin-left: 5px;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }
 
 .btn-accent {
