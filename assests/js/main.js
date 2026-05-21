@@ -139,15 +139,15 @@ function initThreeJS() {
             }
 
             // Calculate pseudo-Z depth values based on updated bounded ratio
-            const scale = 1 - Math.abs(ratio) * 0.85;
-            const opacity = 1 - Math.abs(ratio) * 0.85;
-            const translateY = ratio * 200;
-            const translateZ = -Math.abs(ratio) * 2500;
+            const scale = 1 - Math.abs(ratio) * 0.45;
+            const opacity = 1 - Math.abs(ratio) * 0.75;
+            const translateY = ratio * 150;
+            const translateZ = -Math.abs(ratio) * 800;
 
             sec.style.transform = `perspective(1000px) translate3d(0, ${translateY}px, ${translateZ}px) scale(${Math.max(0.05, scale)})`;
             sec.style.opacity = Math.max(0, Math.min(1, opacity));
 
-            const blur = Math.max(0, Math.abs(ratio) * 12 - 3);
+            const blur = Math.max(0, Math.abs(ratio) * 8 - 2);
             sec.style.filter = `blur(${blur}px)`;
         });
 
