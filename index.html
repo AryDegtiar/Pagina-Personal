@@ -272,17 +272,18 @@
             <div class="row w-100" style="position: relative;">
                 <h1 class="col-12 text-size-5 fw-bold d-flex justify-content-center w-100 mb-4"
                     style="font-family: monospace;">
-                    ➜ &nbsp;~ <span class="text-accent">&nbsp;go run&nbsp;</span> skills.go</h1>
+                    ➜ &nbsp;~ <span class="text-accent">&nbsp;node&nbsp;</span> skills.js</h1>
 
                 <div class="col-12 pt-3 f-wrap justify-content-center">
                     <div class="c1 b-glass rounded-4 p-0">
                         <!-- GoLand Tab Bar -->
                         <div class="goland-tab-bar">
                             <div class="goland-tab">
-                                <svg viewBox="0 0 16 16" width="14" height="14" style="fill: #00ADD8; vertical-align: middle; margin-right: 8px;">
-                                    <path d="M8.284 10.635c.196.442.348.887.348 1.332 0 1.25-.972 2.033-2.613 2.033-2.188 0-3.418-1.423-3.418-3.52 0-2.226 1.332-3.626 3.486-3.626 1.543 0 2.456.787 2.498 1.942H6.467c-.033-.497-.33-.787-.893-.787-.84 0-1.385.736-1.385 2.417 0 1.624.476 2.33 1.332 2.33.64 0 .973-.348.973-.972V10.63h-1.07v-1.12h2.46v1.125zM12.92 11.23c0 1.745-.967 2.77-2.535 2.77-1.573 0-2.536-1.025-2.536-2.77 0-1.752.963-2.776 2.536-2.776 1.568 0 2.535 1.024 2.535 2.776zm-3.87 0c0 1.157.514 1.767 1.335 1.767.818 0 1.333-.61 1.333-1.767 0-1.163-.515-1.773-1.333-1.773-.82 0-1.335.61-1.335 1.773z"/>
+                                <svg viewBox="0 0 16 16" width="14" height="14" style="fill: #F7DF1E; vertical-align: middle; margin-right: 8px; border-radius: 2px;">
+                                    <rect width="16" height="16" fill="#F7DF1E"/>
+                                    <path d="M12.4 12.8c-.6.6-1.5.8-2.2.8-.8 0-1.4-.4-1.7-1l1-.6c.2.4.4.6.7.6.3 0 .5-.1.5-.4V6h1.2v6.2c0 .3-.1.6-.3.6zm-4.7-.6c-.3.6-.9 1-1.7 1-.9 0-1.5-.5-1.8-1.2l1-.6c.2.4.4.6.8.6.3 0 .5-.2.5-.5V10h-1v-1h2v3.2z" fill="#000000"/>
                                 </svg>
-                                <span>skills.go</span>
+                                <span>skills.js</span>
                                 <span style="margin-left: 12px; color: #808080; font-size: 0.75rem; cursor: pointer;">&times;</span>
                             </div>
                         </div>
@@ -290,15 +291,13 @@
                         <!-- GoLand Editor area -->
                         <div class="goland-editor-area">
                             <div class="machine" style="visibility: hidden;">
-                                <div class="machine-line"><span class="text-primary-emphasis">package</span> main</div>
-                                <div class="machine-line"></div>
-                                <div class="machine-line"><span class="text-primary-emphasis">var</span> <span class="text-success-emphasis">skills</span> = <span class="text-primary-emphasis">map</span>[<span class="text-info">string</span>][]<span class="text-info">string</span>{</div>
-                                <div class="machine-line">	<span class="text-warning">"languages"</span>:    {<span class="text-warning">"Java"</span>, <span class="text-warning">"Go / Golang"</span>},</div>
-                                <div class="machine-line">	<span class="text-warning">"backend"</span>:      {<span class="text-warning">"Spring Boot"</span>, <span class="text-warning">"Spring WebFlux"</span>, <span class="text-warning">"Hibernate"</span>, <span class="text-warning">"net/http"</span>, <span class="text-warning">"REST APIs"</span>, <span class="text-warning">"Microservices"</span>},</div>
-                                <div class="machine-line">	<span class="text-warning">"databases"</span>:    {<span class="text-warning">"SQL"</span>, <span class="text-warning">"PostgreSQL"</span>, <span class="text-warning">"MongoDB"</span>, <span class="text-warning">"Key-Value Stores"</span>, <span class="text-warning">"KVS"</span>, <span class="text-warning">"QKVS"</span>},</div>
-                                <div class="machine-line">	<span class="text-warning">"architecture"</span>: {<span class="text-warning">"Hexagonal Architecture"</span>, <span class="text-warning">"Clean Architecture"</span>, <span class="text-warning">"SOLID"</span>, <span class="text-warning">"DDD"</span>, <span class="text-warning">"Design Patterns"</span>, <span class="text-warning">"Error Handling"</span>, <span class="text-warning">"Async Processing"</span>},</div>
-                                <div class="machine-line">	<span class="text-warning">"tools"</span>:        {<span class="text-warning">"Git"</span>, <span class="text-warning">"Docker"</span>, <span class="text-warning">"AWS"</span>, <span class="text-warning">"Bitbucket"</span>, <span class="text-warning">"Postman"</span>},</div>
-                                <div class="machine-line">}</div>
+                                <div class="machine-line"><span class="text-primary-emphasis">const</span> <span class="text-success-emphasis">skills</span> = {</div>
+                                <div class="machine-line">	<span class="text-info">languages:</span>    [ <span class="text-warning">"Java"</span>, <span class="text-warning">"Go / Golang"</span> ],</div>
+                                <div class="machine-line">	<span class="text-info">backend:</span>      [ <span class="text-warning">"Spring Boot"</span>, <span class="text-warning">"Spring WebFlux"</span>, <span class="text-warning">"Hibernate"</span>, <span class="text-warning">"net/http"</span>, <span class="text-warning">"REST APIs"</span>, <span class="text-warning">"Microservices"</span> ],</div>
+                                <div class="machine-line">	<span class="text-info">databases:</span>    [ <span class="text-warning">"SQL"</span>, <span class="text-warning">"PostgreSQL"</span>, <span class="text-warning">"MongoDB"</span>, <span class="text-warning">"Key-Value Stores"</span>, <span class="text-warning">"KVS"</span>, <span class="text-warning">"QKVS"</span> ],</div>
+                                <div class="machine-line">	<span class="text-info">architecture:</span> [ <span class="text-warning">"Hexagonal Architecture"</span>, <span class="text-warning">"Clean Architecture"</span>, <span class="text-warning">"SOLID"</span>, <span class="text-warning">"DDD"</span>, <span class="text-warning">"Design Patterns"</span>, <span class="text-warning">"Error Handling"</span>, <span class="text-warning">"Async Processing"</span> ],</div>
+                                <div class="machine-line">	<span class="text-info">tools:</span>        [ <span class="text-warning">"Git"</span>, <span class="text-warning">"Docker"</span>, <span class="text-warning">"AWS"</span>, <span class="text-warning">"Bitbucket"</span>, <span class="text-warning">"Postman"</span> ]</div>
+                                <div class="machine-line">};</div>
                             </div>
                         </div>
                     </div>

@@ -998,7 +998,7 @@ section {
   padding: 20px 24px !important;
   background: #1e1f22;
   flex-grow: 1;
-  overflow-x: auto;
+  overflow-x: hidden !important; /* Disable horizontal scrollbar */
   position: relative;
 }
 
@@ -1017,7 +1017,8 @@ section {
   padding-left: 4.5ch !important;
   text-indent: 0 !important;
   position: relative;
-  white-space: pre !important; /* Real editor doesn't wrap inside unless word-wrap is on, but pre is best for tab alignment */
+  white-space: pre-wrap !important; /* Enable premium word wrapping */
+  word-break: break-word !important; /* Prevent long words from causing overflow */
 }
 
 /* Line numbers gutter using CSS counters */
