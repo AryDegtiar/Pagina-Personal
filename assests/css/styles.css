@@ -937,6 +937,21 @@ section {
   border-color: rgba(255, 94, 0, 0.2);
 }
 
+/* Direct image hover to ensure full vibrant color and pop-out effect */
+.card.b-glass img.meli-img:hover,
+.card.b-glass img.epam-img:hover,
+.card.b-glass img.qr-img:hover,
+.card.b-glass img.sa-img:hover {
+  filter: grayscale(0%) contrast(105%) opacity(1) sepia(0%) !important;
+  mix-blend-mode: normal !important;
+  border-color: rgba(255, 94, 0, 0.6) !important;
+  transform: scale(1.03);
+  box-shadow: 0 8px 25px rgba(255, 94, 0, 0.4);
+  cursor: pointer;
+  position: relative;
+  z-index: 15;
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
   .timeline-curve-segment {
