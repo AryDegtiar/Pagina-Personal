@@ -447,7 +447,15 @@ iframe:hover {
   line-height: 1.6;
   margin-top: 15px;
   color: #e2e8f0;
+}
+
+.machine-line {
+  display: block;
   white-space: pre-wrap !important;
+  padding-left: 14ch;
+  text-indent: -14ch;
+  margin: 0;
+  line-height: 1.6;
 }
 
 .text-primary-emphasis {
