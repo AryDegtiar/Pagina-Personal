@@ -21,50 +21,65 @@
         rel="stylesheet">
 
     <style>
-      .old-pc {
-        width: 120px;
-        height: 140px;
-        background: #222;
-        border: 4px solid #111;
-        border-radius: 8px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-end;
-        padding: 8px;
-        box-shadow: 0 0 10px var(--accent-glow);
-      }
-      .old-pc .screen {
-        width: 100%;
-        height: 60%;
-        background: #333;
-        overflow: hidden;
-        border: 2px solid #111;
-        border-radius: 4px;
-      }
-      .old-pc .bar {
-        height: 100%;
-        width: 0%;
-        background: var(--accent);
-        animation: pc-load 2s linear infinite;
-      }
-      .old-pc .label {
-        margin-top: 6px;
-        font-family: "Outfit", sans-serif;
-        color: var(--accent);
-        font-size: 0.9rem;
-        display: flex;
-        align-items: center;
-      }
-      .old-pc .label .cursor {
-        animation: blink 1s step-start infinite;
-        margin-left: 4px;
-      }
-      @keyframes pc-load {
-        0% { width: 0%; background: #555; }
-        50% { background: #555; }
-        100% { width: 100%; background: var(--accent); }
-      }
+        .old-pc {
+            width: 120px;
+            height: 140px;
+            background: #222;
+            border: 4px solid #111;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 8px;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .old-pc .screen {
+            width: 100%;
+            height: 60%;
+            background: #333;
+            overflow: hidden;
+            border: 2px solid #111;
+            border-radius: 4px;
+        }
+
+        .old-pc .bar {
+            height: 100%;
+            width: 0%;
+            background: var(--accent);
+            animation: pc-load 2s linear infinite;
+        }
+
+        .old-pc .label {
+            margin-top: 6px;
+            font-family: "Outfit", sans-serif;
+            color: var(--accent);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .old-pc .label .cursor {
+            animation: blink 1s step-start infinite;
+            margin-left: 4px;
+        }
+
+        @keyframes pc-load {
+            0% {
+                width: 0%;
+                background: #555;
+            }
+
+            50% {
+                background: #555;
+            }
+
+            100% {
+                width: 100%;
+                background: var(--accent);
+            }
+        }
     </style>
     <!--    particulas   -->
     <link rel="stylesheet" href="plugins/particles/css/style.css">
@@ -87,8 +102,10 @@
     <!-- loading -->
     <div id="loading">
         <div class="old-pc">
-          <div class="screen"><div class="bar"></div></div>
-          <div class="label">Loading<span class="cursor">█</span></div>
+            <div class="screen">
+                <div class="bar"></div>
+            </div>
+            <div class="label">Loading<span class="cursor">█</span></div>
         </div>
     </div>
 
@@ -115,12 +132,8 @@
                     </h1>
                     <p class="text-muted fs-4 mb-5 mx-auto cli-cursor"
                         style="font-weight: 300; font-family: monospace;">
-                        guest@ary:~$ Desarrollador_Fullstack
+                        guest@ary:~$ Software Engineer
                     </p>
-                    <div class="d-flex justify-content-center gap-4">
-                        <a href="#experiencia" class="text-white text-uppercase"
-                            style="text-decoration:none; font-weight: 500; font-size: 0.9rem; letter-spacing: 2px;">Experiencia</a>
-                    </div>
                 </div>
             </div>
         </div>
