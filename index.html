@@ -20,6 +20,52 @@
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
 
+    <style>
+      .old-pc {
+        width: 120px;
+        height: 140px;
+        background: #222;
+        border: 4px solid #111;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 8px;
+        box-shadow: 0 0 10px var(--accent-glow);
+      }
+      .old-pc .screen {
+        width: 100%;
+        height: 60%;
+        background: #333;
+        overflow: hidden;
+        border: 2px solid #111;
+        border-radius: 4px;
+      }
+      .old-pc .bar {
+        height: 100%;
+        width: 0%;
+        background: var(--accent);
+        animation: pc-load 2s linear infinite;
+      }
+      .old-pc .label {
+        margin-top: 6px;
+        font-family: "Outfit", sans-serif;
+        color: var(--accent);
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+      }
+      .old-pc .label .cursor {
+        animation: blink 1s step-start infinite;
+        margin-left: 4px;
+      }
+      @keyframes pc-load {
+        0% { width: 0%; background: #555; }
+        50% { background: #555; }
+        100% { width: 100%; background: var(--accent); }
+      }
+    </style>
     <!--    particulas   -->
     <link rel="stylesheet" href="plugins/particles/css/style.css">
 
@@ -40,8 +86,9 @@
 <body>
     <!-- loading -->
     <div id="loading">
-        <div class="spinner-border text-orange" role="status">
-            <span class="sr-only">Loading...</span>
+        <div class="old-pc">
+          <div class="screen"><div class="bar"></div></div>
+          <div class="label">Loading<span class="cursor">█</span></div>
         </div>
     </div>
 
@@ -85,7 +132,8 @@
         <div class="container px-4 mt-5">
             <h1 class="text-size-5 fw-bold text-white mb-2" style="font-family: monospace;">➜ ~ <span
                     class="text-accent">cat</span> ./experiencia.sh</h1>
-            <p class="text-muted mb-5 cli-cursor" style="font-family: monospace;">Reading professional history... 6 active checkpoints found (~5 years of experience).</p>
+            <p class="text-muted mb-5 cli-cursor" style="font-family: monospace;">Reading professional history... 6
+                active checkpoints found (~5 years of experience).</p>
 
             <div class="timeline-container">
                 <!-- Timeline curved line container (dynamically populated in JS) -->
@@ -101,24 +149,36 @@
                         <div class="timeline-card card b-glass">
                             <div class="card-body p-4">
                                 <span class="badge text-uppercase text-accent mb-2"
-                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Ingeniero de Software</span>
-                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">Mercado Libre</h4>
-                                <div class="text-accent small mb-3" style="font-family: monospace;">sept. 2025 - actualidad · 9 meses</div>
+                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Ingeniero
+                                    de Software</span>
+                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">Mercado Libre
+                                </h4>
+                                <div class="text-accent small mb-3" style="font-family: monospace;">sept. 2025 -
+                                    actualidad · 9 meses</div>
                                 <p class="text-muted small mt-2">
-                                    • <strong>Diseño y escala</strong> de microservicios críticos en Java y Spring Boot, optimizando el rendimiento para soportar millones de transacciones diarias con alta concurrencia.<br>
-                                    • <strong>Optimización de persistencia</strong> en bases de datos relacionales y NoSQL distribuidas, garantizando baja latencia y alta disponibilidad.<br>
-                                    • <strong>Refactorización de APIs REST</strong>, reduciendo tiempos de respuesta y mejorando la mantenibilidad del backend.<br>
-                                    • <strong>Colaboración activa</strong> en células ágiles de alta performance bajo metodologías DevOps y estándares de entrega continua.
+                                    • <strong>Diseño y escala</strong> de microservicios críticos en Java y Spring Boot,
+                                    optimizando el rendimiento para soportar millones de transacciones diarias con alta
+                                    concurrencia.<br>
+                                    • <strong>Optimización de persistencia</strong> en bases de datos relacionales y
+                                    NoSQL distribuidas, garantizando baja latencia y alta disponibilidad.<br>
+                                    • <strong>Refactorización de APIs REST</strong>, reduciendo tiempos de respuesta y
+                                    mejorando la mantenibilidad del backend.<br>
+                                    • <strong>Colaboración activa</strong> en células ágiles de alta performance bajo
+                                    metodologías DevOps y estándares de entrega continua.
                                 </p>
                                 <div class="meli-images-container d-flex gap-2 mt-3">
-                                    <img src="./assests/images/meli_1.jpg" class="rounded meli-img" alt="Mercado Libre Team 1">
-                                    <img src="./assests/images/meli_2.jpg" class="rounded meli-img" alt="Mercado Libre Team 2">
+                                    <img src="./assests/images/meli_1.jpg" class="rounded meli-img"
+                                        alt="Mercado Libre Team 1">
+                                    <img src="./assests/images/meli_2.jpg" class="rounded meli-img"
+                                        alt="Mercado Libre Team 2">
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between mt-3">
                                     <div class="tech-stack-icons d-flex gap-2">
-                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" height="24" title="Go / Golang">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg"
+                                            height="24" title="Go / Golang">
                                     </div>
-                                    <span class="text-muted small" style="font-family: monospace;">Buenos Aires, AR</span>
+                                    <span class="text-muted small" style="font-family: monospace;">Buenos Aires,
+                                        AR</span>
                                 </div>
                             </div>
                         </div>
@@ -133,22 +193,31 @@
                         <div class="timeline-card card b-glass">
                             <div class="card-body p-4">
                                 <span class="badge text-uppercase text-accent mb-2"
-                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Java Software Engineer Ssr</span>
-                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">EPAM Systems - Claro</h4>
-                                <div class="text-accent small mb-3" style="font-family: monospace;">abr. 2025 - sept. 2025 · 6 meses</div>
+                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Java
+                                    Software Engineer Ssr</span>
+                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">EPAM Systems -
+                                    Claro</h4>
+                                <div class="text-accent small mb-3" style="font-family: monospace;">abr. 2025 - sept.
+                                    2025 · 6 meses</div>
                                 <p class="text-muted small mt-2">
-                                    • <strong>Desarrollo e integración</strong> de microservicios robustos en Java y Spring Boot para Claro, asegurando la escalabilidad del ecosistema de telecomunicaciones.<br>
-                                    • <strong>Optimización de pipelines</strong> de CI/CD, reduciendo fricciones y acelerando los ciclos de entrega de software en producción.<br>
-                                    • <strong>Coordinación técnica presencial</strong> y remota directa con stakeholders de Claro para alinear especificaciones de negocio y arquitectura.
+                                    • <strong>Desarrollo e integración</strong> de microservicios robustos en Java y
+                                    Spring Boot para Claro, asegurando la escalabilidad del ecosistema de
+                                    telecomunicaciones.<br>
+                                    • <strong>Optimización de pipelines</strong> de CI/CD, reduciendo fricciones y
+                                    acelerando los ciclos de entrega de software en producción.<br>
+                                    • <strong>Coordinación técnica presencial</strong> y remota directa con stakeholders
+                                    de Claro para alinear especificaciones de negocio y arquitectura.
                                 </p>
                                 <div class="epam-images-container mt-3">
-                                    <img src="./assests/images/claro.jpg" class="rounded epam-img w-100" alt="EPAM Claro Team">
+                                    <img src="./assests/images/claro.jpg" class="rounded epam-img w-100"
+                                        alt="EPAM Claro Team">
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between mt-3">
                                     <div class="tech-stack-icons d-flex gap-2">
                                         <img src="./assests/images/javaLogo.png" height="24" title="Java">
                                     </div>
-                                    <span class="text-muted small" style="font-family: monospace;">Remoto / Buenos Aires, AR</span>
+                                    <span class="text-muted small" style="font-family: monospace;">Remoto / Buenos
+                                        Aires, AR</span>
                                 </div>
                             </div>
                         </div>
@@ -163,22 +232,30 @@
                         <div class="timeline-card card b-glass">
                             <div class="card-body p-4">
                                 <span class="badge text-uppercase text-accent mb-2"
-                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Dev Backend JAVA</span>
-                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">Q&R Solutions - RedRemax</h4>
-                                <div class="text-accent small mb-3" style="font-family: monospace;">jun. 2024 - may. 2025 · 1 año</div>
+                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Dev
+                                    Backend JAVA</span>
+                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">Q&R Solutions -
+                                    RedRemax</h4>
+                                <div class="text-accent small mb-3" style="font-family: monospace;">jun. 2024 - may.
+                                    2025 · 1 año</div>
                                 <p class="text-muted small mt-2">
-                                    • <strong>Desarrollo backend</strong> centrado en arquitecturas de microservicios en Java, mejorando el rendimiento de las plataformas que dan soporte a RedRemax.<br>
-                                    • <strong>Diseño, modelado y optimización</strong> de bases de datos relacionales SQL, acelerando consultas complejas y la generación de reportes inmobiliarios.<br>
-                                    • <strong>Participación en el ciclo completo</strong> (SDLC) de desarrollo de software para aplicaciones internas de alta operatividad.
+                                    • <strong>Desarrollo backend</strong> centrado en arquitecturas de microservicios en
+                                    Java, mejorando el rendimiento de las plataformas que dan soporte a RedRemax.<br>
+                                    • <strong>Diseño, modelado y optimización</strong> de bases de datos relacionales
+                                    SQL, acelerando consultas complejas y la generación de reportes inmobiliarios.<br>
+                                    • <strong>Participación en el ciclo completo</strong> (SDLC) de desarrollo de
+                                    software para aplicaciones internas de alta operatividad.
                                 </p>
                                 <div class="qr-images-container mt-3">
-                                    <img src="./assests/images/fin_de_año.jpg" class="rounded qr-img w-100" alt="Q&R Solutions Year End">
+                                    <img src="./assests/images/qr1.png" class="rounded qr-img w-100"
+                                        alt="Q&R Solutions Year End">
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between mt-3">
                                     <div class="tech-stack-icons d-flex gap-2">
                                         <img src="./assests/images/javaLogo.png" height="24" title="Java">
                                     </div>
-                                    <span class="text-muted small" style="font-family: monospace;">Jornada completa</span>
+                                    <span class="text-muted small" style="font-family: monospace;">Jornada
+                                        completa</span>
                                 </div>
                             </div>
                         </div>
@@ -193,22 +270,31 @@
                         <div class="timeline-card card b-glass">
                             <div class="card-body p-4">
                                 <span class="badge text-uppercase text-accent mb-2"
-                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Desarrollador Backend Java - Spring Boot</span>
-                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">Sistemas Activos SRL - BBVA</h4>
-                                <div class="text-accent small mb-3" style="font-family: monospace;">feb. 2023 - jun. 2024 · 1 año 5 meses</div>
+                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Desarrollador
+                                    Backend Java - Spring Boot</span>
+                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">Sistemas
+                                    Activos SRL - BBVA</h4>
+                                <div class="text-accent small mb-3" style="font-family: monospace;">feb. 2023 - jun.
+                                    2024 · 1 año 5 meses</div>
                                 <p class="text-muted small mt-2">
-                                    • <strong>Desarrollo y mantenimiento</strong> de componentes de backend y APIs robustas con Spring Boot para BBVA.<br>
-                                    • <strong>Automatización de despliegues</strong> mediante la creación de scripts en Python e integración en flujos de CI/CD con Jenkins, optimizando tiempos de release.<br>
-                                    • <strong>Integración de servicios externos</strong> y desarrollo de lógica de negocio compleja para procesamiento de datos financieros.
+                                    • <strong>Desarrollo y mantenimiento</strong> de componentes de backend y APIs
+                                    robustas con Spring Boot para BBVA.<br>
+                                    • <strong>Automatización de despliegues</strong> mediante la creación de scripts en
+                                    Python e integración en flujos de CI/CD con Jenkins, optimizando tiempos de
+                                    release.<br>
+                                    • <strong>Integración de servicios externos</strong> y desarrollo de lógica de
+                                    negocio compleja para procesamiento de datos financieros.
                                 </p>
                                 <div class="sa-images-container mt-3">
-                                    <img src="./assests/images/año_nuevo.jpg" class="rounded sa-img w-100" alt="Sistemas Activos Year End">
+                                    <img src="./assests/images/año_nuevo.jpg" class="rounded sa-img w-100"
+                                        alt="Sistemas Activos Year End">
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between mt-3">
                                     <div class="tech-stack-icons d-flex gap-2 text-white align-items-center">
                                         <img src="./assests/images/javaLogo.png" height="24" title="Java">
                                     </div>
-                                    <span class="text-muted small" style="font-family: monospace;">Remoto / Buenos Aires, AR</span>
+                                    <span class="text-muted small" style="font-family: monospace;">Remoto / Buenos
+                                        Aires, AR</span>
                                 </div>
                             </div>
                         </div>
@@ -223,16 +309,23 @@
                         <div class="timeline-card card b-glass">
                             <div class="card-body p-4">
                                 <span class="badge text-uppercase text-accent mb-2"
-                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Desarrollador de páginas web</span>
-                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">Freelance (Self employed)</h4>
-                                <div class="text-accent small mb-3" style="font-family: monospace;">ene. 2022 - may. 2024 · 2 años 5 meses</div>
+                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Desarrollador
+                                    de páginas web</span>
+                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">Freelance (Self
+                                    employed)</h4>
+                                <div class="text-accent small mb-3" style="font-family: monospace;">ene. 2022 - may.
+                                    2024 · 2 años 5 meses</div>
                                 <p class="text-muted small mt-2">
-                                    • <strong>Diseño e implementación</strong> de soluciones web a medida utilizando React, HTML5, CSS3 y JavaScript para clientes locales y extranjeros.<br>
-                                    • <strong>Optimización del performance</strong> y velocidad de carga, garantizando maquetación responsive, accesibilidad y excelente experiencia de usuario (UX).<br>
-                                    • <strong>Gestión integral del ciclo de vida</strong>, desde la toma de requerimientos y diseño de interfaz hasta el hosting y despliegue final.
+                                    • <strong>Diseño e implementación</strong> de soluciones web a medida utilizando
+                                    React, HTML5, CSS3 y JavaScript para clientes locales y extranjeros.<br>
+                                    • <strong>Optimización del performance</strong> y velocidad de carga, garantizando
+                                    maquetación responsive, accesibilidad y excelente experiencia de usuario (UX).<br>
+                                    • <strong>Gestión integral del ciclo de vida</strong>, desde la toma de
+                                    requerimientos y diseño de interfaz hasta el hosting y despliegue final.
                                 </p>
                                 <div class="d-flex align-items-center justify-content-end mt-3">
-                                    <span class="text-muted small" style="font-family: monospace;">Remoto / Buenos Aires, AR</span>
+                                    <span class="text-muted small" style="font-family: monospace;">Remoto / Buenos
+                                        Aires, AR</span>
                                 </div>
                             </div>
                         </div>
@@ -247,16 +340,22 @@
                         <div class="timeline-card card b-glass">
                             <div class="card-body p-4">
                                 <span class="badge text-uppercase text-accent mb-2"
-                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Especialista en Soporte Técnico</span>
+                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Especialista
+                                    en Soporte Técnico</span>
                                 <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">MAXIREST</h4>
-                                <div class="text-accent small mb-3" style="font-family: monospace;">dic. 2020 - ene. 2022 · 1 año 1 mes</div>
+                                <div class="text-accent small mb-3" style="font-family: monospace;">dic. 2020 - ene.
+                                    2022 · 1 año 1 mes</div>
                                 <p class="text-muted small mt-2">
-                                    • <strong>Soporte técnico especializado</strong> y mantenimiento de software crítico en entornos gastronómicos comerciales de alta demanda.<br>
-                                    • <strong>Resolución eficiente de incidencias</strong> y depuración de consultas de base de datos SQL para asegurar la continuidad de negocio de los clientes.<br>
-                                    • <strong>Gestión de infraestructura</strong>, redes y configuraciones locales/cloud para garantizar la estabilidad de los sistemas POS.
+                                    • <strong>Soporte técnico especializado</strong> y mantenimiento de software crítico
+                                    en entornos gastronómicos comerciales de alta demanda.<br>
+                                    • <strong>Resolución eficiente de incidencias</strong> y depuración de consultas de
+                                    base de datos SQL para asegurar la continuidad de negocio de los clientes.<br>
+                                    • <strong>Gestión de infraestructura</strong>, redes y configuraciones locales/cloud
+                                    para garantizar la estabilidad de los sistemas POS.
                                 </p>
                                 <div class="d-flex align-items-center justify-content-end mt-3">
-                                    <span class="text-muted small" style="font-family: monospace;">Buenos Aires, AR</span>
+                                    <span class="text-muted small" style="font-family: monospace;">Buenos Aires,
+                                        AR</span>
                                 </div>
                             </div>
                         </div>
@@ -285,7 +384,33 @@
 
                         <!-- Editor area -->
                         <div class="editor-area">
-                            <div class="machine" style="visibility: hidden;"><div class="machine-line"><span class="text-keyword">const</span> <span class="text-variable">skills</span> = {</div><div class="machine-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-property">languages:</span> [ <span class="text-value">java</span>, <span class="text-value">go / golang</span> ],</div><div class="machine-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-property">backend:</span> [ <span class="text-value">spring boot</span>, <span class="text-value">rest apis</span>, <span class="text-value">microservices</span>, <span class="text-value">hibernate</span> ],</div><div class="machine-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-property">databases:</span> [ <span class="text-value">postgresql</span>, <span class="text-value">mongodb</span>, <span class="text-value">sql</span>, <span class="text-value">qkvs</span> ],</div><div class="machine-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-property">architecture:</span> [ <span class="text-value">clean architecture</span>, <span class="text-value">solid</span>, <span class="text-value">ddd</span> ],</div><div class="machine-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-property">tools:</span> [ <span class="text-value">git</span>, <span class="text-value">docker</span>, <span class="text-value">aws</span>, <span class="text-value">postman</span> ]</div><div class="machine-line">};</div></div>
+                            <div class="machine" style="visibility: hidden;">
+                                <div class="machine-line"><span class="text-keyword">const</span> <span
+                                        class="text-variable">skills</span> = {</div>
+                                <div class="machine-line">&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                        class="text-property">languages:</span> [ <span class="text-value">java</span>,
+                                    <span class="text-value">go / golang</span> ],
+                                </div>
+                                <div class="machine-line">&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                        class="text-property">backend:</span> [ <span class="text-value">spring
+                                        boot</span>, <span class="text-value">rest apis</span>, <span
+                                        class="text-value">microservices</span>, <span
+                                        class="text-value">hibernate</span> ],</div>
+                                <div class="machine-line">&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                        class="text-property">databases:</span> [ <span
+                                        class="text-value">postgresql</span>, <span class="text-value">mongodb</span>,
+                                    <span class="text-value">sql</span>, <span class="text-value">qkvs</span> ],
+                                </div>
+                                <div class="machine-line">&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                        class="text-property">architecture:</span> [ <span class="text-value">clean
+                                        architecture</span>, <span class="text-value">solid</span>, <span
+                                        class="text-value">ddd</span> ],</div>
+                                <div class="machine-line">&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                        class="text-property">tools:</span> [ <span class="text-value">git</span>, <span
+                                        class="text-value">docker</span>, <span class="text-value">aws</span>, <span
+                                        class="text-value">postman</span> ]</div>
+                                <div class="machine-line">};</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -322,13 +447,15 @@
                     <div id="content-readme" class="pe-3 profile-content" style="padding-bottom: 20px;">
                         <span class="text-primary-emphasis fs-2 fw-bold"># Ary Degtiar</span> <br><br>
                         <span class="text-info fw-bold">## 👤 Presentación</span><br>
-                        Tengo 24 años. Mi obsesión principal es entender cómo funcionan las cosas desde la raíz.
-                        Expandirme en el mundo tecnológico me permitió consolidar este conocimiento tanto de manera
-                        empírica, académica como autodidacta.<br><br>
+                        Tengo 26 años y siempre tuve una obsesión: entender cómo funcionan las cosas desde la raíz.
+                        La tecnología me dio el espacio ideal para convertir esa curiosidad en proyectos reales, capaces
+                        de generar resultados concretos y de alto impacto.
+                        <br><br>
                         <span class="text-info fw-bold">## 💼 Historial Profesional</span><br>
                         <span class="text-warning"> > Ingeniero de Software (Mercado Libre)</span> —
                         [Actualidad]<br>
-                        <i class="opacity-75 ms-3">↳ Desarrollo de microservicios de alta disponibilidad y escalabilidad utilizando Java y Spring Boot.</i><br><br>
+                        <i class="opacity-75 ms-3">↳ Desarrollo de microservicios de alta disponibilidad y escalabilidad
+                            utilizando Java y Spring Boot.</i><br><br>
                     </div>
 
                     <div id="content-edu" class="pe-3 profile-content d-none" style="padding-bottom: 20px;">

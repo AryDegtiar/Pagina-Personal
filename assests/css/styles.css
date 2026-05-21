@@ -278,7 +278,44 @@ iframe:hover {
   align-items: center;
 }
 
+/* Retro Loading Animation */
+.retro-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 80px;
+  height: 80px;
+  border: 4px solid var(--accent);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  color: var(--accent);
+  font-family: "Outfit", sans-serif;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Blinking cursor for loading text */
+.cursor {
+  animation: blink 1s step-start infinite;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+/* Spinner fallback (hidden) */
 .spinner-border.text-orange {
+  display: none;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
   color: var(--accent) !important;
   width: 3rem;
   height: 3rem;
