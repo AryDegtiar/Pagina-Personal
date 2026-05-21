@@ -22,12 +22,38 @@ window.addEventListener('scroll', function () {
 window.addEventListener("load", function () {
     const loading = document.getElementById("loading");
     if (loading) loading.style.display = "none";
+    setupTimelineLine();
 });
+
+// dynamic timeline line segments generator
+function setupTimelineLine() {
+    const container = document.querySelector('.timeline-curved-line-container');
+    if (!container) return;
+    
+    container.innerHTML = '';
+    
+    const wrapper = document.querySelector('.timeline-wrapper');
+    if (!wrapper) return;
+    
+    const totalHeight = wrapper.offsetHeight;
+    const segmentHeight = 35; // px per segment
+    const numSegments = Math.ceil(totalHeight / segmentHeight);
+    
+    for (let i = 0; i < numSegments; i++) {
+        const seg = document.createElement('div');
+        seg.className = 'timeline-curve-segment';
+        seg.style.top = `${i * segmentHeight}px`;
+        seg.style.height = `${segmentHeight + 2}px`; // slightly overlap
+        container.appendChild(seg);
+    }
+}
 
 // Three.js SCROLL-REACTIVE UNIVERSE
 function initThreeJS() {
     const canvas = document.getElementById('bg-canvas');
     if (!canvas || typeof THREE === "undefined") return;
+
+    setupTimelineLine();
 
     // Scene setup
     const scene = new THREE.Scene();
@@ -145,43 +171,74 @@ function initThreeJS() {
                 item.classList.remove('active');
             }
             
-            // Calculate 3D cylindrical rotation (World Effect)
-            const maxAngle = window.innerWidth < 768 ? 20 : 35; // degrees
-            const maxZ = window.innerWidth < 768 ? -150 : -250; // px
+            // 3D Spherical/Fish-eye Curve Calculations (World Effect)
+            const maxAngle = window.innerWidth < 768 ? 18 : 28; // degrees
+            const maxZ = window.innerWidth < 768 ? -120 : -200; // px
+            const maxXShift = window.innerWidth < 768 ? -30 : -70; // px (C-curve shift to left)
             
-            const angle = ratio * maxAngle;
-            const rad = angle * Math.PI / 180;
-            const z = (Math.cos(rad) - 1) * Math.abs(maxZ);
+            const angleX = ratio * maxAngle;
+            const radCurve = (ratio * Math.PI) / 2;
             
-            // Fade out towards the top/bottom edges of the screen
-            const opacity = 1 - Math.max(0, Math.min(1, Math.abs(ratio) * 0.8));
+            // Calculate spherical coordinates
+            const cosRad = Math.cos(radCurve);
+            const sinRad = Math.sin(radCurve);
+            
+            const z = (cosRad - 1) * Math.abs(maxZ);
+            const xShift = (cosRad - 1) * Math.abs(maxXShift);
+            const yShift = sinRad * 35;
+            
+            // Rotation Y: wraps around the globe (same direction top & bottom)
+            const angleY = (1 - cosRad) * 15;
+            
+            // Opacity & Scale
+            const opacity = 1 - Math.max(0, Math.min(1, Math.abs(ratio) * 0.7));
             const scale = 1 - Math.max(0, Math.min(0.2, Math.abs(ratio) * 0.15));
-            const yShift = Math.sin(rad) * 40;
+            const blur = Math.max(0, Math.abs(ratio) * 4 - 0.5);
             
-            // Select components to animate
-            const card = item.querySelector('.timeline-card');
-            const checkpoint = item.querySelector('.timeline-checkpoint');
-            const connector = item.querySelector('.timeline-connector');
-            const segment = item.querySelector('.timeline-segment');
+            // Apply 3D Transform to the entire timeline item
+            item.style.transform = `perspective(1200px) translate3d(${xShift}px, ${yShift}px, ${z}px) rotateX(${-angleX}deg) rotateY(${angleY}deg) scale(${scale})`;
+            item.style.opacity = opacity;
+            item.style.filter = `blur(${blur}px)`;
+        });
+
+        // 3D Literal Timeline Line Curvature (Fish-eye segments)
+        const segments = document.querySelectorAll('.timeline-curve-segment');
+        segments.forEach((seg) => {
+            const rect = seg.getBoundingClientRect();
+            const segCenter = rect.top + rect.height / 2;
+            const deltaY = segCenter - screenCenter;
             
-            if (card) {
-                card.style.transform = `perspective(1000px) translate3d(0, ${yShift}px, ${z}px) rotateX(${-angle}deg) scale(${scale})`;
-                card.style.opacity = opacity;
-                card.style.filter = `blur(${Math.max(0, Math.abs(ratio) * 4 - 0.5)}px)`;
-            }
+            const maxDistance = window.innerHeight * 0.6;
+            const ratio = Math.max(-1.5, Math.min(1.5, deltaY / maxDistance));
             
-            if (checkpoint) {
-                checkpoint.style.transform = `translate(-50%, -50%) translate3d(0, ${yShift * 0.6}px, ${z * 0.8}px) scale(${scale})`;
-                checkpoint.style.opacity = opacity;
-            }
+            const maxAngle = window.innerWidth < 768 ? 18 : 28;
+            const maxZ = window.innerWidth < 768 ? -120 : -200;
+            const maxXShift = window.innerWidth < 768 ? -30 : -70;
             
-            if (connector) {
-                connector.style.transform = `translateY(-50%) translate3d(0, ${yShift * 0.8}px, ${z * 0.5}px) rotateX(${-angle * 0.5}deg)`;
-                connector.style.opacity = opacity * 0.7;
-            }
+            const angleX = ratio * maxAngle;
+            const radCurve = (ratio * Math.PI) / 2;
             
-            if (segment) {
-                segment.style.opacity = (item.classList.contains('active') ? 0.8 : 0.15) * opacity;
+            const cosRad = Math.cos(radCurve);
+            const sinRad = Math.sin(radCurve);
+            
+            const z = (cosRad - 1) * Math.abs(maxZ);
+            const xShift = (cosRad - 1) * Math.abs(maxXShift);
+            const yShift = sinRad * 35;
+            
+            // Apply 3D Transform to the segment
+            seg.style.transform = `perspective(1200px) translate3d(${xShift}px, ${yShift}px, ${z}px) rotateX(${-angleX}deg)`;
+            
+            // Dynamic color/glow based on proximity to center
+            const absDelta = Math.abs(deltaY);
+            if (absDelta < 180) {
+                const factor = 1 - (absDelta / 180);
+                seg.style.backgroundColor = `var(--accent)`;
+                seg.style.boxShadow = `0 0 ${8 * factor}px var(--accent-glow)`;
+                seg.style.opacity = 0.2 + 0.6 * factor;
+            } else {
+                seg.style.backgroundColor = `rgba(255, 255, 255, 0.2)`;
+                seg.style.boxShadow = `none`;
+                seg.style.opacity = Math.max(0.05, 0.2 - (absDelta - 180) / 1000);
             }
         });
 
@@ -195,6 +252,7 @@ function initThreeJS() {
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
+        setupTimelineLine();
     });
 }
 
