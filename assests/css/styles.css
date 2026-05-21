@@ -1011,8 +1011,7 @@ section {
 }
 
 #conocimientos .machine-line {
-  display: flex;
-  align-items: flex-start;
+  display: block !important;
   min-height: 1.6em;
   padding-left: 4.5ch !important;
   text-indent: 0 !important;
@@ -1063,3 +1062,39 @@ section {
   tab-size: 4;
   -moz-tab-size: 4;
 }
+
+/* High-Fidelity Mobile Responsiveness Overrides for Skills & Terminal Headers */
+@media (max-width: 576px) {
+  #conocimientos .c1 {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  
+  #conocimientos .goland-editor-area {
+    padding: 12px 14px !important;
+  }
+  
+  #conocimientos .machine-line {
+    padding-left: 3.2ch !important;
+    font-size: 0.72rem !important;
+  }
+  
+  #conocimientos .machine-line::before {
+    width: 2.2ch !important;
+    font-size: 0.72rem !important;
+    padding-right: 4px !important;
+  }
+
+  /* Make sure all terminal prompt titles never cause horizontal scroll on narrow viewports */
+  #conocimientos h1,
+  #experiencia h1,
+  #sobre-mi h1,
+  #contacto h1 {
+    font-size: clamp(1.1rem, 5vw, 1.5rem) !important;
+    word-break: break-all;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}
+
