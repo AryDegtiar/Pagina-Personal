@@ -186,29 +186,44 @@ function initThreeJS() {
         // SYNC HTML DOM CONTENT WITH THE 3D WORLD
         sections.forEach((sec) => {
             const rect = sec.getBoundingClientRect();
-            const screenCenter = window.innerHeight / 2;
-            let ratio = 0;
-
-            // Logic Fix: If the screen center is ANYWHERE inside the section top/bottom boundaries, it remains fully visible
-            if (rect.top <= screenCenter && rect.bottom >= screenCenter) {
-                ratio = 0;
-            } else if (rect.top > screenCenter) {
-                // Divided by 2.5 to drastically stretch the scroll distance, making the transition super long
-                ratio = (rect.top - screenCenter) / (window.innerHeight * 2.5);
-            } else if (rect.bottom < screenCenter) {
-                ratio = (rect.bottom - screenCenter) / (window.innerHeight * 2.5);
+            
+            // Entry transition (fade-in as section enters from bottom)
+            const entryStart = window.innerHeight;
+            const entryEnd = window.innerHeight * 0.65;
+            let entryFactor = 1;
+            if (rect.top > entryStart) {
+                entryFactor = 0;
+            } else if (rect.top < entryEnd) {
+                entryFactor = 1;
+            } else {
+                entryFactor = (entryStart - rect.top) / (entryStart - entryEnd);
             }
 
-            // Calculate pseudo-Z depth values based on updated bounded ratio
-            const scale = 1 - Math.abs(ratio) * 0.45;
-            const opacity = 1 - Math.abs(ratio) * 0.75;
-            const translateY = ratio * 150;
-            const translateZ = -Math.abs(ratio) * 800;
+            // Exit transition (fade-out as section exits through top)
+            const exitStart = window.innerHeight * 0.35;
+            const exitEnd = -100;
+            let exitFactor = 1;
+            if (rect.bottom < exitEnd) {
+                exitFactor = 0;
+            } else if (rect.bottom > exitStart) {
+                exitFactor = 1;
+            } else {
+                exitFactor = (rect.bottom - exitEnd) / (exitStart - exitEnd);
+            }
 
-            sec.style.transform = `perspective(1000px) translate3d(0, ${translateY}px, ${translateZ}px) scale(${Math.max(0.05, scale)})`;
-            sec.style.opacity = Math.max(0, Math.min(1, opacity));
+            const visibilityFactor = entryFactor * exitFactor;
 
-            const blur = Math.max(0, Math.abs(ratio) * 8 - 2);
+            // Smooth cubic easing for a more premium feel
+            const easedFactor = Math.sin(visibilityFactor * Math.PI / 2);
+
+            const scale = 0.85 + easedFactor * 0.15;
+            const opacity = easedFactor;
+            const translateY = (1 - easedFactor) * 80;
+            const translateZ = (1 - easedFactor) * -300;
+            const blur = (1 - easedFactor) * 10;
+
+            sec.style.transform = `perspective(1000px) translate3d(0, ${translateY}px, ${translateZ}px) scale(${scale})`;
+            sec.style.opacity = opacity;
             sec.style.filter = `blur(${blur}px)`;
         });
 
