@@ -125,6 +125,66 @@ function initThreeJS() {
             sec.style.filter = `blur(${blur}px)`;
         });
 
+        // 3D Experience Timeline Curvature (World Effect)
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        const screenCenter = window.innerHeight / 2;
+        
+        timelineItems.forEach((item) => {
+            const rect = item.getBoundingClientRect();
+            const itemCenter = rect.top + rect.height / 2;
+            const deltaY = itemCenter - screenCenter;
+            
+            // Normalize distance based on half viewport height
+            const maxDistance = window.innerHeight * 0.6;
+            const ratio = Math.max(-1.5, Math.min(1.5, deltaY / maxDistance));
+            
+            // If the item is close to the center, mark it as active
+            if (Math.abs(deltaY) < rect.height / 2 + 50) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+            
+            // Calculate 3D cylindrical rotation (World Effect)
+            const maxAngle = window.innerWidth < 768 ? 20 : 35; // degrees
+            const maxZ = window.innerWidth < 768 ? -150 : -250; // px
+            
+            const angle = ratio * maxAngle;
+            const rad = angle * Math.PI / 180;
+            const z = (Math.cos(rad) - 1) * Math.abs(maxZ);
+            
+            // Fade out towards the top/bottom edges of the screen
+            const opacity = 1 - Math.max(0, Math.min(1, Math.abs(ratio) * 0.8));
+            const scale = 1 - Math.max(0, Math.min(0.2, Math.abs(ratio) * 0.15));
+            const yShift = Math.sin(rad) * 40;
+            
+            // Select components to animate
+            const card = item.querySelector('.timeline-card');
+            const checkpoint = item.querySelector('.timeline-checkpoint');
+            const connector = item.querySelector('.timeline-connector');
+            const segment = item.querySelector('.timeline-segment');
+            
+            if (card) {
+                card.style.transform = `perspective(1000px) translate3d(0, ${yShift}px, ${z}px) rotateX(${-angle}deg) scale(${scale})`;
+                card.style.opacity = opacity;
+                card.style.filter = `blur(${Math.max(0, Math.abs(ratio) * 4 - 0.5)}px)`;
+            }
+            
+            if (checkpoint) {
+                checkpoint.style.transform = `translate(-50%, -50%) translate3d(0, ${yShift * 0.6}px, ${z * 0.8}px) scale(${scale})`;
+                checkpoint.style.opacity = opacity;
+            }
+            
+            if (connector) {
+                connector.style.transform = `translateY(-50%) translate3d(0, ${yShift * 0.8}px, ${z * 0.5}px) rotateX(${-angle * 0.5}deg)`;
+                connector.style.opacity = opacity * 0.7;
+            }
+            
+            if (segment) {
+                segment.style.opacity = (item.classList.contains('active') ? 0.8 : 0.15) * opacity;
+            }
+        });
+
         renderer.render(scene, camera);
     }
 

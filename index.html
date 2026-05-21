@@ -48,7 +48,7 @@
     <!-- Floating Navbar (2026 Style) -->
     <nav class="floating-navbar">
         <a href="#inicio">Inicio</a>
-        <a href="#portafolio">Portafolio</a>
+        <a href="#experiencia">Experiencia</a>
         <a href="#conocimientos">Habilidades</a>
         <a href="#sobre-mi">Perfil</a>
         <a href="#contacto">Contacto</a>
@@ -71,8 +71,8 @@
                         guest@ary:~$ Desarrollador_Fullstack
                     </p>
                     <div class="d-flex justify-content-center gap-4">
-                        <a href="#portafolio" class="text-white text-uppercase"
-                            style="text-decoration:none; font-weight: 500; font-size: 0.9rem; letter-spacing: 2px;">Proyectos</a>
+                        <a href="#experiencia" class="text-white text-uppercase"
+                            style="text-decoration:none; font-weight: 500; font-size: 0.9rem; letter-spacing: 2px;">Experiencia</a>
                         <a href="https://github.com/AryDegtiar" target="_blank"
                             class="text-muted hover-text-white text-uppercase"
                             style="text-decoration:none; font-weight: 500; font-size: 0.9rem; letter-spacing: 2px;">GitHub</a>
@@ -83,183 +83,184 @@
     </section>
 
 
-    <!-- section portafolio -->
-    <section id="portafolio" class="py-5 no-seleccionable">
+    <!-- section experiencia (Línea de tiempo 3D) -->
+    <section id="experiencia" class="py-5 no-seleccionable timeline-section">
         <div class="container px-4 mt-5">
             <h1 class="text-size-5 fw-bold text-white mb-2" style="font-family: monospace;">➜ ~ <span
-                    class="text-accent">ls</span> -la ./portafolio</h1>
-            <p class="text-muted mb-5 cli-cursor" style="font-family: monospace;">Executing query... Found 6 active
-                projects.</p>
+                    class="text-accent">cat</span> ./experiencia.sh</h1>
+            <p class="text-muted mb-5 cli-cursor" style="font-family: monospace;">Reading professional history... 5 active checkpoints found.</p>
 
-            <div class="row g-4">
-                <!-- Card 1 -->
-                <div class="col-12 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card bg-glass text-white h-100 b-glass border-0" style="border-radius: 20px;">
-                        <div class="position-relative overflow-hidden w-100"
-                            style="height: 220px; border-radius: 20px 20px 0 0;">
-                            <img src="./assests/images/imgGrafana.jpg" class="w-100 h-100 of-cover portfolio-img-modern"
-                                alt="Microservicios">
+            <div class="timeline-container">
+                <!-- Timeline central line (formed by connected segments) -->
+                <div class="timeline-line"></div>
+
+                <div class="timeline-wrapper">
+                    <!-- Checkpoint 1: Mercado Libre -->
+                    <div class="timeline-item" style="--term-title: 'zsh — mercadolibre@server';">
+                        <div class="timeline-segment"></div>
+                        <div class="timeline-checkpoint">
+                            <span class="checkpoint-glow"></span>
                         </div>
-                        <div class="card-body d-flex flex-column p-4">
-                            <span class="badge text-uppercase text-accent mb-2"
-                                style="width: max-content; background: rgba(255,94,0,0.1);">Backend API</span>
-                            <h4 class="card-title fw-bold" style="font-family: 'Outfit';">Toolkit Microservicios
-                            </h4>
-                            <p class="card-text text-muted small mt-2 flex-grow-1">BFF, Tomcat + thymeleaf,
-                                Reactor Core, Basic Auth, Actuator, Grafana, JPA, JDBC.</p>
-                            <div class="d-flex align-items-center justify-content-between mt-3">
-                                <div class="tech-stack-icons d-flex gap-2">
-                                    <img src="./assests/images/spring.png" height="24">
-                                    <img src="./assests/images/javaLogo.png" height="24">
-                                    <img src="./assests/images/grafanalogo.png" height="24">
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-card card b-glass">
+                            <div class="card-body p-4">
+                                <span class="badge text-uppercase text-accent mb-2"
+                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Ingeniero de Software</span>
+                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">Mercado Libre</h4>
+                                <div class="text-accent small mb-3" style="font-family: monospace;">sept. 2025 - actualidad · 9 meses</div>
+                                <p class="text-muted small mt-2">
+                                    • Desarrollo de microservicios de alta disponibilidad y escalabilidad utilizando Java y Spring Boot.<br>
+                                    • Optimización de APIs REST y backend para soportar millones de transacciones diarias.<br>
+                                    • Integración con bases de datos relacionales y no relacionales en entornos distribuidos.<br>
+                                    • Colaboración bajo metodologías ágiles en equipos de alta performance.
+                                </p>
+                                <div class="meli-images-container d-flex gap-2 mt-3">
+                                    <img src="./assests/images/meli_1.jpg" class="rounded meli-img" alt="Mercado Libre Team 1">
+                                    <img src="./assests/images/meli_2.jpg" class="rounded meli-img" alt="Mercado Libre Team 2">
                                 </div>
-                                <a href="https://github.com/AryDegtiar/Java-Microservices-Toolkit-SA" target="_blank"
-                                    class="btn btn-outline-light rounded-circle btn-icon"><i
-                                        class="bi bi-github"></i></a>
+                                <div class="d-flex align-items-center justify-content-between mt-3">
+                                    <div class="tech-stack-icons d-flex gap-2">
+                                        <img src="./assests/images/javaLogo.png" height="24" title="Java">
+                                        <img src="./assests/images/spring.png" height="24" title="Spring Boot">
+                                        <img src="./assests/images/mysql.png" height="24" title="MySQL">
+                                    </div>
+                                    <span class="text-muted small" style="font-family: monospace;">Buenos Aires, AR</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checkpoint 2: EPAM Systems -->
+                    <div class="timeline-item" style="--term-title: 'zsh — epam@server';">
+                        <div class="timeline-segment"></div>
+                        <div class="timeline-checkpoint">
+                            <span class="checkpoint-glow"></span>
+                        </div>
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-card card b-glass">
+                            <div class="card-body p-4">
+                                <span class="badge text-uppercase text-accent mb-2"
+                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Java Software Engineer Ssr</span>
+                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">EPAM Systems</h4>
+                                <div class="text-accent small mb-3" style="font-family: monospace;">abr. 2025 - sept. 2025 · 6 meses</div>
+                                <p class="text-muted small mt-2">
+                                    • Diseño e implementación de soluciones backend robustas para clientes internacionales líderes en telecomunicaciones.<br>
+                                    • Desarrollo de microservicios en Java y optimización de flujos de integración continua.<br>
+                                    • Coordinación y reuniones técnicas con el equipo de desarrollo en las oficinas de Claro.
+                                </p>
+                                <div class="epam-images-container mt-3">
+                                    <img src="./assests/images/claro.jpg" class="rounded epam-img w-100" alt="EPAM Claro Team">
+                                    <div class="text-muted small mt-1 text-center" style="font-family: monospace; font-size: 0.75rem;">Reunión con parte del team en las oficinas de Claro</div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mt-3">
+                                    <div class="tech-stack-icons d-flex gap-2">
+                                        <img src="./assests/images/javaLogo.png" height="24" title="Java">
+                                        <img src="./assests/images/spring.png" height="24" title="Spring Boot">
+                                    </div>
+                                    <span class="text-muted small" style="font-family: monospace;">Remoto / Buenos Aires, AR</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checkpoint 3: Q&R Solutions -->
+                    <div class="timeline-item" style="--term-title: 'zsh — qr_solutions@server';">
+                        <div class="timeline-segment"></div>
+                        <div class="timeline-checkpoint">
+                            <span class="checkpoint-glow"></span>
+                        </div>
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-card card b-glass">
+                            <div class="card-body p-4">
+                                <span class="badge text-uppercase text-accent mb-2"
+                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Dev Backend JAVA</span>
+                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">Q&R Solutions</h4>
+                                <div class="text-accent small mb-3" style="font-family: monospace;">jun. 2024 - may. 2025 · 1 año</div>
+                                <p class="text-muted small mt-2">
+                                    • Desarrollo backend centrado en arquitecturas de microservicios en Java y persistencia eficiente.<br>
+                                    • Diseño y modelado de bases de datos relacionales y optimización de queries SQL.<br>
+                                    • Colaboración en el ciclo completo de desarrollo de software para plataformas de gestión interna.
+                                </p>
+                                <div class="qr-images-container mt-3">
+                                    <img src="./assests/images/fin_de_año.jpg" class="rounded qr-img w-100" alt="Q&R Solutions Year End">
+                                    <div class="text-muted small mt-1 text-center" style="font-family: monospace; font-size: 0.75rem;">Reunión fin de año del equipo</div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mt-3">
+                                    <div class="tech-stack-icons d-flex gap-2">
+                                        <img src="./assests/images/javaLogo.png" height="24" title="Java">
+                                        <img src="./assests/images/spring.png" height="24" title="Spring Boot">
+                                        <img src="./assests/images/mysql.png" height="24" title="MySQL">
+                                    </div>
+                                    <span class="text-muted small" style="font-family: monospace;">Jornada completa</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checkpoint 4: Sistemas Activos SRL -->
+                    <div class="timeline-item" style="--term-title: 'zsh — sistemas_activos@server';">
+                        <div class="timeline-segment"></div>
+                        <div class="timeline-checkpoint">
+                            <span class="checkpoint-glow"></span>
+                        </div>
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-card card b-glass">
+                            <div class="card-body p-4">
+                                <span class="badge text-uppercase text-accent mb-2"
+                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Desarrollador Backend Java - Spring Boot</span>
+                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">Sistemas Activos SRL</h4>
+                                <div class="text-accent small mb-3" style="font-family: monospace;">feb. 2023 - jun. 2024 · 1 año 5 meses</div>
+                                <p class="text-muted small mt-2">
+                                    • Creación de APIs y backend con Spring Boot y optimización de procesos de CI/CD.<br>
+                                    • Automatización de tareas de despliegue y scripting utilizando Python y Jenkins.<br>
+                                    • Integración de servicios externos y resolución de lógicas complejas de negocio.
+                                </p>
+                                <div class="sa-images-container mt-3">
+                                    <img src="./assests/images/año_nuevo.jpg" class="rounded sa-img w-100" alt="Sistemas Activos Year End">
+                                    <div class="text-muted small mt-1 text-center" style="font-family: monospace; font-size: 0.75rem;">Reunión de fin de año del team</div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mt-3">
+                                    <div class="tech-stack-icons d-flex gap-2 text-white align-items-center">
+                                        <img src="./assests/images/javaLogo.png" height="24" title="Java">
+                                        <img src="./assests/images/spring.png" height="24" title="Spring Boot">
+                                        <i class="bi bi-terminal-fill fs-5" title="Python/Jenkins" style="color: #ea580c;"></i>
+                                    </div>
+                                    <span class="text-muted small" style="font-family: monospace;">Remoto / Buenos Aires, AR</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checkpoint 5: Freelance -->
+                    <div class="timeline-item" style="--term-title: 'zsh — freelance@server';">
+                        <div class="timeline-segment"></div>
+                        <div class="timeline-checkpoint">
+                            <span class="checkpoint-glow"></span>
+                        </div>
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-card card b-glass">
+                            <div class="card-body p-4">
+                                <span class="badge text-uppercase text-accent mb-2"
+                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Desarrollador de páginas web</span>
+                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">Freelance (Self employed)</h4>
+                                <div class="text-accent small mb-3" style="font-family: monospace;">ene. 2022 - may. 2024 · 2 años 5 meses</div>
+                                <p class="text-muted small mt-2">
+                                    • Diseño y desarrollo web integral para clientes locales e internacionales utilizando HTML, CSS, JavaScript y React.<br>
+                                    • Maquetación responsive y optimización de velocidad de carga de sitios estáticos y dinámicos.<br>
+                                    • Despliegue, configuración de dominios y hosting para proyectos independientes.
+                                </p>
+                                <div class="d-flex align-items-center justify-content-between mt-3">
+                                    <div class="tech-stack-icons d-flex gap-2">
+                                        <img src="./assests/images/jsLogo.png" height="24" title="JavaScript">
+                                        <img src="./assests/images/reactlogo.png" height="24" title="React">
+                                        <img src="./assests/images/boostrapLogo.png" height="24" title="Bootstrap">
+                                    </div>
+                                    <span class="text-muted small" style="font-family: monospace;">Remoto / Buenos Aires, AR</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Card 2 -->
-                <div class="col-12 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card bg-glass text-white h-100 b-glass border-0" style="border-radius: 20px;">
-                        <div class="position-relative overflow-hidden w-100"
-                            style="height: 220px; border-radius: 20px 20px 0 0;">
-                            <img src="./assests/images/imgRecetas.jpg" class="w-100 h-100 of-cover portfolio-img-modern"
-                                alt="Busca Recetas">
-                        </div>
-                        <div class="card-body d-flex flex-column p-4">
-                            <span class="badge text-uppercase text-accent mb-2"
-                                style="width: max-content; background: rgba(255,94,0,0.1);">Fullstack
-                                Agile</span>
-                            <h4 class="card-title fw-bold" style="font-family: 'Outfit';">Buscador de Recetas
-                            </h4>
-                            <p class="card-text text-muted small mt-2 flex-grow-1">Proyecto SCRUM de 2 días.
-                                Integración ágil entre frontend interactivo y base de datos con Java.</p>
-                            <div class="d-flex align-items-center justify-content-between mt-3">
-                                <div class="tech-stack-icons d-flex gap-2">
-                                    <img src="./assests/images/javaLogo.png" height="24">
-                                    <img src="./assests/images/reactlogo.png" height="24">
-                                    <img src="./assests/images/mysql.png" height="24">
-                                </div>
-                                <a href="https://github.com/AryDegtiar/tpScrumRecetas.git" target="_blank"
-                                    class="btn btn-outline-light rounded-circle btn-icon"><i
-                                        class="bi bi-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="col-12 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card bg-glass text-white h-100 b-glass border-0" style="border-radius: 20px;">
-                        <div class="position-relative overflow-hidden w-100"
-                            style="height: 220px; border-radius: 20px 20px 0 0;">
-                            <img src="./assests/images/karmashop.png" class="w-100 h-100 of-cover portfolio-img-modern"
-                                alt="Shop">
-                        </div>
-                        <div class="card-body d-flex flex-column p-4">
-                            <span class="badge text-uppercase text-accent mb-2"
-                                style="width: max-content; background: rgba(255,94,0,0.1);">E-Commerce</span>
-                            <h4 class="card-title fw-bold" style="font-family: 'Outfit';">Tienda E-commerce</h4>
-                            <p class="card-text text-muted small mt-2 flex-grow-1">Proyecto final curso UTN.
-                                Autenticación de usuarios, historial, crud en Angular y DB estructurada.</p>
-                            <div class="d-flex align-items-center justify-content-between mt-3">
-                                <div class="tech-stack-icons d-flex gap-2">
-                                    <img src="./assests/images/javaLogo.png" height="24">
-                                    <img src="./assests/images/angular.png" height="24">
-                                    <img src="./assests/images/mysql.png" height="24">
-                                </div>
-                                <a href="https://github.com/AryDegtiar/TPCAPGEMINI" target="_blank"
-                                    class="btn btn-outline-light rounded-circle btn-icon"><i
-                                        class="bi bi-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="col-12 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="card bg-glass text-white h-100 b-glass border-0" style="border-radius: 20px;">
-                        <div class="position-relative overflow-hidden w-100"
-                            style="height: 220px; border-radius: 20px 20px 0 0;">
-                            <img src="./assests/images/compasso.png" class="w-100 h-100 of-cover portfolio-img-modern"
-                                alt="Compasso">
-                        </div>
-                        <div class="card-body d-flex flex-column p-4">
-                            <span class="badge text-uppercase text-accent mb-2"
-                                style="width: max-content; background: rgba(255,94,0,0.1);">Gestión App</span>
-                            <h4 class="card-title fw-bold" style="font-family: 'Outfit';">Panel Fábrica Compasso
-                            </h4>
-                            <p class="card-text text-muted small mt-2 flex-grow-1">Panel de administración para
-                                resistencias. Manejo de autenticación y carga de productos segura.</p>
-                            <div class="d-flex align-items-center justify-content-between mt-3">
-                                <div class="tech-stack-icons d-flex gap-2">
-                                    <img src="./assests/images/spring.png" height="24">
-                                    <img src="./assests/images/angular.png" height="24">
-                                </div>
-                                <a href="https://github.com/AryDegtiar/Compasso-JAVA" target="_blank"
-                                    class="btn btn-outline-light rounded-circle btn-icon"><i
-                                        class="bi bi-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="col-12 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                    <div class="card bg-glass text-white h-100 b-glass border-0" style="border-radius: 20px;">
-                        <div class="position-relative overflow-hidden w-100"
-                            style="height: 220px; border-radius: 20px 20px 0 0;">
-                            <img src="./assests/images/webPersonal.png"
-                                class="w-100 h-100 of-cover portfolio-img-modern" alt="Web">
-                        </div>
-                        <div class="card-body d-flex flex-column p-4">
-                            <span class="badge text-uppercase text-accent mb-2"
-                                style="width: max-content; background: rgba(255,94,0,0.1);">Frontend</span>
-                            <h4 class="card-title fw-bold" style="font-family: 'Outfit';">Web Personal (v1)</h4>
-                            <p class="card-text text-muted small mt-2 flex-grow-1">Construcción estructural de
-                                mi primera web usando puro HTML, Vanilla JS puro y Bootstrap v5.0.</p>
-                            <div class="d-flex align-items-center justify-content-between mt-3">
-                                <div class="tech-stack-icons d-flex gap-2">
-                                    <img src="./assests/images/boostrapLogo.png" height="24">
-                                    <img src="./assests/images/jsLogo.png" height="24">
-                                </div>
-                                <a href="https://github.com/AryDegtiar/Pagina-Personal" target="_blank"
-                                    class="btn btn-outline-light rounded-circle btn-icon"><i
-                                        class="bi bi-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="col-12 col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-                    <div class="card bg-glass text-white h-100 b-glass border-0" style="border-radius: 20px;">
-                        <div class="position-relative overflow-hidden w-100"
-                            style="height: 220px; border-radius: 20px 20px 0 0;">
-                            <img src="./assests/images/paradigmaPc.jpg"
-                                class="w-100 h-100 of-cover portfolio-img-modern" alt="Android">
-                        </div>
-                        <div class="card-body d-flex flex-column p-4">
-                            <span class="badge text-uppercase text-accent mb-2"
-                                style="width: max-content; background: rgba(255,94,0,0.1);">Mobile App</span>
-                            <h4 class="card-title fw-bold" style="font-family: 'Outfit';">Paradigma PC</h4>
-                            <p class="card-text text-muted small mt-2 flex-grow-1">Aplicación nativa móvil con
-                                interfaz fluida para ayudar en el asesoramiento y armado de computadoras.</p>
-                            <div class="d-flex align-items-center justify-content-between mt-3">
-                                <div class="tech-stack-icons d-flex gap-2">
-                                    <img src="./assests/images/androidStudioLogo.png" height="24">
-                                </div>
-                                <a href="https://github.com/AryDegtiar/ParadigmaPC" target="_blank"
-                                    class="btn btn-outline-light rounded-circle btn-icon"><i
-                                        class="bi bi-github"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
