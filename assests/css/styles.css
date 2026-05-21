@@ -929,3 +929,136 @@ section {
     margin-right: 0 !important;
   }
 }
+
+/* ==========================================
+   GoLand IDE Theme Specific Styles (Skills)
+   ========================================== */
+#conocimientos .c1 {
+  width: 900px !important;
+  max-width: 100%;
+  margin: 0 auto;
+  background: #1e1f22 !important;
+  border: 1px solid #2e3035 !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6) !important;
+  overflow: hidden !important; /* Prevent scrollbars and jitters */
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace !important;
+  font-size: clamp(0.75rem, 1.8vw, 0.95rem) !important;
+  line-height: 1.6 !important;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+#conocimientos .c1::before {
+  /* Override the default red/yellow/green macOS dots style since GoLand handles it inside the editor bar or we have custom tab bar */
+  display: none !important;
+}
+
+#conocimientos .goland-tab-bar {
+  display: flex;
+  background: #2b2d30;
+  border-bottom: 1px solid #393b40;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  user-select: none;
+  padding-left: 12px !important; /* Let's reduce padding so it aligns nicely */
+  align-items: center;
+  height: 40px;
+}
+
+/* macOS style traffic light window controls inside the tab bar for real premium look */
+#conocimientos .goland-tab-bar::before {
+  content: '';
+  display: flex;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ff5f56;
+  box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f;
+  margin-left: 8px;
+  margin-right: 52px; /* Leaves space before tabs */
+}
+
+#conocimientos .goland-tab {
+  display: flex;
+  align-items: center;
+  background: #1e1f22;
+  color: #dfe1e5;
+  padding: 0 16px;
+  height: 100%;
+  border-right: 1px solid #2e3035;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-size: 0.8rem;
+  font-family: 'Inter', sans-serif !important;
+  border-top: 3px solid #3574d4 !important; /* JetBrains active tab blue bar */
+}
+
+#conocimientos .goland-editor-area {
+  padding: 20px 24px !important;
+  background: #1e1f22;
+  flex-grow: 1;
+  overflow-x: auto;
+  position: relative;
+}
+
+#conocimientos .machine {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace !important;
+  color: #bcbec4; /* Default GoLand text color */
+  margin-top: 0 !important;
+  counter-reset: goland-line; /* Line numbers reset */
+  position: relative;
+}
+
+#conocimientos .machine-line {
+  display: flex;
+  align-items: flex-start;
+  min-height: 1.6em;
+  padding-left: 4.5ch !important;
+  text-indent: 0 !important;
+  position: relative;
+  white-space: pre !important; /* Real editor doesn't wrap inside unless word-wrap is on, but pre is best for tab alignment */
+}
+
+/* Line numbers gutter using CSS counters */
+#conocimientos .machine-line::before {
+  counter-increment: goland-line;
+  content: counter(goland-line);
+  position: absolute;
+  left: 0;
+  width: 3ch;
+  text-align: right;
+  color: #565860; /* Line number color in JetBrains */
+  user-select: none;
+  font-size: 0.85rem;
+  padding-right: 8px;
+}
+
+/* GoLand Syntax Highlighting Color Overrides */
+#conocimientos .text-primary-emphasis {
+  color: #cf8e6d !important; /* GoLand Keyword color (orange/brown) */
+  font-weight: bold;
+}
+
+#conocimientos .text-success-emphasis {
+  color: #bcbec4 !important; /* Variables/Identifiers are usually default text color */
+}
+
+#conocimientos .text-info {
+  color: #c77dbb !important; /* GoLand Types (string, int etc. are purple) */
+}
+
+#conocimientos .text-warning {
+  color: #6aab73 !important; /* GoLand Strings are green */
+}
+
+/* Braces and other punctuation */
+#conocimientos .machine {
+  color: #bcbec4;
+}
+
+/* Tab indentation alignment */
+#conocimientos .machine-line {
+  tab-size: 4;
+  -moz-tab-size: 4;
+}

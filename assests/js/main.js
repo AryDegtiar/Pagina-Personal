@@ -1,9 +1,22 @@
 let skillsTyped = false;
 
 function typeWriter(element, speed, callback) {
-    let htmlContent = element.innerHTML;
+    let htmlContent = element.innerHTML.trim();
     // Clean out any existing cursor markup
     htmlContent = htmlContent.replace(/<span class="blink">.*?<\/span>/gi, '');
+    
+    // Find and lock the dimensions of the parent card to prevent dynamic size changes during typing
+    const card = element.closest('.c1');
+    let originalCardHeight = '';
+    let originalCardWidth = '';
+    
+    if (card) {
+        const rect = card.getBoundingClientRect();
+        originalCardHeight = card.style.height;
+        originalCardWidth = card.style.width;
+        card.style.height = `${rect.height}px`;
+        card.style.width = `${rect.width}px`;
+    }
     
     element.innerHTML = '';
     element.style.visibility = 'visible';
@@ -39,7 +52,16 @@ function typeWriter(element, speed, callback) {
         if (tokenIndex < tokens.length) {
             const token = tokens[tokenIndex];
             currentHTML += token.content;
-            element.innerHTML = currentHTML + '<span class="blink">|</span>';
+            
+            // Prevent the cursor from wrapping to a new line at the end of block divs
+            let outputHTML = currentHTML;
+            if (outputHTML.endsWith('</div>')) {
+                outputHTML = outputHTML.slice(0, -6) + '<span class="blink">|</span></div>';
+            } else {
+                outputHTML += '<span class="blink">|</span>';
+            }
+            
+            element.innerHTML = outputHTML;
             tokenIndex++;
             
             if (token.type === 'tag') {
@@ -48,7 +70,20 @@ function typeWriter(element, speed, callback) {
                 setTimeout(typeNext, speed);
             }
         } else {
-            element.innerHTML = currentHTML + '<span class="blink">|</span>';
+            let outputHTML = currentHTML;
+            if (outputHTML.endsWith('</div>')) {
+                outputHTML = outputHTML.slice(0, -6) + '<span class="blink">|</span></div>';
+            } else {
+                outputHTML += '<span class="blink">|</span>';
+            }
+            element.innerHTML = outputHTML;
+            
+            // Release the dimension lock so the card responds to window resizes seamlessly
+            if (card) {
+                card.style.height = originalCardHeight;
+                card.style.width = originalCardWidth;
+            }
+            
             if (callback) callback();
         }
     }
