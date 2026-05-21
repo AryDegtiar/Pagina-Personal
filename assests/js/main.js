@@ -1,22 +1,83 @@
-window.addEventListener('scroll', function () {
-    let animationMachine = document.getElementsByClassName('machine');
-    if (animationMachine.length > 0) {
-        let animationMachinePosition = animationMachine[0].getBoundingClientRect().top;
-        let screenPosition = window.innerHeight / 0.9;
+let skillsTyped = false;
 
-        if (animationMachinePosition < screenPosition) {
-            for (let i = 0; i < animationMachine.length; i++) {
-                var animacion = 'type' + i
-                animationMachine[i].classList.add(animacion);
-            }
-        } else {
-            for (let i = 0; i < animationMachine.length; i++) {
-                var animacion = 'type' + i
-                animationMachine[i].classList.remove(animacion);
+function typeWriter(element, speed, callback) {
+    let htmlContent = element.innerHTML;
+    // Clean out any existing cursor markup
+    htmlContent = htmlContent.replace(/<span class="blink">.*?<\/span>/gi, '');
+    
+    element.innerHTML = '';
+    element.style.visibility = 'visible';
+    element.style.display = 'block';
+    
+    const tokens = [];
+    let i = 0;
+    while (i < htmlContent.length) {
+        if (htmlContent[i] === '<') {
+            let tagEnd = htmlContent.indexOf('>', i);
+            if (tagEnd !== -1) {
+                tokens.push({ type: 'tag', content: htmlContent.slice(i, tagEnd + 1) });
+                i = tagEnd + 1;
+                continue;
             }
         }
+        if (htmlContent[i] === '&') {
+            let entityEnd = htmlContent.indexOf(';', i);
+            if (entityEnd !== -1 && entityEnd - i < 10) {
+                tokens.push({ type: 'text', content: htmlContent.slice(i, entityEnd + 1) });
+                i = entityEnd + 1;
+                continue;
+            }
+        }
+        tokens.push({ type: 'text', content: htmlContent[i] });
+        i++;
     }
-});
+    
+    let tokenIndex = 0;
+    let currentHTML = '';
+    
+    function typeNext() {
+        if (tokenIndex < tokens.length) {
+            const token = tokens[tokenIndex];
+            currentHTML += token.content;
+            element.innerHTML = currentHTML + '<span class="blink">|</span>';
+            tokenIndex++;
+            
+            if (token.type === 'tag') {
+                typeNext();
+            } else {
+                setTimeout(typeNext, speed);
+            }
+        } else {
+            element.innerHTML = currentHTML + '<span class="blink">|</span>';
+            if (callback) callback();
+        }
+    }
+    
+    typeNext();
+}
+
+function animateSkillsTypewriter() {
+    if (skillsTyped) return;
+    
+    let el = document.querySelector('.machine');
+    if (!el) return;
+    
+    let section = document.getElementById('conocimientos');
+    if (!section) return;
+    
+    let rect = section.getBoundingClientRect();
+    let inViewport = rect.top < window.innerHeight * 0.85 && rect.bottom > 0;
+    
+    if (inViewport) {
+        skillsTyped = true;
+        // Snappy typewriter speed: 4ms per character
+        typeWriter(el, 4, null);
+    }
+}
+
+window.addEventListener('scroll', animateSkillsTypewriter);
+window.addEventListener('load', animateSkillsTypewriter);
+
 
 // loading
 window.addEventListener("load", function () {
