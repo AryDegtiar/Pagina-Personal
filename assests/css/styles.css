@@ -931,170 +931,122 @@ section {
 }
 
 /* ==========================================
-   GoLand IDE Theme Specific Styles (Skills)
+   Minimalist & Premium Skills Card (Image 2 style)
    ========================================== */
 #conocimientos .c1 {
-  width: 900px !important;
+  width: 850px !important;
   max-width: 100%;
   margin: 0 auto;
-  background: #1e1f22 !important;
-  border: 1px solid #2e3035 !important;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6) !important;
-  overflow: hidden !important; /* Prevent scrollbars and jitters */
-  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace !important;
-  font-size: clamp(0.75rem, 1.8vw, 0.95rem) !important;
-  line-height: 1.6 !important;
+  background: #0d111a !important; /* SLEEK premium navy-black matching image 2 */
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5) !important;
+  border-radius: 16px !important;
+  padding: 48px !important; /* Generous visual space */
+  overflow: hidden !important;
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
 }
 
 #conocimientos .c1::before {
-  /* Override the default red/yellow/green macOS dots style since GoLand handles it inside the editor bar or we have custom tab bar */
   display: none !important;
 }
 
-#conocimientos .goland-tab-bar {
+#conocimientos .window-dots {
   display: flex;
-  background: #2b2d30;
-  border-bottom: 1px solid #393b40;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+  gap: 8px;
+  margin-bottom: 28px;
   user-select: none;
-  padding-left: 12px !important; /* Let's reduce padding so it aligns nicely */
-  align-items: center;
-  height: 40px;
 }
 
-/* macOS style traffic light window controls inside the tab bar for real premium look */
-#conocimientos .goland-tab-bar::before {
-  content: '';
-  display: flex;
+#conocimientos .dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #ff5f56;
-  box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f;
-  margin-left: 8px;
-  margin-right: 52px; /* Leaves space before tabs */
+  display: inline-block;
 }
 
-#conocimientos .goland-tab {
-  display: flex;
-  align-items: center;
-  background: #1e1f22;
-  color: #dfe1e5;
-  padding: 0 16px;
-  height: 100%;
-  border-right: 1px solid #2e3035;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  font-size: 0.8rem;
-  font-family: 'Inter', sans-serif !important;
-  border-top: 3px solid #3574d4 !important; /* JetBrains active tab blue bar */
-}
+#conocimientos .dot-red { background: #ff5f56; }
+#conocimientos .dot-yellow { background: #ffbd2e; }
+#conocimientos .dot-green { background: #27c93f; }
 
-#conocimientos .goland-editor-area {
-  padding: 20px 24px !important;
-  background: #1e1f22;
-  flex-grow: 1;
-  overflow-x: hidden !important; /* Disable horizontal scrollbar */
+#conocimientos .editor-area {
   position: relative;
+  width: 100%;
 }
 
 #conocimientos .machine {
-  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace !important;
-  color: #bcbec4; /* Default GoLand text color */
+  font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important; /* Modern premium geometric rounded font */
+  font-size: clamp(1.15rem, 2.3vw, 1.45rem) !important; /* Large, bold and crisp text */
+  line-height: 2.2 !important; /* Wide, clean double-spacing */
+  font-weight: 700 !important; /* Thick letters for ultimate visual punch! */
+  color: #cbd5e1 !important; /* Brackets, commas, and default characters */
   margin-top: 0 !important;
-  counter-reset: goland-line; /* Line numbers reset */
-  position: relative;
 }
 
 #conocimientos .machine-line {
   display: block !important;
   min-height: 1.6em;
-  padding-left: 4.5ch !important;
+  padding-left: 0 !important; /* Flat start, no margin blocks */
   text-indent: 0 !important;
   position: relative;
-  white-space: pre-wrap !important; /* Enable premium word wrapping */
-  word-break: break-word !important; /* Prevent long words from causing overflow */
+  white-space: pre-wrap !important; /* Perfect natural inline-wrapping */
+  word-break: break-word !important; /* Safeguard viewport overflow */
 }
 
-/* Line numbers gutter using CSS counters */
-#conocimientos .machine-line::before {
-  counter-increment: goland-line;
-  content: counter(goland-line);
-  position: absolute;
-  left: 0;
-  width: 3ch;
-  text-align: right;
-  color: #565860; /* Line number color in JetBrains */
-  user-select: none;
-  font-size: 0.85rem;
-  padding-right: 8px;
+/* Premium High-Contrast Color Palette inspired by Image 2 */
+#conocimientos .text-keyword {
+  color: #3b82f6 !important; /* Vibrant royal blue for keywords like 'const' */
+  font-weight: 800 !important;
 }
 
-/* GoLand Syntax Highlighting Color Overrides */
-#conocimientos .text-primary-emphasis {
-  color: #cf8e6d !important; /* GoLand Keyword color (orange/brown) */
-  font-weight: bold;
+#conocimientos .text-variable {
+  color: #10b981 !important; /* Emerald green for the object name 'skills' */
+  font-weight: 800 !important;
 }
 
-#conocimientos .text-success-emphasis {
-  color: #bcbec4 !important; /* Variables/Identifiers are usually default text color */
+#conocimientos .text-property {
+  color: #38bdf8 !important; /* Soft cyan/sky blue for property names */
+  font-weight: 700 !important;
 }
 
-#conocimientos .text-info {
-  color: #c77dbb !important; /* GoLand Types (string, int etc. are purple) */
+#conocimientos .text-value {
+  color: #fbbf24 !important; /* Warm vibrant amber/yellow for technology values */
+  font-weight: 700 !important;
 }
 
-#conocimientos .text-warning {
-  color: #6aab73 !important; /* GoLand Strings are green */
-}
-
-/* Braces and other punctuation */
+/* Brackets, comma, and colon defaults in slate */
 #conocimientos .machine {
-  color: #bcbec4;
+  color: #cbd5e1;
 }
 
-/* Tab indentation alignment */
-#conocimientos .machine-line {
-  tab-size: 4;
-  -moz-tab-size: 4;
-}
-
-/* High-Fidelity Mobile Responsiveness Overrides for Skills & Terminal Headers */
+/* Dynamic responsive overrides for smaller devices */
 @media (max-width: 576px) {
   #conocimientos .c1 {
-    max-width: 100% !important;
-    width: 100% !important;
+    padding: 28px 24px !important; /* Cozy space on mobile */
+    border-radius: 12px !important;
   }
   
-  #conocimientos .goland-editor-area {
-    padding: 12px 14px !important;
+  #conocimientos .window-dots {
+    margin-bottom: 20px;
   }
   
-  #conocimientos .machine-line {
-    padding-left: 3.2ch !important;
-    font-size: 0.72rem !important;
-  }
-  
-  #conocimientos .machine-line::before {
-    width: 2.2ch !important;
-    font-size: 0.72rem !important;
-    padding-right: 4px !important;
+  #conocimientos .machine {
+    font-size: clamp(0.95rem, 4.8vw, 1.2rem) !important;
+    line-height: 1.9 !important;
   }
 
-  /* Make sure all terminal prompt titles never cause horizontal scroll on narrow viewports */
+  /* Make sure terminal header scales perfectly */
   #conocimientos h1,
   #experiencia h1,
   #sobre-mi h1,
   #contacto h1 {
-    font-size: clamp(1.1rem, 5vw, 1.5rem) !important;
+    font-size: clamp(1.2rem, 5.5vw, 1.7rem) !important;
     word-break: break-all;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
   }
 }
+
 
