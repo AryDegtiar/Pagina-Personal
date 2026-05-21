@@ -155,7 +155,7 @@ function initThreeJS() {
         const timelineItems = document.querySelectorAll('.timeline-item');
         const screenCenter = window.innerHeight / 2;
         
-        timelineItems.forEach((item) => {
+        timelineItems.forEach((item, index) => {
             const rect = item.getBoundingClientRect();
             const itemCenter = rect.top + rect.height / 2;
             const deltaY = itemCenter - screenCenter;
@@ -174,7 +174,7 @@ function initThreeJS() {
             // 3D Spherical/Fish-eye Curve Calculations (World Effect)
             const maxAngle = window.innerWidth < 768 ? 18 : 28; // degrees
             const maxZ = window.innerWidth < 768 ? -120 : -200; // px
-            const maxXShift = window.innerWidth < 768 ? -30 : -70; // px (C-curve shift to left)
+            const maxXShift = window.innerWidth < 768 ? 30 : 0; // px (on mobile, curve towards center; on desktop, perfectly centered)
             
             const angleX = ratio * maxAngle;
             const radCurve = (ratio * Math.PI) / 2;
@@ -184,11 +184,12 @@ function initThreeJS() {
             const sinRad = Math.sin(radCurve);
             
             const z = (cosRad - 1) * Math.abs(maxZ);
-            const xShift = (cosRad - 1) * Math.abs(maxXShift);
+            const xShift = (1 - cosRad) * maxXShift;
             const yShift = sinRad * 35;
             
-            // Rotation Y: wraps around the globe (same direction top & bottom)
-            const angleY = (1 - cosRad) * 15;
+            // Rotation Y: wraps around the globe (opposite directions for left and right cards to face center)
+            const isLeft = window.innerWidth < 768 ? false : (index % 2 === 0);
+            const angleY = (1 - cosRad) * 12 * (isLeft ? 1 : -1);
             
             // Opacity & Scale
             const opacity = 1 - Math.max(0, Math.min(1, Math.abs(ratio) * 0.7));
@@ -213,7 +214,7 @@ function initThreeJS() {
             
             const maxAngle = window.innerWidth < 768 ? 18 : 28;
             const maxZ = window.innerWidth < 768 ? -120 : -200;
-            const maxXShift = window.innerWidth < 768 ? -30 : -70;
+            const maxXShift = window.innerWidth < 768 ? 30 : 0;
             
             const angleX = ratio * maxAngle;
             const radCurve = (ratio * Math.PI) / 2;
@@ -222,7 +223,7 @@ function initThreeJS() {
             const sinRad = Math.sin(radCurve);
             
             const z = (cosRad - 1) * Math.abs(maxZ);
-            const xShift = (cosRad - 1) * Math.abs(maxXShift);
+            const xShift = (1 - cosRad) * maxXShift;
             const yShift = sinRad * 35;
             
             // Apply 3D Transform to the segment
