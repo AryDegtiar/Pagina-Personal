@@ -1,33 +1,372 @@
-window.addEventListener('scroll', function(){
-    let animationMachine = document.getElementsByClassName('machine');
-    let animationMachinePosition = animationMachine[0].getBoundingClientRect().top;
-    //console.log(animationMachinePosition);
-    let screenPosition = window.innerHeight / 0.9;
+let skillsTyped = false;
 
-    if(animationMachinePosition < screenPosition){
-        for(let i = 0; i < animationMachine.length; i++){
-            var animacion = 'type' + i
-            animationMachine[i].classList.add(animacion);
-            //console.log(animacion);
+function typeWriter(element, speed, callback) {
+    let htmlContent = element.innerHTML.trim();
+    // Clean out any existing cursor markup
+    htmlContent = htmlContent.replace(/<span class="blink">.*?<\/span>/gi, '');
+    
+    // Find and lock the dimensions of the parent card to prevent dynamic size changes during typing
+    const card = element.closest('.c1');
+    let originalCardHeight = '';
+    let originalCardWidth = '';
+    
+    if (card) {
+        const rect = card.getBoundingClientRect();
+        originalCardHeight = card.style.height;
+        originalCardWidth = card.style.width;
+        card.style.height = `${rect.height}px`;
+        card.style.width = `${rect.width}px`;
+    }
+    
+    element.innerHTML = '';
+    element.style.visibility = 'visible';
+    element.style.display = 'block';
+    
+    const tokens = [];
+    let i = 0;
+    while (i < htmlContent.length) {
+        if (htmlContent[i] === '<') {
+            let tagEnd = htmlContent.indexOf('>', i);
+            if (tagEnd !== -1) {
+                tokens.push({ type: 'tag', content: htmlContent.slice(i, tagEnd + 1) });
+                i = tagEnd + 1;
+                continue;
+            }
         }
-    }else{
-        for(let i = 0; i < animationMachine.length; i++){
-            var animacion = 'type' + i
-            animationMachine[i].classList.remove(animacion);
+        if (htmlContent[i] === '&') {
+            let entityEnd = htmlContent.indexOf(';', i);
+            if (entityEnd !== -1 && entityEnd - i < 10) {
+                tokens.push({ type: 'text', content: htmlContent.slice(i, entityEnd + 1) });
+                i = entityEnd + 1;
+                continue;
+            }
+        }
+        tokens.push({ type: 'text', content: htmlContent[i] });
+        i++;
+    }
+    
+    let tokenIndex = 0;
+    let currentHTML = '';
+    
+    function typeNext() {
+        if (tokenIndex < tokens.length) {
+            const token = tokens[tokenIndex];
+            currentHTML += token.content;
+            
+            // Prevent the cursor from wrapping to a new line at the end of block divs
+            let outputHTML = currentHTML;
+            if (outputHTML.endsWith('</div>')) {
+                outputHTML = outputHTML.slice(0, -6) + '<span class="blink">|</span></div>';
+            } else {
+                outputHTML += '<span class="blink">|</span>';
+            }
+            
+            element.innerHTML = outputHTML;
+            tokenIndex++;
+            
+            if (token.type === 'tag') {
+                typeNext();
+            } else {
+                setTimeout(typeNext, speed);
+            }
+        } else {
+            let outputHTML = currentHTML;
+            if (outputHTML.endsWith('</div>')) {
+                outputHTML = outputHTML.slice(0, -6) + '<span class="blink">|</span></div>';
+            } else {
+                outputHTML += '<span class="blink">|</span>';
+            }
+            element.innerHTML = outputHTML;
+            
+            // Release the dimension lock so the card responds to window resizes seamlessly
+            if (card) {
+                card.style.height = originalCardHeight;
+                card.style.width = originalCardWidth;
+            }
+            
+            if (callback) callback();
         }
     }
-});
+    
+    typeNext();
+}
 
-function toggle(){
-    if(screen.width < 1300){
-        let slider = document.getElementById('wrapper');
-
-        slider.classList.toggle("toggled");
+function animateSkillsTypewriter() {
+    if (skillsTyped) return;
+    
+    let el = document.querySelector('.machine');
+    if (!el) return;
+    
+    let section = document.getElementById('conocimientos');
+    if (!section) return;
+    
+    let rect = section.getBoundingClientRect();
+    let inViewport = rect.top < window.innerHeight * 0.85 && rect.bottom > 0;
+    
+    if (inViewport) {
+        skillsTyped = true;
+        // Snappy typewriter speed: 4ms per character
+        typeWriter(el, 4, null);
     }
 }
 
+window.addEventListener('scroll', animateSkillsTypewriter);
+window.addEventListener('load', animateSkillsTypewriter);
+
+
 // loading
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
     const loading = document.getElementById("loading");
-    loading.style.display = "none";
+    if (loading) loading.style.display = "none";
+    setupTimelineLine();
 });
+
+// dynamic timeline line segments generator
+function setupTimelineLine() {
+    const container = document.querySelector('.timeline-curved-line-container');
+    if (!container) return;
+    
+    container.innerHTML = '';
+    
+    const wrapper = document.querySelector('.timeline-wrapper');
+    if (!wrapper) return;
+    
+    const totalHeight = wrapper.offsetHeight;
+    const segmentHeight = 35; // px per segment
+    const numSegments = Math.ceil(totalHeight / segmentHeight);
+    
+    for (let i = 0; i < numSegments; i++) {
+        const seg = document.createElement('div');
+        seg.className = 'timeline-curve-segment';
+        seg.style.top = `${i * segmentHeight}px`;
+        seg.style.height = `${segmentHeight + 2}px`; // slightly overlap
+        container.appendChild(seg);
+    }
+}
+
+// Three.js SCROLL-REACTIVE UNIVERSE
+function initThreeJS() {
+    const canvas = document.getElementById('bg-canvas');
+    if (!canvas || typeof THREE === "undefined") return;
+
+    setupTimelineLine();
+
+    // Scene setup
+    const scene = new THREE.Scene();
+
+    // Camera setup
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 30;
+
+    // Renderer setup
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    // Objects mapping: Replaced Wireframes with a dense, pristine Stardust galaxy
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particlesCount = 2000;
+    const posArray = new Float32Array(particlesCount * 3);
+    const colorArray = new Float32Array(particlesCount * 3);
+
+    for (let i = 0; i < particlesCount * 3; i += 3) {
+        // Broad distribution
+        posArray[i] = (Math.random() - 0.5) * 100;
+        posArray[i + 1] = (Math.random() - 0.5) * 100;
+        posArray[i + 2] = (Math.random() - 0.5) * 100 - 10;
+
+        // Randomly assign Blue or Orange accent to stars
+        const isOrange = Math.random() > 0.5;
+        colorArray[i] = isOrange ? 1.0 : 0.23; // R
+        colorArray[i + 1] = isOrange ? 0.36 : 0.5; // G (0.36 for orange 0xff5e00)
+        colorArray[i + 2] = isOrange ? 0.0 : 0.96; // B
+    }
+
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
+
+    const particlesMaterial = new THREE.PointsMaterial({
+        size: 0.1,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.8
+    });
+
+    const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particlesMesh);
+
+    // Scroll Logic Interaction
+    let currentScroll = 0;
+    const sections = document.querySelectorAll('section');
+
+    window.addEventListener('scroll', () => {
+        currentScroll = window.scrollY;
+    });
+
+    // Animation Loop
+    const clock = new THREE.Clock();
+
+    function animate() {
+        requestAnimationFrame(animate);
+        const elapsedTime = clock.getElapsedTime();
+
+        // Rotate particles globally very slowly
+        particlesMesh.rotation.y = elapsedTime * 0.02;
+        particlesMesh.rotation.x = elapsedTime * 0.005;
+
+        // Reactive Camera based on Scroll
+        camera.position.z = 30 - (currentScroll * 0.025);
+        camera.position.y = -(currentScroll * 0.005);
+
+        // SYNC HTML DOM CONTENT WITH THE 3D WORLD
+        sections.forEach((sec) => {
+            const rect = sec.getBoundingClientRect();
+            
+            // Entry transition (fade-in as section enters from bottom)
+            const entryStart = window.innerHeight;
+            const entryEnd = window.innerHeight * 0.65;
+            let entryFactor = 1;
+            if (rect.top > entryStart) {
+                entryFactor = 0;
+            } else if (rect.top < entryEnd) {
+                entryFactor = 1;
+            } else {
+                entryFactor = (entryStart - rect.top) / (entryStart - entryEnd);
+            }
+
+            // Exit transition (fade-out as section exits through top)
+            const exitStart = window.innerHeight * 0.35;
+            const exitEnd = -100;
+            let exitFactor = 1;
+            if (rect.bottom < exitEnd) {
+                exitFactor = 0;
+            } else if (rect.bottom > exitStart) {
+                exitFactor = 1;
+            } else {
+                exitFactor = (rect.bottom - exitEnd) / (exitStart - exitEnd);
+            }
+
+            const visibilityFactor = entryFactor * exitFactor;
+
+            // Smooth cubic easing for a more premium feel
+            const easedFactor = Math.sin(visibilityFactor * Math.PI / 2);
+
+            const scale = 0.85 + easedFactor * 0.15;
+            const opacity = easedFactor;
+            const translateY = (1 - easedFactor) * 80;
+            const translateZ = (1 - easedFactor) * -300;
+            const blur = (1 - easedFactor) * 10;
+
+            sec.style.transform = `perspective(1000px) translate3d(0, ${translateY}px, ${translateZ}px) scale(${scale})`;
+            sec.style.opacity = opacity;
+            sec.style.filter = `blur(${blur}px)`;
+        });
+
+        // 3D Experience Timeline Curvature (World Effect)
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        const screenCenter = window.innerHeight / 2;
+        
+        timelineItems.forEach((item, index) => {
+            const rect = item.getBoundingClientRect();
+            const itemCenter = rect.top + rect.height / 2;
+            const deltaY = itemCenter - screenCenter;
+            
+            // Normalize distance based on half viewport height
+            const maxDistance = window.innerHeight * 0.6;
+            const ratio = Math.max(-1.5, Math.min(1.5, deltaY / maxDistance));
+            
+            // If the item is close to the center, mark it as active
+            if (Math.abs(deltaY) < rect.height / 2 + 50) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+            
+            // 3D Spherical/Fish-eye Curve Calculations (World Effect)
+            const maxAngle = window.innerWidth < 768 ? 18 : 28; // degrees
+            const maxZ = window.innerWidth < 768 ? -120 : -200; // px
+            const maxXShift = window.innerWidth < 768 ? 30 : 0; // px (on mobile, curve towards center; on desktop, perfectly centered)
+            
+            const angleX = ratio * maxAngle;
+            const radCurve = (ratio * Math.PI) / 2;
+            
+            // Calculate spherical coordinates
+            const cosRad = Math.cos(radCurve);
+            const sinRad = Math.sin(radCurve);
+            
+            const z = (cosRad - 1) * Math.abs(maxZ);
+            const xShift = (1 - cosRad) * maxXShift;
+            const yShift = sinRad * 35;
+            
+            // Rotation Y: wraps around the globe (opposite directions for left and right cards to face center)
+            const isLeft = window.innerWidth < 768 ? false : (index % 2 === 0);
+            const angleY = (1 - cosRad) * 12 * (isLeft ? 1 : -1);
+            
+            // Opacity & Scale
+            const opacity = 1 - Math.max(0, Math.min(1, Math.abs(ratio) * 0.7));
+            const scale = 1 - Math.max(0, Math.min(0.2, Math.abs(ratio) * 0.15));
+            const blur = Math.max(0, Math.abs(ratio) * 4 - 0.5);
+            
+            // Apply 3D Transform to the entire timeline item
+            item.style.transform = `perspective(1200px) translate3d(${xShift}px, ${yShift}px, ${z}px) rotateX(${-angleX}deg) rotateY(${angleY}deg) scale(${scale})`;
+            item.style.opacity = opacity;
+            item.style.filter = `blur(${blur}px)`;
+        });
+
+        // 3D Literal Timeline Line Curvature (Fish-eye segments)
+        const segments = document.querySelectorAll('.timeline-curve-segment');
+        segments.forEach((seg) => {
+            const rect = seg.getBoundingClientRect();
+            const segCenter = rect.top + rect.height / 2;
+            const deltaY = segCenter - screenCenter;
+            
+            const maxDistance = window.innerHeight * 0.6;
+            const ratio = Math.max(-1.5, Math.min(1.5, deltaY / maxDistance));
+            
+            const maxAngle = window.innerWidth < 768 ? 18 : 28;
+            const maxZ = window.innerWidth < 768 ? -120 : -200;
+            const maxXShift = window.innerWidth < 768 ? 30 : 0;
+            
+            const angleX = ratio * maxAngle;
+            const radCurve = (ratio * Math.PI) / 2;
+            
+            const cosRad = Math.cos(radCurve);
+            const sinRad = Math.sin(radCurve);
+            
+            const z = (cosRad - 1) * Math.abs(maxZ);
+            const xShift = (1 - cosRad) * maxXShift;
+            const yShift = sinRad * 35;
+            
+            // Apply 3D Transform to the segment
+            seg.style.transform = `perspective(1200px) translate3d(${xShift}px, ${yShift}px, ${z}px) rotateX(${-angleX}deg)`;
+            
+            // Dynamic color/glow based on proximity to center
+            const absDelta = Math.abs(deltaY);
+            if (absDelta < 180) {
+                const factor = 1 - (absDelta / 180);
+                seg.style.backgroundColor = `var(--accent)`;
+                seg.style.boxShadow = `0 0 ${8 * factor}px var(--accent-glow)`;
+                seg.style.opacity = 0.2 + 0.6 * factor;
+            } else {
+                seg.style.backgroundColor = `rgba(255, 255, 255, 0.2)`;
+                seg.style.boxShadow = `none`;
+                seg.style.opacity = Math.max(0.05, 0.2 - (absDelta - 180) / 1000);
+            }
+        });
+
+        renderer.render(scene, camera);
+    }
+
+    animate();
+
+    // Handle Resize
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        setupTimelineLine();
+    });
+}
+
+// Initialize when valid
+window.addEventListener("DOMContentLoaded", initThreeJS);
