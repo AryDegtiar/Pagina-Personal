@@ -1,16 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./assests/images/icon.ico">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!--    iconos boostrap   -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
+    <!-- Google Fonts 2026 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .old-pc {
+            width: 120px;
+            height: 140px;
+            background: #222;
+            border: 4px solid #111;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 8px;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .old-pc .screen {
+            width: 100%;
+            height: 60%;
+            background: #333;
+            overflow: hidden;
+            border: 2px solid #111;
+            border-radius: 4px;
+        }
+
+        .old-pc .bar {
+            height: 100%;
+            width: 0%;
+            background: var(--accent);
+            animation: pc-load 2s linear infinite;
+        }
+
+        .old-pc .label {
+            margin-top: 6px;
+            font-family: "Outfit", sans-serif;
+            color: var(--accent);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .old-pc .label .cursor {
+            animation: blink 1s step-start infinite;
+            margin-left: 4px;
+        }
+
+        @keyframes pc-load {
+            0% {
+                width: 0%;
+                background: #555;
+            }
+
+            50% {
+                background: #555;
+            }
+
+            100% {
+                width: 100%;
+                background: var(--accent);
+            }
+        }
+    </style>
     <!--    particulas   -->
     <link rel="stylesheet" href="plugins/particles/css/style.css">
 
@@ -27,487 +97,505 @@
 
     <title>Ary Degtiar</title>
 </head>
+
 <body>
     <!-- loading -->
     <div id="loading">
-        <div class="spinner-border text-orange" role="status">
-          <span class="sr-only">Loading...</span>
+        <div class="old-pc">
+            <div class="screen">
+                <div class="bar"></div>
+            </div>
+            <div class="label">Loading<span class="cursor">█</span></div>
         </div>
     </div>
 
-<div class="d-flex" id="wrapper">
+    <!-- Floating Navbar (2026 Style) -->
+    <nav class="floating-navbar">
+        <a href="#inicio">Inicio</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#conocimientos">Habilidades</a>
+        <a href="#sobre-mi">Perfil</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
 
-    <!-- Sidebar -->
-    <div class="border-right text-center no-seleccionable p-fixed" id="sidebar-wrapper">
-        <button class="btn btn-light flotante" id="menu-toggle" onclick="toggle()"><i class="bi bi-list"></i></button>
-        
-        <div class="bg-black navbar-logo w-100">
-            <img src="./assests/images/logo.png" alt="" class="navbar-logo">
+    <!-- ThreeJS Canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- section inicio -->
+    <section id="inicio" class="d-flex align-items-center overflow-hidden position-relative" style="min-height: 100vh;">
+        <div class="container px-4 position-relative z-1">
+            <div class="row w-100 justify-content-center">
+                <div class="col-12 col-md-10 text-center" data-aos="fade-in" data-aos-duration="1500">
+                    <h1 class="text-white mb-2"
+                        style="font-family: 'Outfit'; font-weight: 800; font-size: clamp(3rem, 8vw, 7rem); letter-spacing: -3px; line-height: 1;">
+                        Ary<span class="text-accent">.</span>
+                    </h1>
+                    <p class="text-muted fs-4 mb-5 mx-auto cli-cursor"
+                        style="font-weight: 300; font-family: monospace;">
+                        guest@ary:~$ Software Engineer
+                    </p>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="list-group list-group-flush mt-5 pt-5">
-            <ul class="navbar-nav" style="line-height : 2rem; font-size: 1rem;">
-                <li class="nav-item">
-                    <a href="#inicio" class="nav-link nav-border-button nav-border-top" onclick="toggle()">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#portafolio" class="nav-link nav-border-button nav-border-top" onclick="toggle()">Portafolio</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#conocimientos" class="nav-link nav-border-button" onclick="toggle()">Habilidades</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#sobre-mi" class="nav-link nav-border-button" onclick="toggle()">Sobre mi</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contacto" class="nav-link nav-border-button" onclick="toggle()">Contacto</a>
-                </li>
-            </ul>
-            
-            <div class="mt-4">
-                <a href="https://www.linkedin.com/in/arydegtiar/" target="_blank" class="p-2"><i class="bi bi-linkedin text-grey hover-text-white"></i></a>
-                <a href="https://github.com/AryDegtiar" target="_blank" class="p-2"><i class="bi bi-github text-grey hover-text-white"></i></a>
-                <a href="https://drive.google.com/file/d/1bsggzVcRtcb5KFtFETALGr76SZrT-ePD/view?usp=sharing" target="_blank" class="p-2"><i class="bi bi-file-earmark-person-fill text-grey hover-text-white"></i></a>
+
+    <!-- section experiencia (Línea de tiempo 3D) -->
+    <section id="experiencia" class="py-5 no-seleccionable timeline-section">
+        <div class="container px-4 mt-5">
+            <h1 class="text-size-5 fw-bold text-white mb-2" style="font-family: monospace;">➜ ~ <span
+                    class="text-accent">cat</span> ./experiencia.sh</h1>
+            <p class="text-muted mb-5 cli-cursor" style="font-family: monospace;">Reading professional history... 6
+                active checkpoints found (~5 years of experience).</p>
+
+            <div class="timeline-container">
+                <!-- Timeline curved line container (dynamically populated in JS) -->
+                <div class="timeline-curved-line-container"></div>
+
+                <div class="timeline-wrapper">
+                    <!-- Checkpoint 1: Mercado Libre -->
+                    <div class="timeline-item" style="--term-title: 'zsh — mercadolibre@server';">
+                        <div class="timeline-checkpoint">
+                            <span class="checkpoint-glow"></span>
+                        </div>
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-card card b-glass">
+                            <div class="card-body p-4">
+                                <span class="badge text-uppercase text-accent mb-2"
+                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Ingeniero
+                                    de Software</span>
+                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">Mercado Libre
+                                </h4>
+                                <div class="text-accent small mb-3" style="font-family: monospace;">sept. 2025 -
+                                    actualidad · 9 meses</div>
+                                <p class="text-muted small mt-2">
+                                    • <strong>Diseño y escala</strong> de microservicios críticos en Java y Spring Boot,
+                                    optimizando el rendimiento para soportar millones de transacciones diarias con alta
+                                    concurrencia.<br>
+                                    • <strong>Optimización de persistencia</strong> en bases de datos relacionales y
+                                    NoSQL distribuidas, garantizando baja latencia y alta disponibilidad.<br>
+                                    • <strong>Refactorización de APIs REST</strong>, reduciendo tiempos de respuesta y
+                                    mejorando la mantenibilidad del backend.<br>
+                                    • <strong>Colaboración activa</strong> en células ágiles de alta performance bajo
+                                    metodologías DevOps y estándares de entrega continua.
+                                </p>
+                                <div class="meli-images-container d-flex gap-2 mt-3">
+                                    <img src="./assests/images/meli_1.jpg" class="rounded meli-img"
+                                        alt="Mercado Libre Team 1">
+                                    <img src="./assests/images/meli_2.jpg" class="rounded meli-img"
+                                        alt="Mercado Libre Team 2">
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mt-3">
+                                    <div class="tech-stack-icons d-flex gap-2">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg"
+                                            height="24" title="Go / Golang">
+                                    </div>
+                                    <span class="text-muted small" style="font-family: monospace;">Buenos Aires,
+                                        AR</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checkpoint 2: EPAM Systems -->
+                    <div class="timeline-item" style="--term-title: 'zsh — epam@server';">
+                        <div class="timeline-checkpoint">
+                            <span class="checkpoint-glow"></span>
+                        </div>
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-card card b-glass">
+                            <div class="card-body p-4">
+                                <span class="badge text-uppercase text-accent mb-2"
+                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Java
+                                    Software Engineer Ssr</span>
+                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">EPAM Systems -
+                                    Claro</h4>
+                                <div class="text-accent small mb-3" style="font-family: monospace;">abr. 2025 - sept.
+                                    2025 · 6 meses</div>
+                                <p class="text-muted small mt-2">
+                                    • <strong>Desarrollo e integración</strong> de microservicios robustos en Java y
+                                    Spring Boot para Claro, asegurando la escalabilidad del ecosistema de
+                                    telecomunicaciones.<br>
+                                    • <strong>Optimización de pipelines</strong> de CI/CD, reduciendo fricciones y
+                                    acelerando los ciclos de entrega de software en producción.<br>
+                                    • <strong>Coordinación técnica presencial</strong> y remota directa con stakeholders
+                                    de Claro para alinear especificaciones de negocio y arquitectura.
+                                </p>
+                                <div class="epam-images-container mt-3">
+                                    <img src="./assests/images/claro.jpg" class="rounded epam-img w-100"
+                                        alt="EPAM Claro Team">
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mt-3">
+                                    <div class="tech-stack-icons d-flex gap-2">
+                                        <img src="./assests/images/javaLogo.png" height="24" title="Java">
+                                    </div>
+                                    <span class="text-muted small" style="font-family: monospace;">Remoto / Buenos
+                                        Aires, AR</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checkpoint 3: Q&R Solutions -->
+                    <div class="timeline-item" style="--term-title: 'zsh — qr_solutions@server';">
+                        <div class="timeline-checkpoint">
+                            <span class="checkpoint-glow"></span>
+                        </div>
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-card card b-glass">
+                            <div class="card-body p-4">
+                                <span class="badge text-uppercase text-accent mb-2"
+                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Dev
+                                    Backend JAVA</span>
+                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">Q&R Solutions -
+                                    RedRemax</h4>
+                                <div class="text-accent small mb-3" style="font-family: monospace;">jun. 2024 - may.
+                                    2025 · 1 año</div>
+                                <p class="text-muted small mt-2">
+                                    • <strong>Desarrollo backend</strong> centrado en arquitecturas de microservicios en
+                                    Java, mejorando el rendimiento de las plataformas que dan soporte a RedRemax.<br>
+                                    • <strong>Diseño, modelado y optimización</strong> de bases de datos relacionales
+                                    SQL, acelerando consultas complejas y la generación de reportes inmobiliarios.<br>
+                                    • <strong>Participación en el ciclo completo</strong> (SDLC) de desarrollo de
+                                    software para aplicaciones internas de alta operatividad.
+                                </p>
+                                <div class="qr-images-container mt-3">
+                                    <img src="./assests/images/qr1.png" class="rounded qr-img w-100"
+                                        alt="Q&R Solutions Year End">
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mt-3">
+                                    <div class="tech-stack-icons d-flex gap-2">
+                                        <img src="./assests/images/javaLogo.png" height="24" title="Java">
+                                    </div>
+                                    <span class="text-muted small" style="font-family: monospace;">Jornada
+                                        completa</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checkpoint 4: Sistemas Activos SRL -->
+                    <div class="timeline-item" style="--term-title: 'zsh — sistemas_activos@server';">
+                        <div class="timeline-checkpoint">
+                            <span class="checkpoint-glow"></span>
+                        </div>
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-card card b-glass">
+                            <div class="card-body p-4">
+                                <span class="badge text-uppercase text-accent mb-2"
+                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Desarrollador
+                                    Backend Java - Spring Boot</span>
+                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">Sistemas
+                                    Activos SRL - BBVA</h4>
+                                <div class="text-accent small mb-3" style="font-family: monospace;">feb. 2023 - jun.
+                                    2024 · 1 año 5 meses</div>
+                                <p class="text-muted small mt-2">
+                                    • <strong>Desarrollo y mantenimiento</strong> de componentes de backend y APIs
+                                    robustas con Spring Boot para BBVA.<br>
+                                    • <strong>Automatización de despliegues</strong> mediante la creación de scripts en
+                                    Python e integración en flujos de CI/CD con Jenkins, optimizando tiempos de
+                                    release.<br>
+                                    • <strong>Integración de servicios externos</strong> y desarrollo de lógica de
+                                    negocio compleja para procesamiento de datos financieros.
+                                </p>
+                                <div class="sa-images-container mt-3">
+                                    <img src="./assests/images/año_nuevo.jpg" class="rounded sa-img w-100"
+                                        alt="Sistemas Activos Year End">
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mt-3">
+                                    <div class="tech-stack-icons d-flex gap-2 text-white align-items-center">
+                                        <img src="./assests/images/javaLogo.png" height="24" title="Java">
+                                    </div>
+                                    <span class="text-muted small" style="font-family: monospace;">Remoto / Buenos
+                                        Aires, AR</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checkpoint 5: Freelance -->
+                    <div class="timeline-item" style="--term-title: 'zsh — freelance@server';">
+                        <div class="timeline-checkpoint">
+                            <span class="checkpoint-glow"></span>
+                        </div>
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-card card b-glass">
+                            <div class="card-body p-4">
+                                <span class="badge text-uppercase text-accent mb-2"
+                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Desarrollador
+                                    de páginas web</span>
+                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">Freelance (Self
+                                    employed)</h4>
+                                <div class="text-accent small mb-3" style="font-family: monospace;">ene. 2022 - may.
+                                    2024 · 2 años 5 meses</div>
+                                <p class="text-muted small mt-2">
+                                    • <strong>Diseño e implementación</strong> de soluciones web a medida utilizando
+                                    React, HTML5, CSS3 y JavaScript para clientes locales y extranjeros.<br>
+                                    • <strong>Optimización del performance</strong> y velocidad de carga, garantizando
+                                    maquetación responsive, accesibilidad y excelente experiencia de usuario (UX).<br>
+                                    • <strong>Gestión integral del ciclo de vida</strong>, desde la toma de
+                                    requerimientos y diseño de interfaz hasta el hosting y despliegue final.
+                                </p>
+                                <div class="d-flex align-items-center justify-content-end mt-3">
+                                    <span class="text-muted small" style="font-family: monospace;">Remoto / Buenos
+                                        Aires, AR</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checkpoint 6: Maxirest -->
+                    <div class="timeline-item" style="--term-title: 'zsh — maxirest@server';">
+                        <div class="timeline-checkpoint">
+                            <span class="checkpoint-glow"></span>
+                        </div>
+                        <div class="timeline-connector"></div>
+                        <div class="timeline-card card b-glass">
+                            <div class="card-body p-4">
+                                <span class="badge text-uppercase text-accent mb-2"
+                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Especialista
+                                    en Soporte Técnico</span>
+                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">MAXIREST</h4>
+                                <div class="text-accent small mb-3" style="font-family: monospace;">dic. 2020 - ene.
+                                    2022 · 1 año 1 mes</div>
+                                <p class="text-muted small mt-2">
+                                    • <strong>Soporte técnico especializado</strong> y mantenimiento de software crítico
+                                    en entornos gastronómicos comerciales de alta demanda.<br>
+                                    • <strong>Resolución eficiente de incidencias</strong> y depuración de consultas de
+                                    base de datos SQL para asegurar la continuidad de negocio de los clientes.<br>
+                                    • <strong>Gestión de infraestructura</strong>, redes y configuraciones locales/cloud
+                                    para garantizar la estabilidad de los sistemas POS.
+                                </p>
+                                <div class="d-flex align-items-center justify-content-end mt-3">
+                                    <span class="text-muted small" style="font-family: monospace;">Buenos Aires,
+                                        AR</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
         </div>
-    </div>
-    <!-- /#sidebar-wrapper -->
-    
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-    
-        <!-- particles.js container -->
-        <div id="particles-js"></div>
+    </section>
 
-        <!-- section inicio -->
-        <section id="inicio" class="d-flex align-items-center text-white">
-            <div class="container">
-                
-                <p class="p-animated no-seleccionable">
-                    <span class="text-size-7 span-animated">Hola,</span>
-                    <span class="text-size-7 span-animated">Soy Ary</span>
-                    <span class="text-size-5 span-animated">Desarrollador web</span>
-                    <span class="text-grey" style="font-size: 1.3rem;"> Backend - Frontend developer </span>
-                </p>
-                <!-- BTN DE CONTACTO
-                <a href="#contacto"><button class="btn btn-success" style="position: absolute;">Contactame</button></a>
-                -->
-            </div>
-        </section>
-    
+    <!-- section conocimientos -->
+    <section id="conocimientos" class="no-seleccionable w-100">
+        <div class="text-white d-flex align-items-center w-100 justify-content-center py-5" style="min-height: 100vh;">
+            <div class="row w-100" style="position: relative;">
+                <h1 class="col-12 text-size-5 fw-bold d-flex justify-content-center w-100 mb-4"
+                    style="font-family: monospace;">
+                    ➜ &nbsp;~ <span class="text-accent">&nbsp;node&nbsp;</span> skills.js</h1>
 
-        <!-- section portafolio -->
-        <section id="portafolio" class="pb-4 no-seleccionable">
-            <div class="text-white px-4">
-                <h1 class="text-size-5 fw-bold text-white p-lg-5 pb-lg-0 p-4 pt-5 ps-0 pb-0" data-aos="fade-right">Portafolio</h1>
-                <p class="text-grey pb-0 pt-1 ps-lg-5 pt-lg-3" data-aos="fade-right">Toque en cada etiqueta para ver en el GitHub la explicacion del proyecto</p>
-                <!--<h1 class="text-size-5 fw-bold p-lg-5 p-4 ps-2">Portafolio</h1>-->
-                <!-- proyectos -->
-                <div class="row d-md-flex flex-md-equal w-100 m-0 p-0">
-                    <div class="col-12 col-md-4 p-0 m-0 pt-3 p-lg-2 m-lg-0 item-portafolio">
-                        <div class="bg-purple text-center overflow-hidden tamanioItemPortafolio" data-aos="fade-up">
-                            <div class="my-3 py-3">
-                                <h2 class="text-white display-5">Microservicios</h2>
-                                <p class="text-white lead">Java Toolkit Microservicios</p>
-                            </div>
-                            <div class="bg-light shadow-sm mx-auto preview-portafolio" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0; position:relative;">
-                                <img src="./assests/images/imgGrafana.jpg" alt="" style="width: 100%; border-radius: 21px 21px 0 0;">
-                                <div class="overlay bg-dark" style="width: 100%; border-radius: 21px 21px 0 0;">
-                                    <div class="overlay bg-dark" style="width: 100%; border-radius: 21px 21px 0 0;">
-                                        <div class="p-4 d-flex align-items-center flex-wrap justify-content-center h-100">
-                                            <div class="w-100">
-                                                <!--<a href="https://drive.google.com/file/d/1JLuiVKfqbwjkrK3Z5-DECVSsx5NLgE-Q/view?usp=sharing" target="_blank" class="btn btn-success m-2">Ver proyecto</a>-->
-                                                <a href="https://github.com/AryDegtiar/Java-Microservices-Toolkit-SA" target="_blank" class="btn btn-success"> <img src="./assests/images/logoGitHub.png" alt="" style="width: 20px;"> </a>
-                                            </div>
-                                            <p class="pt-">
-                                                Microservicios, BFF, Tomcat + thymeleaf, <br>
-                                                Reactor Core, Basic Auth, <br>
-                                                Actuator, Grafana, JPA, JDBC
-                                            </p>
-                                            <div class="w-100">
-                                                <img src="./assests/images/spring.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
-                                                <img src="./assests/images/javaLogo.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
-                                                <img src="./assests/images/thymeleaflogo.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
-                                                <img src="./assests/images/tomcatlogo.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
-                                                <img src="./assests/images/grafanalogo.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="col-12 pt-3 f-wrap justify-content-center">
+                    <div class="c1 rounded-4">
+                        <!-- Minimal macOS Window Dots -->
+                        <div class="window-dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
                         </div>
-                    </div>
 
-                    <div class="col-12 col-md-4 p-0 m-0 pt-3 p-lg-2 m-lg-0 item-portafolio">
-                        <div class="bg-light-gray text-center overflow-hidden tamanioItemPortafolio" data-aos="fade-up">
-                            <div class="my-3 py-3">
-                                <h2 class="text-dark display-5">Busca Recetas</h2>
-                                <p class="text-dark lead">Realizado para un proyecto SCRUM</p>
-                            </div>
-                            <div class="bg-light shadow-sm mx-auto preview-portafolio" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0; position:relative;">
-                                <img src="./assests/images/imgRecetas.jpg" alt="" style="width: 100%; border-radius: 21px 21px 0 0;">
-                                <div class="overlay bg-dark" style="width: 100%; border-radius: 21px 21px 0 0;">
-                                    <div class="overlay bg-dark" style="width: 100%; border-radius: 21px 21px 0 0;">
-                                        <div class="p-4 d-flex align-items-center flex-wrap justify-content-center h-100">
-                                            <div class="w-100">
-                                                <!-- <a href="https://drive.google.com/file/d/1JLuiVKfqbwjkrK3Z5-DECVSsx5NLgE-Q/view?usp=sharing" target="_blank" class="btn btn-success m-2">Ver proyecto</a> -->
-                                                <a href="https://github.com/AryDegtiar/tpScrumRecetas.git" target="_blank" class="btn btn-success"> <img src="./assests/images/logoGitHub.png" alt="" style="width: 20px;"> </a>
-                                            </div>
-                                            <p class="pt-">
-                                                En conjunto con un equipo<br>
-                                                de desarrollo, se realizo en 2 dias<br>
-                                                bajo practicas SCRUM
-                                            </p>
-                                            <div class="w-100">
-                                                <img src="./assests/images/spring.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
-                                                <img src="./assests/images/javaLogo.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
-                                                <img src="./assests/images/mysql.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
-                                                <img src="./assests/images/reactlogo.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
-                                            </div>
-                                        </div>
-                                    </div>
+                        <!-- Editor area -->
+                        <div class="editor-area">
+                            <div class="machine" style="visibility: hidden;">
+                                <div class="machine-line"><span class="text-keyword">const</span> <span
+                                        class="text-variable">skills</span> = {</div>
+                                <div class="machine-line">&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                        class="text-property">languages:</span> [ <span class="text-value">java</span>,
+                                    <span class="text-value">go / golang</span> ],
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-4 p-0 m m-0 pt-3 p-lg-2 m-lg-0 item-portafolio">
-                        <div class="bg-warning text-center overflow-hidden tamanioItemPortafolio" data-aos="fade-up">
-                            <div class="my-3 py-3">
-                                <h2 class="text-dark display-5">Tienda ecommerce</h2>
-                                <p class="text-dark lead">Proyecto final del curso fullstack UTN</p>
-                            </div>
-                            <div class="bg-light shadow-sm mx-auto preview-portafolio" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0; position:relative;">
-                                <img src="./assests/images/karmashop.png" alt="" style="width: 100%; border-radius: 21px 21px 0 0;">
-                                <div class="overlay bg-dark" style="width: 100%; border-radius: 21px 21px 0 0;">
-                                    <div class="p-4 d-flex align-items-center flex-wrap justify-content-center h-100">
-                                        <div class="w-100">
-                                            <a href="https://drive.google.com/file/d/1M_6wAJSJnBbdDw9ftTbp34vzg98Y7Nf_/view?usp=share_link" target="_blank" class="btn btn-success m-2">Ver proyecto</a>
-                                            <a href="https://github.com/AryDegtiar/TPCAPGEMINI" target="_blank" class="btn btn-success"> <img src="./assests/images/logoGitHub.png" alt="" style="width: 20px;"> </a>
-                                        </div>
-                                        <p class="w-100">
-                                            Conexion base de datos <br>
-                                            Autenticacion de usuarios <br>
-                                            Carrito e historial de compras <br>
-                                            CRUD de productos, categorias, usuarios <br>
-                                        </p>
-                                        <div>
-                                            <img src="./assests/images/spring.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
-                                            <img src="./assests/images/javaLogo.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
-                                            <img src="./assests/images/mysql.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
-                                            <img src="./assests/images/angular.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
-                                            <img src="./assests/images/boostrapLogo.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
-                                        </div>
-                                    </div>
+                                <div class="machine-line">&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                        class="text-property">backend:</span> [ <span class="text-value">spring
+                                        boot</span>, <span class="text-value">rest apis</span>, <span
+                                        class="text-value">microservices</span>, <span
+                                        class="text-value">hibernate</span> ],</div>
+                                <div class="machine-line">&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                        class="text-property">databases:</span> [ <span
+                                        class="text-value">postgresql</span>, <span class="text-value">mongodb</span>,
+                                    <span class="text-value">sql</span>, <span class="text-value">qkvs</span> ],
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4 p-0 m-0 pt-3 p-lg-2 m-lg-0 item-portafolio">
-                        <div class="bg-green text-center overflow-hidden text-dark tamanioItemPortafolio" data-aos="fade-up">
-                            <div class="my-3 p-3">
-                                <h2 class="text-white display-5">Compasso</h2>
-                                <p class="text-white lead">Fabrica de resistencias</p>
-                            </div>
-                            <div class="bg-light shadow-sm mx-auto preview-portafolio" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0; position:relative;">
-                                <img src="./assests/images/compasso.png" alt="" style="width: 100%; border-radius: 21px 21px 0 0;">
-                                <div class="overlay bg-dark" style="width: 100%; border-radius: 21px 21px 0 0;">
-                                    <div class="p-4 d-flex align-items-center flex-wrap justify-content-center h-100">
-                                        <div class="w-100">
-                                            <a href="https://drive.google.com/file/d/1JxSdsNe-LjHq3ljnCIGQ-xT0kl7UoKcg/view?usp=sharing" target="_blank" class="btn btn-success m-2">Ver proyecto</a>
-                                            <a href="https://github.com/AryDegtiar/Compasso-JAVA" target="_blank" class="btn btn-success"> <img src="./assests/images/logoGitHub.png" alt="" style="width: 20px;"> </a>
-                                        </div>
-                                        <p class="w-100 text-white">
-                                            Conexion base de datos <br>
-                                            Autenticacion de usuarios <br>
-                                            CRUD de productos<br>
-                                        </p>
-                                        <div>
-                                            <img src="./assests/images/spring.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
-                                            <img src="./assests/images/javaLogo.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
-                                            <img src="./assests/images/mysql.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
-                                            <img src="./assests/images/angular.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
-                                            <img src="./assests/images/boostrapLogo.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>  
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-4 p-0 m-0 pt-3 p-lg-2 m-lg-0 item-portafolio">
-                        <div class="bg-orange text-center overflow-hidden text-dark tamanioItemPortafolio" data-aos="fade-up">
-                            <div class="my-3 p-3">
-                                <h2 class="text-dark display-5">Web personal</h2>
-                                <p class="text-dark lead">Construccion de mi propia pagina web</p>
-                            </div>
-                            <div class="bg-light shadow-sm mx-auto preview-portafolio" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0; position:relative;">
-                                <img src="./assests/images/webPersonal.png" alt="" style="width: 100%; border-radius: 21px 21px 0 0;">
-                                <div class="overlay bg-dark" style="width: 100%; border-radius: 21px 21px 0 0;">
-                                    <div class="p-4 d-flex align-items-center flex-wrap justify-content-center h-100">
-                                        <div class="w-100">
-                                            <a href="https://arydegtiar.com.ar/" target="_blank" class="btn btn-success m-2">Ver proyecto</a>
-                                            <a href="https://github.com/AryDegtiar/Pagina-Personal" target="_blank" class="btn btn-success"> <img src="./assests/images/logoGitHub.png" alt="" style="width: 20px;"> </a>
-                                        </div>
-                                        <p class="pt-2 text-white">
-                                            Pagina web personal <br>
-                                            front end
-                                        </p>
-                                        <div class="w-100">
-                                            <img src="./assests/images/boostrapLogo.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
-                                            <img src="./assests/images/jsLogo.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-4 p-0 m-0 pt-3 p-lg-2 m-lg-0 item-portafolio">
-                        <div class="bg-primary text-center overflow-hidden tamanioItemPortafolio" data-aos="fade-up">
-                            <div class="my-3 py-3">
-                                <h2 class="text-white display-5">Paradigma PC</h2>
-                                <p class="text-white lead">Aplicacion movil para asesoramiento</p>
-                            </div>
-                            <div class="bg-light shadow-sm mx-auto preview-portafolio" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0; position:relative;">
-                                <img src="./assests/images/paradigmaPc.jpg" alt="" style="width: 100%; border-radius: 21px 21px 0 0;">
-                                <div class="overlay bg-dark" style="width: 100%; border-radius: 21px 21px 0 0;">
-                                    <div class="overlay bg-dark" style="width: 100%; border-radius: 21px 21px 0 0;">
-                                        <div class="p-4 d-flex align-items-center flex-wrap justify-content-center h-100">
-                                            <div class="w-100">
-                                                <a href="https://drive.google.com/file/d/1JLuiVKfqbwjkrK3Z5-DECVSsx5NLgE-Q/view?usp=sharing" target="_blank" class="btn btn-success m-2">Ver proyecto</a>
-                                                <a href="https://github.com/AryDegtiar/ParadigmaPC" target="_blank" class="btn btn-success"> <img src="./assests/images/logoGitHub.png" alt="" style="width: 20px;"> </a>
-                                            </div>
-                                            <p class="pt-">
-                                                Aplicacion front end para <br> 
-                                                asesoramiento de computadoras
-                                            </p>
-                                            <div class="w-100">
-                                                <img src="./assests/images/androidStudioLogo.png" alt="" class="mx-1" style="width: 40px; height: 40px;">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="machine-line">&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                        class="text-property">architecture:</span> [ <span class="text-value">clean
+                                        architecture</span>, <span class="text-value">solid</span>, <span
+                                        class="text-value">ddd</span> ],</div>
+                                <div class="machine-line">&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                        class="text-property">tools:</span> [ <span class="text-value">git</span>, <span
+                                        class="text-value">docker</span>, <span class="text-value">aws</span>, <span
+                                        class="text-value">postman</span> ]</div>
+                                <div class="machine-line">};</div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        
-        <!-- section conocimientos -->
-        <section id="conocimientos" class="no-seleccionable w-100">
-            <div class="text-white  d-flex align-items-center w-100 justify-content-center" style="height: 100vh;">
-                <div class="row w-100" style="position: relative;">
-                    <h1 class="col-12 text-size-5 fw-bold d-flex justify-content-center w-100" data-aos="fade-down">Habilidades</h1>
-
-                        <div class="col-12 pt-5 f-wrap justify-content-center">
-                            <div class="c1">
-                                <div class="machine"><span class="text-primary-emphasis">const</span> <span class="text-success-emphasis">skills</span> = {</div>
-                                <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">languages:</span> <span class="text-warning">[ java, javascript, python, c# ]</span>,</div>
-                                <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">frameworks:</span> <span class="text-warning">[ spring, angular, hibernate ]</span>,</div>
-                                <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">layout:</span> <span class="text-warning">[ bootstrap, html, css ]</span>,</div>
-                                <div class="machine"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-info">design:</span> <span class="text-warning">[ photoshop, illustrator ]</span></div>
-                                <div class="machine">};<span class="blink">|</span></div>
-                            </div>
-                        </div>
-
-                </div>
 
             </div>
-        </section>
 
-        <!-- section sobre mi -->
-        <section id="sobre-mi" class="pb-4 no-seleccionable">
-            <div class="px-4">
-                <h1 class="text-size-5 fw-bold text-white p-lg-5 pb-lg-0 p-4 ps-0 pb-0" data-aos="fade-right">Sobre mi</h1>
-                <p class="text-grey pb-2 pt-1 ps-lg-5 pt-lg-3" data-aos="fade-right">Toque en cada etiqueta para ver la informacion</p>
-                <!-- items -->
-                <div class="row m-0 p-0">
+        </div>
+    </section>
 
-                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
-                        <div class="card-flip">
-                            <div class="frente">
-                              <img src="./assests/images/ary1.jpg" alt="" class="w-100 h-100 of-cover">
-                            </div>
-                            <div class="dorso d-flex align-items-center container">
-                                <div class="row m-0 p-0">
-                                    <div class="col-12"><h3 class="text-dark">Presentacion</h3></div>
-                                    <div class="col-12"><p>Tengo 24 años, me gusta entender como es el funcionamiento de las cosas, en el mundo tecnologico me permitio ampliar el conocimiento aprendido de manera autodidacta</p></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
-                        <div class="card-flip">
-                            <div class="frente">
-                                <img src="./assests/images/utn.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
-                            </div>
-                            <div class="dorso d-flex align-items-center container">
-                                <div class="row m-0 p-0">
-                                    <div class="col-12"><h3 class="text-dark">Ingenieria en sistemas de informacion</h3></div>
-                                    <div class="col-12"><h6 class="text-dark">En curso</h6></div>
-                                    <div class="col-12"><p>Ya cursadas las materias de algoritmos y paradigmas de programacion</p></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
-                        <div class="card-flip">
-                            <div class="frente">
-                                <img src="./assests/images/ary2.jpg" alt="" class="w-100 h-100 of-cover">
-                            </div>
-                            <div class="dorso d-flex align-items-center container">
-                                <div class="row m-0 p-0">
-                                    <div class="col-12"><h3 class="text-dark">Combinado con hardware</h3></div>
-                                    <div class="col-12"><p>A parte de la programacion web, realice proyectos personales de programacion combinado con hardware, como domotica, macropads, lista inteligente y bateria electronica</p></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
-                        <div class="card-flip">
-                            <div class="frente">
-                                <img src="./assests/images/ort.jpg" alt="" style=" width:100%; height:100%; object-fit: cover;">
-                            </div>
-                            <div class="dorso d-flex align-items-center container">
-                                <div class="row m-0 p-0">
-                                    <div class="col-12"><h3 class="text-dark">Bachiller Técnico con Orientación en TIC</h3></div>
-                                    <div class="col-12"><h6 class="text-dark">2012 - 2017</h6></div>
-                                    <div class="col-12"><p>Me permitio tener un primer acercamiento al hardware y la programacion</p></div>
-                                </div>
-                            </div>
-                        </div>
+    <!-- section sobre mi -->
+    <section id="sobre-mi" class="pb-4 no-seleccionable">
+        <div class="px-4">
+            <h1 class="text-size-5 fw-bold text-white p-lg-5 pb-lg-0 p-4 ps-0 pb-0" style="font-family: monospace;">➜
+                &nbsp;~
+                <span class="text-accent">&nbsp;./fetch_profile.sh</span>
+            </h1>
+            <p class="text-muted pb-4 pt-1 ps-lg-5 pt-lg-2 cli-cursor" style="font-family: monospace;">Fetching user
+                profile data...</p>
+            <!-- IDE / Terminal Profile Output -->
+            <div class="row m-0 p-0 justify-content-center">
+                <div class="c1 b-glass rounded-4 p-5 mt-3"
+                    style="width: 100%; max-width: 1300px; text-align: left; font-family: monospace; font-size: 1.2rem; line-height: 2.0; box-shadow: 0 0 40px rgba(0,0,0,0.5);">
+
+                    <div class="d-flex text-muted mb-4 pb-3"
+                        style="border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 0.95rem; cursor: pointer; user-select: none;">
+                        <span id="tab-readme" class="text-accent me-4 hover-text-white"
+                            onclick="switchProfileTab('readme')">✓ README.md</span>
+                        <span id="tab-edu" class="me-4 opacity-50 hover-text-white"
+                            onclick="switchProfileTab('edu')">education.yml</span>
+                        <span id="tab-hob" class="opacity-50 hover-text-white"
+                            onclick="switchProfileTab('hob')">hobbies.txt</span>
                     </div>
 
-                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
-                        <div class="card-flip">
-                            <div class="frente">
-                                <img src="./assests/images/utnJava.jpg" alt="" class="w-100 h-100 of-cover">
-                            </div>
-                            <div class="dorso d-flex align-items-center container">
-                                <div class="row m-0 p-0">
-                                    <div class="col-12"><h3 class="text-dark">Academia full stack / Java</h3></div>
-                                    <div class="col-12"><h6 class="text-dark">2022</h6></div>
-                                    <div class="col-12"><p>Fui seleccionado por Capgemini para una academia fullstack dirigida por la UTN</p></div>
-                                </div>
-                            </div>
-                        </div>
+                    <div id="content-readme" class="pe-3 profile-content" style="padding-bottom: 20px;">
+                        <span class="text-primary-emphasis fs-2 fw-bold"># Ary Degtiar</span> <br><br>
+                        <span class="text-info fw-bold">## 👤 Presentación</span><br>
+                        Tengo 26 años y siempre tuve una obsesión: entender cómo funcionan las cosas desde la raíz.
+                        La tecnología me dio el espacio ideal para convertir esa curiosidad en proyectos reales, capaces
+                        de generar resultados concretos y de alto impacto.
+                        <br><br>
+                        <span class="text-info fw-bold">## 💼 Historial Profesional</span><br>
+                        <span class="text-warning"> > Ingeniero de Software (Mercado Libre)</span> —
+                        [Actualidad]<br>
+                        <i class="opacity-75 ms-3">↳ Desarrollo de microservicios de alta disponibilidad y escalabilidad
+                            utilizando Java y Spring Boot.</i><br><br>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
-                        <div class="card-flip">
-                            <div class="frente">
-                                <img src="./assests/images/ary3.jpg" alt="" class="w-100 h-100 of-cover">
-                            </div>
-                            <div class="dorso d-flex align-items-center container">
-                                <div class="row m-0 p-0">
-                                    <div class="col-12"><h3 class="text-dark">Ultimo empleo</h3></div>
-                                    <div class="col-12"><h6 class="text-dark">Actualidad</h6></div>
-                                    <div class="col-12"><p>Desarrollador backend java en Sistemas Activos</p></div>
-                                </div>
-                            </div>
-                        </div>
+
+                    <div id="content-edu" class="pe-3 profile-content d-none" style="padding-bottom: 20px;">
+                        <span class="text-primary-emphasis fs-2 fw-bold">education:</span> <br><br>
+                        <span class="text-info fw-bold"> university:</span><br>
+                        <span class="text-warning"> name: "Ingeniería en Sistemas de Información (UTN)"</span><br>
+                        <span class="text-muted"> status: "En Curso"</span><br>
+                        <span class="text-muted"> milestones: <br> - "Algoritmos aprobados" <br> - "Paradigmas de
+                            Programación superados"</span><br><br>
+
+                        <span class="text-info fw-bold"> academy:</span><br>
+                        <span class="text-warning"> name: "Fullstack Java (Capgemini & UTN)"</span><br>
+                        <span class="text-muted"> year: 2022</span><br>
+                        <span class="text-muted"> status: "Graduado"</span><br><br>
+
+                        <span class="text-info fw-bold"> high_school:</span><br>
+                        <span class="text-warning"> name: "Bachiller Técnico con Orientación en TIC (ORT)"</span><br>
+                        <span class="text-muted"> period: "2012 - 2017"</span><br>
+                        <span class="text-muted"> note: "Primer contacto nativo con programación y hardware"</span><br>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
-                        <div class="card-flip">
-                            <div class="frente">
-                                <img src="./assests/images/saJava.png" alt="" style=" width:100%; height:100%; object-fit: cover;">
-                            </div>
-                            <div class="dorso d-flex align-items-center container">
-                                <div class="row m-0 p-0">
-                                    <div class="col-12"><h3 class="text-dark">Capacitaciones Java</h3></div>
-                                    <div class="col-12"><h6 class="text-dark">2023</h6></div>
-                                    <div class="col-12"><p>
-                                        Fui seleccionado por Sistemas Activos para capacitaciones de Java 
-                                        (Spring Boot, Microservicios, BFF, API-Rest, Spring Security)
-                                    </p></div>
-                                </div>
-                            </div>
-                        </div>
+
+                    <div id="content-hob" class="pe-3 profile-content d-none"
+                        style="padding-bottom: 20px; color: #a1a1aa;">
+                        [SYSTEM] Loading hardware bindings... OK.<br><br>
+                        <span class="text-success-emphasis">>> 🔌 HARDWARE_ROOT/PROJECTS</span><br>
+                        ├── Domótica_Home_System<br>
+                        ├── Custom_Macropads<br>
+                        ├── Listas_Inteligentes_IoT<br>
+                        └── Batería_Electrónica_Integrada<br><br>
+
+                        <span class="text-success-emphasis">>> 🧗 ANALOG_HOBBIES (Disconnect mode)</span><br>
+                        ├── Escalar (Bouldering / Rock Climbing)<br>
+                        ├── Entrenamiento / Gimnasio<br>
+                        ├── Boxeo<br>
+                        └── Surf / Skateboarding<br>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-3 flip-container p-0" style="height: 300px;" data-aos="zoom-in">
-                        <div class="card-flip">
-                            <div class="frente">
-                                <img src="./assests/images/ary4.jpg" alt="" class="w-100 h-100 of-cover">
-                            </div>
-                            <div class="dorso d-flex align-items-center container">
-                                <div class="row m-0 p-0">
-                                    <div class="col-12"><h3 class="text-dark">Hobbies</h3></div>
-                                    <div class="col-12"><p>Me gusta practicar deportes como escalar, boxeo, gimnasio y skate</p></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
+
+                    <script>
+                        function switchProfileTab(tab) {
+                            ['readme', 'edu', 'hob'].forEach(t => {
+                                document.getElementById('content-' + t).classList.add('d-none');
+                                let tabEl = document.getElementById('tab-' + t);
+                                tabEl.classList.remove('text-accent');
+                                tabEl.classList.add('opacity-50');
+                                tabEl.innerText = tabEl.innerText.replace('✓ ', '');
+                            });
+                            document.getElementById('content-' + tab).classList.remove('d-none');
+                            let activeTab = document.getElementById('tab-' + tab);
+                            activeTab.classList.remove('opacity-50');
+                            activeTab.classList.add('text-accent');
+                            activeTab.innerText = '✓ ' + activeTab.innerText;
+                        }
+                    </script>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- section contacto -->
-        <section id="contacto" class="no-seleccionable">
-            
-                <!-- formulario -->
-                <div class="row m-0 d-flex align-items-center text-white">
-                    <div class="col-12 col-lg-6 py-5 pt-lg-0 px-lg-5" data-aos="fade-right">
-                        
-                        <h1 class="text-size-5 fw-bold p-3">Contacto</h1>
+    <!-- section contacto -->
+    <section id="contacto" class="no-seleccionable">
 
-                        <p class="px-3">Estoy ansioso por trabajar en un nuevo proyecto. ¡No dudes en contactarme si necesitas ayuda!</p>
+        <!-- formulario -->
+        <div class="row m-0 d-flex align-items-center text-white">
+            <div class="col-12 col-lg-6 py-5 pt-lg-0 px-lg-5" data-aos="fade-right">
 
-                        <form action="gracias.html" name="contacto" netlify>
-                            <div class="row container w-100 p-0 m-0 g-2">
-                                <div class="col-12 col-md-6">    
-                                    <input placeholder="Nombre" type="text" class="form-control input" id="nombre" name="nombre">
-                                </div>
-                                <div class="col-12 col-md-6 ">
-                                    <input placeholder="Email" type="text" class="form-control input" id="email" name="email">
-                                </div>
-                                <div class="col-12">
-                                    <input placeholder="Asunto" type="text" class="form-control input" id="mensaje" name="asunto">
-                                </div>
-                                <div class="col-12">
-                                    <textarea placeholder="Escribe tu mensaje..." id="mensaje" name="mensaje" class="form-control input w-100" style="min-height: 100px;"></textarea>
-                                </div>
-                                <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary mt-2 py-2 px-4" style="background-color: #de682d; border:none;">Enviar mensaje</button>
-                                </div>
-                            </div>
-                        </form>
+                <h1 class="text-size-5 fw-bold p-3" style="font-family: monospace;">➜ ~ <span
+                        class="text-accent">mail</span> -s "Contacto" root@ary</h1>
+
+                <p class="text-muted px-3 cli-cursor" style="font-family: monospace;">Enter message below. Press send to
+                    dispatch.</p>
+
+                <form action="gracias.html" name="contacto" netlify>
+                    <div class="row container w-100 p-0 m-0 g-2">
+                        <div class="col-12 col-md-6">
+                            <input placeholder="Nombre" type="text" class="form-control input" id="nombre"
+                                name="nombre">
+                        </div>
+                        <div class="col-12 col-md-6 ">
+                            <input placeholder="Email" type="text" class="form-control input" id="email" name="email">
+                        </div>
+                        <div class="col-12">
+                            <input placeholder="Asunto" type="text" class="form-control input" id="mensaje"
+                                name="asunto">
+                        </div>
+                        <div class="col-12">
+                            <textarea placeholder="Escribe tu mensaje..." id="mensaje" name="mensaje"
+                                class="form-control input w-100" style="min-height: 100px;"></textarea>
+                        </div>
+                        <div class="col-12 d-flex justify-content-end">
+                            <button type="submit" class="btn mt-3 py-3 px-5 text-uppercase fw-bold rounded-pill"
+                                style="background: linear-gradient(135deg, #ff5e00, #ea580c); border:none; box-shadow: 0 10px 25px rgba(255,94,0,0.4); color: #fff;">Enviar
+                                mensaje</button>
+                        </div>
                     </div>
-                    <!-- mapa -->
-                    <div class="col-12 col-lg-6 p-0 m-0 mt-4 mt-lg-0" style="height: 100vh;">
-                        <!--Google map-->    
-                        <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
-                            src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=Av.%20Bartolom%C3%A9%20Mitre%201500,%20florida%20oeste+(test)&amp;t=&amp;z=10&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
-                    </div>
-                
-                </div>
-        </section>
-    
+                </form>
+            </div>
+            <!-- mapa -->
+            <div class="col-12 col-lg-6 p-0 m-0 mt-4 mt-lg-0" style="height: 100vh;">
+                <!--Google map-->
+                <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                    src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=Av.%20Bartolom%C3%A9%20Mitre%201500,%20florida%20oeste+(test)&amp;t=&amp;z=10&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+            </div>
+
+        </div>
+    </section>
+
     <!-- page content -->
-    </div>
-<!--wrapper-->
-</div>
+
 
 
     <!-- WHATSAPP -->
-    <a href="https://wa.me/+541134912793" 
-        class="whatsapp bg-green" target="_blank"> <i class="bi bi-whatsapp"></i> 
+    <a href="https://wa.me/+541134912793" class="whatsapp bg-green" target="_blank"> <i class="bi bi-whatsapp"></i>
     </a>
 
-    <!--    particulas   -->   
-    <script src="plugins/particles/js/particles.js"></script>   
-    <script src="plugins/particles/js/lib/stats.js"></script>     
-    <script src="plugins/particles/js/app.js"></script>  
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <!-- animations with scrool -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-      AOS.init();
+        AOS.init();
     </script>
 
-  <script src="./assests/js/main.js" ></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="./assests/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
 </body>
-</html> 
+
+</html>
