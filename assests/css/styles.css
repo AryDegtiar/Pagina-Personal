@@ -316,6 +316,8 @@ iframe:hover {
 @keyframes blink {
   50% { opacity: 0; }
 }
+
+.spinner-border.text-orange {
   color: var(--accent) !important;
   width: 3rem;
   height: 3rem;
