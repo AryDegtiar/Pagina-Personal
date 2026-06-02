@@ -1,601 +1,761 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./assests/images/icon.ico">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="shortcut icon" href="./assests/images/icon.ico">
 
-    <!--    iconos boostrap   -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <!-- Google Fonts 2026 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;600&display=swap"
-        rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
-    <style>
-        .old-pc {
-            width: 120px;
-            height: 140px;
-            background: #222;
-            border: 4px solid #111;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-end;
-            padding: 8px;
-            box-shadow: 0 0 10px var(--accent-glow);
-        }
+  <!-- Futuristic CSS -->
+  <link rel="stylesheet" href="./assests/css/futuristic.css">
 
-        .old-pc .screen {
-            width: 100%;
-            height: 60%;
-            background: #333;
-            overflow: hidden;
-            border: 2px solid #111;
-            border-radius: 4px;
-        }
-
-        .old-pc .bar {
-            height: 100%;
-            width: 0%;
-            background: var(--accent);
-            animation: pc-load 2s linear infinite;
-        }
-
-        .old-pc .label {
-            margin-top: 6px;
-            font-family: "Outfit", sans-serif;
-            color: var(--accent);
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .old-pc .label .cursor {
-            animation: blink 1s step-start infinite;
-            margin-left: 4px;
-        }
-
-        @keyframes pc-load {
-            0% {
-                width: 0%;
-                background: #555;
-            }
-
-            50% {
-                background: #555;
-            }
-
-            100% {
-                width: 100%;
-                background: var(--accent);
-            }
-        }
-    </style>
-    <!--    particulas   -->
-    <link rel="stylesheet" href="plugins/particles/css/style.css">
-
-    <!-- animations with scrool -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
-    <link rel="stylesheet" href="./assests/css/styles.css">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Ary Degtiar &amp; Fullstack Java Developer Blog" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="./assests/images/ary1.jpg" />
-    <meta property="og:url" content="https://www.arydegtiar.com.ar" />
-
-    <title>Ary Degtiar</title>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ary Degtiar — Software Engineer">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./assests/images/ary1.jpg">
+  <meta property="og:url" content="https://www.arydegtiar.com.ar">
+  <title>Ary Degtiar</title>
 </head>
-
 <body>
-    <!-- loading -->
-    <div id="loading">
-        <div class="old-pc">
-            <div class="screen">
-                <div class="bar"></div>
-            </div>
-            <div class="label">Loading<span class="cursor">█</span></div>
+
+  <!-- ── Scroll Progress Bar ── -->
+  <div id="scroll-progress"></div>
+
+  <!-- ── Custom Cursor ── -->
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- ── Nebula Ambients ── -->
+  <div class="nebula nebula-1"></div>
+  <div class="nebula nebula-2"></div>
+  <div class="nebula nebula-3"></div>
+
+  <!-- ── Star Field Canvas ── -->
+  <canvas id="space-canvas"></canvas>
+
+  <!-- ── Boot Screen ── -->
+  <div id="boot-screen">
+    <div class="boot-lines" id="boot-lines"></div>
+    <div class="boot-progress-bar">
+      <div class="boot-progress-fill"></div>
+    </div>
+  </div>
+
+  <!-- ── Navigation ── -->
+  <nav id="nav">
+    <a href="#hero" class="active">Inicio</a>
+    <a href="#experiencia">Exp</a>
+    <a href="#conocimientos">Skills</a>
+    <a href="#sobre-mi">Perfil</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <!-- ════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">// Software Engineer · Buenos Aires, AR</p>
+      <h1 class="hero-name">
+        <span class="glitch" data-text="Ary">Ary</span><span class="hero-dot">.</span>
+      </h1>
+      <p class="hero-subtitle">
+        guest@system:~$ <span class="typewriter-text" id="typewriter"></span>
+      </p>
+      <div class="hero-cta">
+        <a href="#experiencia" class="btn-primary-futuristic">Ver Experiencia</a>
+        <a href="#contacto" class="btn-ghost-futuristic">Contactar</a>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-hint-line"></div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       EXPERIENCIA — Horizontal Journey
+  ════════════════════════════════════════ -->
+  <div id="experiencia-scroll-container" style="height: 400vh; position: relative; overflow: clip;">
+    <section id="experiencia" style="position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center;">
+
+      <div class="exp-header reveal">
+        <span class="section-tag">// Trayectoria profesional</span>
+        <h2 class="section-title" style="margin-top: 0.75rem;">
+          Experiencia<span style="color: var(--cyan);">.</span>
+        </h2>
+        <p style="color: var(--muted); font-family: var(--font-mono); font-size: 0.75rem; margin-top: 0.5rem;">
+          → 6 checkpoints · ~5 años de experiencia · scroll horizontal →
+        </p>
+      </div>
+
+      <div id="exp-track" class="exp-track">
+
+        <!-- Card 1: Mercado Libre -->
+        <div class="exp-card">
+          <div class="exp-card-number">01 / 06</div>
+          <span class="exp-card-role">Ingeniero de Software</span>
+          <h3 class="exp-card-company">Mercado Libre</h3>
+          <div class="exp-card-period">sept. 2025 — actualidad · 9 meses</div>
+          <p class="exp-card-desc">
+            <strong>Diseño y escala</strong> de microservicios críticos en Java y Spring Boot, optimizando el rendimiento para millones de transacciones diarias.<br><br>
+            <strong>Optimización de persistencia</strong> en bases de datos relacionales y NoSQL distribuidas, garantizando baja latencia y alta disponibilidad.
+          </p>
+          <div class="meli-img-wrap">
+            <img src="./assests/images/meli_1.jpg" class="exp-card-img" alt="Mercado Libre Team">
+          </div>
+          <div class="exp-card-footer">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" height="20" title="Go">
+            <span class="exp-card-location">Buenos Aires, AR</span>
+          </div>
         </div>
+
+        <!-- Card 2: EPAM -->
+        <div class="exp-card">
+          <div class="exp-card-number">02 / 06</div>
+          <span class="exp-card-role">Java Software Engineer Ssr</span>
+          <h3 class="exp-card-company">EPAM — Claro</h3>
+          <div class="exp-card-period">abr. 2025 — sept. 2025 · 6 meses</div>
+          <p class="exp-card-desc">
+            <strong>Desarrollo e integración</strong> de microservicios robustos en Java y Spring Boot para Claro, asegurando la escalabilidad del ecosistema de telecomunicaciones.<br><br>
+            <strong>Optimización de pipelines</strong> de CI/CD, reduciendo fricciones y acelerando los ciclos de entrega.
+          </p>
+          <img src="./assests/images/claro.jpg" class="exp-card-img" alt="EPAM Claro">
+          <div class="exp-card-footer">
+            <img src="./assests/images/javaLogo.png" height="20" title="Java">
+            <span class="exp-card-location">Remoto / Buenos Aires, AR</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Q&R -->
+        <div class="exp-card">
+          <div class="exp-card-number">03 / 06</div>
+          <span class="exp-card-role">Dev Backend Java</span>
+          <h3 class="exp-card-company">Q&R — RedRemax</h3>
+          <div class="exp-card-period">jun. 2024 — may. 2025 · 1 año</div>
+          <p class="exp-card-desc">
+            <strong>Desarrollo backend</strong> centrado en arquitecturas de microservicios en Java mejorando el rendimiento de las plataformas de RedRemax.<br><br>
+            <strong>Diseño y optimización</strong> de bases de datos relacionales SQL, acelerando consultas complejas e informes inmobiliarios.
+          </p>
+          <img src="./assests/images/qr1.png" class="exp-card-img" alt="Q&R Solutions">
+          <div class="exp-card-footer">
+            <img src="./assests/images/javaLogo.png" height="20" title="Java">
+            <span class="exp-card-location">Jornada completa</span>
+          </div>
+        </div>
+
+        <!-- Card 4: Sistemas Activos -->
+        <div class="exp-card">
+          <div class="exp-card-number">04 / 06</div>
+          <span class="exp-card-role">Backend Java · Spring Boot</span>
+          <h3 class="exp-card-company">Sistemas Activos — BBVA</h3>
+          <div class="exp-card-period">feb. 2023 — jun. 2024 · 1 año 5 meses</div>
+          <p class="exp-card-desc">
+            <strong>Desarrollo y mantenimiento</strong> de componentes de backend y APIs robustas con Spring Boot para BBVA.<br><br>
+            <strong>Automatización de despliegues</strong> mediante Python e integración CI/CD con Jenkins, optimizando tiempos de release.
+          </p>
+          <img src="./assests/images/año_nuevo.jpg" class="exp-card-img" alt="Sistemas Activos">
+          <div class="exp-card-footer">
+            <img src="./assests/images/javaLogo.png" height="20" title="Java">
+            <span class="exp-card-location">Remoto / Buenos Aires, AR</span>
+          </div>
+        </div>
+
+        <!-- Card 5: Freelance -->
+        <div class="exp-card">
+          <div class="exp-card-number">05 / 06</div>
+          <span class="exp-card-role">Desarrollador Web Freelance</span>
+          <h3 class="exp-card-company">Self Employed</h3>
+          <div class="exp-card-period">ene. 2022 — may. 2024 · 2 años 5 meses</div>
+          <p class="exp-card-desc">
+            <strong>Diseño e implementación</strong> de soluciones web a medida utilizando React, HTML5, CSS3 y JavaScript para clientes locales e internacionales.<br><br>
+            <strong>Gestión integral del ciclo de vida</strong>: desde requerimientos y diseño hasta hosting y despliegue final.
+          </p>
+          <div class="exp-card-footer">
+            <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--cyan);">React · HTML · CSS · JS</span>
+            <span class="exp-card-location">Remoto</span>
+          </div>
+        </div>
+
+        <!-- Card 6: MAXIREST -->
+        <div class="exp-card">
+          <div class="exp-card-number">06 / 06</div>
+          <span class="exp-card-role">Especialista Soporte Técnico</span>
+          <h3 class="exp-card-company">MAXIREST</h3>
+          <div class="exp-card-period">dic. 2020 — ene. 2022 · 1 año 1 mes</div>
+          <p class="exp-card-desc">
+            <strong>Soporte técnico especializado</strong> y mantenimiento de software crítico en entornos gastronómicos comerciales de alta demanda.<br><br>
+            <strong>Resolución de incidencias</strong> y depuración de consultas SQL para asegurar la continuidad de negocio de los clientes.
+          </p>
+          <div class="exp-card-footer">
+            <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--cyan);">SQL · Networking</span>
+            <span class="exp-card-location">Buenos Aires, AR</span>
+          </div>
+        </div>
+
+      </div><!-- /exp-track -->
+
+      <!-- Progress indicator -->
+      <div class="exp-progress">
+        <div class="exp-progress-track">
+          <div id="exp-progress-fill" class="exp-progress-fill" style="width: 0%"></div>
+        </div>
+        <span id="exp-counter" class="exp-counter">01 / 06</span>
+      </div>
+
+    </section>
+  </div><!-- /experiencia-scroll-container -->
+
+  <!-- ════════════════════════════════════════
+       SKILLS — Orbital System
+  ════════════════════════════════════════ -->
+  <section id="conocimientos" class="section">
+    <div class="section-header reveal">
+      <span class="section-tag">// Stack tecnológico</span>
+      <h2 class="section-title">Skills<span>.</span></h2>
     </div>
 
-    <!-- Floating Navbar (2026 Style) -->
-    <nav class="floating-navbar">
-        <a href="#inicio">Inicio</a>
-        <a href="#experiencia">Experiencia</a>
-        <a href="#conocimientos">Habilidades</a>
-        <a href="#sobre-mi">Perfil</a>
-        <a href="#contacto">Contacto</a>
-    </nav>
+    <!-- Orbital visualization (desktop) -->
+    <div class="orbital-system reveal">
+      <!-- Rings -->
+      <div class="orbit-ring">
+        <!-- Java -->
+        <div class="orbit-node" style="top: 0; left: 50%;">java</div>
+      </div>
+      <div class="orbit-ring">
+        <!-- Spring Boot -->
+        <div class="orbit-node" style="top: 0; left: 50%;">spring boot</div>
+        <!-- REST APIs -->
+        <div class="orbit-node" style="top: 50%; left: 100%;">rest apis</div>
+      </div>
+      <div class="orbit-ring">
+        <!-- Go -->
+        <div class="orbit-node" style="top: 0; left: 50%;">go / golang</div>
+        <!-- Microservices -->
+        <div class="orbit-node" style="top: 50%; left: 0%;">microservices</div>
+        <!-- PostgreSQL -->
+        <div class="orbit-node" style="top: 100%; left: 50%;">postgresql</div>
+      </div>
+      <div class="orbit-ring">
+        <!-- Docker -->
+        <div class="orbit-node" style="top: 0; left: 50%;">docker</div>
+        <!-- AWS -->
+        <div class="orbit-node" style="top: 30%; left: 100%;">aws</div>
+        <!-- MongoDB -->
+        <div class="orbit-node" style="top: 70%; left: 0%;">mongodb</div>
+        <!-- Git -->
+        <div class="orbit-node" style="top: 100%; left: 50%;">git</div>
+      </div>
 
-    <!-- ThreeJS Canvas -->
-    <canvas id="bg-canvas"></canvas>
+      <!-- Center -->
+      <div class="orbital-center">
+        <div class="orbital-center-name">ARY</div>
+        <div class="orbital-center-tag">ENGINEER</div>
+      </div>
+    </div>
 
-    <!-- section inicio -->
-    <section id="inicio" class="d-flex align-items-center overflow-hidden position-relative" style="min-height: 100vh;">
-        <div class="container px-4 position-relative z-1">
-            <div class="row w-100 justify-content-center">
-                <div class="col-12 col-md-10 text-center" data-aos="fade-in" data-aos-duration="1500">
-                    <h1 class="text-white mb-2"
-                        style="font-family: 'Outfit'; font-weight: 800; font-size: clamp(3rem, 8vw, 7rem); letter-spacing: -3px; line-height: 1;">
-                        Ary<span class="text-accent">.</span>
-                    </h1>
-                    <p class="text-muted fs-4 mb-5 mx-auto cli-cursor"
-                        style="font-weight: 300; font-family: monospace;">
-                        guest@ary:~$ Software Engineer
-                    </p>
-                </div>
+    <!-- Skill chips grid -->
+    <div class="skills-grid">
+      <div class="skill-chip reveal reveal-delay-1"><span class="skill-cat">Language</span>Java</div>
+      <div class="skill-chip reveal reveal-delay-1"><span class="skill-cat">Language</span>Go / Golang</div>
+      <div class="skill-chip reveal reveal-delay-2"><span class="skill-cat">Backend</span>Spring Boot</div>
+      <div class="skill-chip reveal reveal-delay-2"><span class="skill-cat">Backend</span>REST APIs</div>
+      <div class="skill-chip reveal reveal-delay-2"><span class="skill-cat">Backend</span>Microservices</div>
+      <div class="skill-chip reveal reveal-delay-2"><span class="skill-cat">Backend</span>Hibernate</div>
+      <div class="skill-chip reveal reveal-delay-3"><span class="skill-cat">Database</span>PostgreSQL</div>
+      <div class="skill-chip reveal reveal-delay-3"><span class="skill-cat">Database</span>MongoDB</div>
+      <div class="skill-chip reveal reveal-delay-3"><span class="skill-cat">Database</span>SQL</div>
+      <div class="skill-chip reveal reveal-delay-3"><span class="skill-cat">Database</span>QKVS</div>
+      <div class="skill-chip reveal reveal-delay-1"><span class="skill-cat">Arch</span>Clean Arch</div>
+      <div class="skill-chip reveal reveal-delay-1"><span class="skill-cat">Arch</span>SOLID · DDD</div>
+      <div class="skill-chip reveal reveal-delay-2"><span class="skill-cat">DevOps</span>Docker</div>
+      <div class="skill-chip reveal reveal-delay-2"><span class="skill-cat">DevOps</span>AWS</div>
+      <div class="skill-chip reveal reveal-delay-3"><span class="skill-cat">Tools</span>Git</div>
+      <div class="skill-chip reveal reveal-delay-3"><span class="skill-cat">Tools</span>Postman</div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       ABOUT — Profile Terminal
+  ════════════════════════════════════════ -->
+  <section id="sobre-mi" class="section">
+    <div class="about-grid">
+
+      <div class="reveal">
+        <span class="section-tag">// Sobre mí</span>
+        <h2 class="section-title" style="margin-top: 1rem; margin-bottom: 2rem;">
+          Perfil<span style="color: var(--cyan);">.</span>
+        </h2>
+
+        <div class="about-terminal">
+          <div class="terminal-titlebar">
+            <div class="t-dot t-dot-red"></div>
+            <div class="t-dot t-dot-yellow"></div>
+            <div class="t-dot t-dot-green"></div>
+            <span class="terminal-title">profile.sh — ary@system</span>
+          </div>
+
+          <!-- Tab nav -->
+          <div class="tab-nav">
+            <button class="tab-btn active" onclick="switchTab('readme')">README.md</button>
+            <button class="tab-btn" onclick="switchTab('edu')">education.yml</button>
+            <button class="tab-btn" onclick="switchTab('hob')">hobbies.txt</button>
+          </div>
+
+          <!-- README -->
+          <div id="tab-readme" class="tab-content active">
+            <div class="terminal-body" style="padding: 0;">
+              <p><span class="t-prompt">$</span> <span class="t-cmd">cat README.md</span></p>
+              <br>
+              <p style="color: #fff; font-size: 1rem; font-weight: 700;"># Ary Degtiar</p>
+              <br>
+              <p><span class="t-key">## Presentación</span></p>
+              <p style="color: var(--muted); line-height: 1.9; font-size: 0.8rem;">
+                Tengo 26 años y siempre tuve una obsesión: entender cómo funcionan las cosas desde la raíz. La tecnología me dio el espacio ideal para convertir esa curiosidad en proyectos reales, capaces de generar resultados concretos y de alto impacto.
+              </p>
+              <br>
+              <p><span class="t-key">## Historial Profesional</span></p>
+              <p><span class="t-str">&gt; Ingeniero de Software (Mercado Libre)</span> — <span style="color: var(--green);">[Actualidad]</span></p>
+              <p style="color: var(--muted); font-size: 0.75rem; padding-left: 1rem;">↳ Microservicios de alta disponibilidad con Java y Spring Boot.</p>
             </div>
+          </div>
+
+          <!-- Education -->
+          <div id="tab-edu" class="tab-content">
+            <div class="terminal-body" style="padding: 0;">
+              <p><span class="t-prompt">$</span> <span class="t-cmd">cat education.yml</span></p>
+              <br>
+              <p><span class="t-key">university:</span></p>
+              <p style="padding-left: 1rem;"><span class="t-key">  name:</span> <span class="t-str">"Ingeniería en Sistemas (UTN)"</span></p>
+              <p style="padding-left: 1rem;"><span class="t-key">  status:</span> <span class="t-val">"En Curso"</span></p>
+              <p style="padding-left: 1rem;"><span class="t-key">  milestones:</span></p>
+              <p style="padding-left: 2rem; color: var(--muted);">- Algoritmos aprobados</p>
+              <p style="padding-left: 2rem; color: var(--muted);">- Paradigmas de Programación superados</p>
+              <br>
+              <p><span class="t-key">academy:</span></p>
+              <p style="padding-left: 1rem;"><span class="t-key">  name:</span> <span class="t-str">"Fullstack Java (Capgemini & UTN)"</span></p>
+              <p style="padding-left: 1rem;"><span class="t-key">  year:</span> <span class="t-val">2022</span> · <span class="t-val">Graduado</span></p>
+              <br>
+              <p><span class="t-key">high_school:</span></p>
+              <p style="padding-left: 1rem;"><span class="t-key">  name:</span> <span class="t-str">"Bachiller Técnico con Orientación TIC (ORT)"</span></p>
+              <p style="padding-left: 1rem;"><span class="t-key">  period:</span> <span class="t-val">"2012 – 2017"</span></p>
+            </div>
+          </div>
+
+          <!-- Hobbies -->
+          <div id="tab-hob" class="tab-content">
+            <div class="terminal-body" style="padding: 0;">
+              <p><span class="t-prompt">$</span> <span class="t-cmd">cat hobbies.txt</span></p>
+              <br>
+              <p style="color: var(--green);">&gt;&gt; HARDWARE_ROOT/PROJECTS</p>
+              <p style="color: var(--muted);">├── Domótica_Home_System</p>
+              <p style="color: var(--muted);">├── Custom_Macropads</p>
+              <p style="color: var(--muted);">├── Listas_Inteligentes_IoT</p>
+              <p style="color: var(--muted);">└── Batería_Electrónica_Integrada</p>
+              <br>
+              <p style="color: var(--green);">&gt;&gt; ANALOG_HOBBIES</p>
+              <p style="color: var(--muted);">├── Escalar (Bouldering / Rock Climbing)</p>
+              <p style="color: var(--muted);">├── Entrenamiento / Gimnasio</p>
+              <p style="color: var(--muted);">├── Boxeo</p>
+              <p style="color: var(--muted);">└── Surf / Skateboarding</p>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
 
-
-    <!-- section experiencia (Línea de tiempo 3D) -->
-    <section id="experiencia" class="py-5 no-seleccionable timeline-section">
-        <div class="container px-4 mt-5">
-            <h1 class="text-size-5 fw-bold text-white mb-2" style="font-family: monospace;">➜ ~ <span
-                    class="text-accent">cat</span> ./experiencia.sh</h1>
-            <p class="text-muted mb-5 cli-cursor" style="font-family: monospace;">Reading professional history... 6
-                active checkpoints found (~5 years of experience).</p>
-
-            <div class="timeline-container">
-                <!-- Timeline curved line container (dynamically populated in JS) -->
-                <div class="timeline-curved-line-container"></div>
-
-                <div class="timeline-wrapper">
-                    <!-- Checkpoint 1: Mercado Libre -->
-                    <div class="timeline-item" style="--term-title: 'zsh — mercadolibre@server';">
-                        <div class="timeline-checkpoint">
-                            <span class="checkpoint-glow"></span>
-                        </div>
-                        <div class="timeline-connector"></div>
-                        <div class="timeline-card card b-glass">
-                            <div class="card-body p-4">
-                                <span class="badge text-uppercase text-accent mb-2"
-                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Ingeniero
-                                    de Software</span>
-                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">Mercado Libre
-                                </h4>
-                                <div class="text-accent small mb-3" style="font-family: monospace;">sept. 2025 -
-                                    actualidad · 9 meses</div>
-                                <p class="text-muted small mt-2">
-                                    • <strong>Diseño y escala</strong> de microservicios críticos en Java y Spring Boot,
-                                    optimizando el rendimiento para soportar millones de transacciones diarias con alta
-                                    concurrencia.<br>
-                                    • <strong>Optimización de persistencia</strong> en bases de datos relacionales y
-                                    NoSQL distribuidas, garantizando baja latencia y alta disponibilidad.<br>
-                                    • <strong>Refactorización de APIs REST</strong>, reduciendo tiempos de respuesta y
-                                    mejorando la mantenibilidad del backend.<br>
-                                    • <strong>Colaboración activa</strong> en células ágiles de alta performance bajo
-                                    metodologías DevOps y estándares de entrega continua.
-                                </p>
-                                <div class="meli-images-container d-flex gap-2 mt-3">
-                                    <img src="./assests/images/meli_1.jpg" class="rounded meli-img"
-                                        alt="Mercado Libre Team 1">
-                                    <img src="./assests/images/meli_2.jpg" class="rounded meli-img"
-                                        alt="Mercado Libre Team 2">
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between mt-3">
-                                    <div class="tech-stack-icons d-flex gap-2">
-                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg"
-                                            height="24" title="Go / Golang">
-                                    </div>
-                                    <span class="text-muted small" style="font-family: monospace;">Buenos Aires,
-                                        AR</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Checkpoint 2: EPAM Systems -->
-                    <div class="timeline-item" style="--term-title: 'zsh — epam@server';">
-                        <div class="timeline-checkpoint">
-                            <span class="checkpoint-glow"></span>
-                        </div>
-                        <div class="timeline-connector"></div>
-                        <div class="timeline-card card b-glass">
-                            <div class="card-body p-4">
-                                <span class="badge text-uppercase text-accent mb-2"
-                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Java
-                                    Software Engineer Ssr</span>
-                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">EPAM Systems -
-                                    Claro</h4>
-                                <div class="text-accent small mb-3" style="font-family: monospace;">abr. 2025 - sept.
-                                    2025 · 6 meses</div>
-                                <p class="text-muted small mt-2">
-                                    • <strong>Desarrollo e integración</strong> de microservicios robustos en Java y
-                                    Spring Boot para Claro, asegurando la escalabilidad del ecosistema de
-                                    telecomunicaciones.<br>
-                                    • <strong>Optimización de pipelines</strong> de CI/CD, reduciendo fricciones y
-                                    acelerando los ciclos de entrega de software en producción.<br>
-                                    • <strong>Coordinación técnica presencial</strong> y remota directa con stakeholders
-                                    de Claro para alinear especificaciones de negocio y arquitectura.
-                                </p>
-                                <div class="epam-images-container mt-3">
-                                    <img src="./assests/images/claro.jpg" class="rounded epam-img w-100"
-                                        alt="EPAM Claro Team">
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between mt-3">
-                                    <div class="tech-stack-icons d-flex gap-2">
-                                        <img src="./assests/images/javaLogo.png" height="24" title="Java">
-                                    </div>
-                                    <span class="text-muted small" style="font-family: monospace;">Remoto / Buenos
-                                        Aires, AR</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Checkpoint 3: Q&R Solutions -->
-                    <div class="timeline-item" style="--term-title: 'zsh — qr_solutions@server';">
-                        <div class="timeline-checkpoint">
-                            <span class="checkpoint-glow"></span>
-                        </div>
-                        <div class="timeline-connector"></div>
-                        <div class="timeline-card card b-glass">
-                            <div class="card-body p-4">
-                                <span class="badge text-uppercase text-accent mb-2"
-                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Dev
-                                    Backend JAVA</span>
-                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">Q&R Solutions -
-                                    RedRemax</h4>
-                                <div class="text-accent small mb-3" style="font-family: monospace;">jun. 2024 - may.
-                                    2025 · 1 año</div>
-                                <p class="text-muted small mt-2">
-                                    • <strong>Desarrollo backend</strong> centrado en arquitecturas de microservicios en
-                                    Java, mejorando el rendimiento de las plataformas que dan soporte a RedRemax.<br>
-                                    • <strong>Diseño, modelado y optimización</strong> de bases de datos relacionales
-                                    SQL, acelerando consultas complejas y la generación de reportes inmobiliarios.<br>
-                                    • <strong>Participación en el ciclo completo</strong> (SDLC) de desarrollo de
-                                    software para aplicaciones internas de alta operatividad.
-                                </p>
-                                <div class="qr-images-container mt-3">
-                                    <img src="./assests/images/qr1.png" class="rounded qr-img w-100"
-                                        alt="Q&R Solutions Year End">
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between mt-3">
-                                    <div class="tech-stack-icons d-flex gap-2">
-                                        <img src="./assests/images/javaLogo.png" height="24" title="Java">
-                                    </div>
-                                    <span class="text-muted small" style="font-family: monospace;">Jornada
-                                        completa</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Checkpoint 4: Sistemas Activos SRL -->
-                    <div class="timeline-item" style="--term-title: 'zsh — sistemas_activos@server';">
-                        <div class="timeline-checkpoint">
-                            <span class="checkpoint-glow"></span>
-                        </div>
-                        <div class="timeline-connector"></div>
-                        <div class="timeline-card card b-glass">
-                            <div class="card-body p-4">
-                                <span class="badge text-uppercase text-accent mb-2"
-                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Desarrollador
-                                    Backend Java - Spring Boot</span>
-                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">Sistemas
-                                    Activos SRL - BBVA</h4>
-                                <div class="text-accent small mb-3" style="font-family: monospace;">feb. 2023 - jun.
-                                    2024 · 1 año 5 meses</div>
-                                <p class="text-muted small mt-2">
-                                    • <strong>Desarrollo y mantenimiento</strong> de componentes de backend y APIs
-                                    robustas con Spring Boot para BBVA.<br>
-                                    • <strong>Automatización de despliegues</strong> mediante la creación de scripts en
-                                    Python e integración en flujos de CI/CD con Jenkins, optimizando tiempos de
-                                    release.<br>
-                                    • <strong>Integración de servicios externos</strong> y desarrollo de lógica de
-                                    negocio compleja para procesamiento de datos financieros.
-                                </p>
-                                <div class="sa-images-container mt-3">
-                                    <img src="./assests/images/año_nuevo.jpg" class="rounded sa-img w-100"
-                                        alt="Sistemas Activos Year End">
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between mt-3">
-                                    <div class="tech-stack-icons d-flex gap-2 text-white align-items-center">
-                                        <img src="./assests/images/javaLogo.png" height="24" title="Java">
-                                    </div>
-                                    <span class="text-muted small" style="font-family: monospace;">Remoto / Buenos
-                                        Aires, AR</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Checkpoint 5: Freelance -->
-                    <div class="timeline-item" style="--term-title: 'zsh — freelance@server';">
-                        <div class="timeline-checkpoint">
-                            <span class="checkpoint-glow"></span>
-                        </div>
-                        <div class="timeline-connector"></div>
-                        <div class="timeline-card card b-glass">
-                            <div class="card-body p-4">
-                                <span class="badge text-uppercase text-accent mb-2"
-                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Desarrollador
-                                    de páginas web</span>
-                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">Freelance (Self
-                                    employed)</h4>
-                                <div class="text-accent small mb-3" style="font-family: monospace;">ene. 2022 - may.
-                                    2024 · 2 años 5 meses</div>
-                                <p class="text-muted small mt-2">
-                                    • <strong>Diseño e implementación</strong> de soluciones web a medida utilizando
-                                    React, HTML5, CSS3 y JavaScript para clientes locales y extranjeros.<br>
-                                    • <strong>Optimización del performance</strong> y velocidad de carga, garantizando
-                                    maquetación responsive, accesibilidad y excelente experiencia de usuario (UX).<br>
-                                    • <strong>Gestión integral del ciclo de vida</strong>, desde la toma de
-                                    requerimientos y diseño de interfaz hasta el hosting y despliegue final.
-                                </p>
-                                <div class="d-flex align-items-center justify-content-end mt-3">
-                                    <span class="text-muted small" style="font-family: monospace;">Remoto / Buenos
-                                        Aires, AR</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Checkpoint 6: Maxirest -->
-                    <div class="timeline-item" style="--term-title: 'zsh — maxirest@server';">
-                        <div class="timeline-checkpoint">
-                            <span class="checkpoint-glow"></span>
-                        </div>
-                        <div class="timeline-connector"></div>
-                        <div class="timeline-card card b-glass">
-                            <div class="card-body p-4">
-                                <span class="badge text-uppercase text-accent mb-2"
-                                    style="width: max-content; background: rgba(255,94,0,0.1); font-family: monospace;">Especialista
-                                    en Soporte Técnico</span>
-                                <h4 class="card-title fw-bold" style="font-family: 'Outfit'; margin: 0;">MAXIREST</h4>
-                                <div class="text-accent small mb-3" style="font-family: monospace;">dic. 2020 - ene.
-                                    2022 · 1 año 1 mes</div>
-                                <p class="text-muted small mt-2">
-                                    • <strong>Soporte técnico especializado</strong> y mantenimiento de software crítico
-                                    en entornos gastronómicos comerciales de alta demanda.<br>
-                                    • <strong>Resolución eficiente de incidencias</strong> y depuración de consultas de
-                                    base de datos SQL para asegurar la continuidad de negocio de los clientes.<br>
-                                    • <strong>Gestión de infraestructura</strong>, redes y configuraciones locales/cloud
-                                    para garantizar la estabilidad de los sistemas POS.
-                                </p>
-                                <div class="d-flex align-items-center justify-content-end mt-3">
-                                    <span class="text-muted small" style="font-family: monospace;">Buenos Aires,
-                                        AR</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <!-- Right col: decorative stats -->
+      <div class="reveal reveal-delay-2" style="display: flex; flex-direction: column; gap: 1.5rem; padding-top: 5rem;">
+        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; backdrop-filter: blur(20px);">
+          <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem;">Años de experiencia</div>
+          <div style="font-size: 3.5rem; font-weight: 900; color: #fff; line-height: 1;">5<span style="color: var(--cyan);">+</span></div>
         </div>
-    </section>
-
-    <!-- section conocimientos -->
-    <section id="conocimientos" class="no-seleccionable w-100">
-        <div class="text-white d-flex align-items-center w-100 justify-content-center py-5" style="min-height: 100vh;">
-            <div class="row w-100" style="position: relative;">
-                <h1 class="col-12 text-size-5 fw-bold d-flex justify-content-center w-100 mb-4"
-                    style="font-family: monospace;">
-                    ➜ &nbsp;~ <span class="text-accent">&nbsp;node&nbsp;</span> skills.js</h1>
-
-                <div class="col-12 pt-3 f-wrap justify-content-center">
-                    <div class="c1 rounded-4">
-                        <!-- Minimal macOS Window Dots -->
-                        <div class="window-dots">
-                            <span class="dot dot-red"></span>
-                            <span class="dot dot-yellow"></span>
-                            <span class="dot dot-green"></span>
-                        </div>
-
-                        <!-- Editor area -->
-                        <div class="editor-area">
-                            <div class="machine" style="visibility: hidden;">
-                                <div class="machine-line"><span class="text-keyword">const</span> <span
-                                        class="text-variable">skills</span> = {</div>
-                                <div class="machine-line">&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                        class="text-property">languages:</span> [ <span class="text-value">java</span>,
-                                    <span class="text-value">go / golang</span> ],
-                                </div>
-                                <div class="machine-line">&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                        class="text-property">backend:</span> [ <span class="text-value">spring
-                                        boot</span>, <span class="text-value">rest apis</span>, <span
-                                        class="text-value">microservices</span>, <span
-                                        class="text-value">hibernate</span> ],</div>
-                                <div class="machine-line">&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                        class="text-property">databases:</span> [ <span
-                                        class="text-value">postgresql</span>, <span class="text-value">mongodb</span>,
-                                    <span class="text-value">sql</span>, <span class="text-value">qkvs</span> ],
-                                </div>
-                                <div class="machine-line">&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                        class="text-property">architecture:</span> [ <span class="text-value">clean
-                                        architecture</span>, <span class="text-value">solid</span>, <span
-                                        class="text-value">ddd</span> ],</div>
-                                <div class="machine-line">&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                        class="text-property">tools:</span> [ <span class="text-value">git</span>, <span
-                                        class="text-value">docker</span>, <span class="text-value">aws</span>, <span
-                                        class="text-value">postman</span> ]</div>
-                                <div class="machine-line">};</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
+        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; backdrop-filter: blur(20px);">
+          <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem;">Stack principal</div>
+          <div style="font-size: 1.4rem; font-weight: 900; color: #fff; line-height: 1.3;">Java<span style="color: var(--cyan);">·</span>Go<span style="color: var(--cyan);">·</span>Spring</div>
         </div>
-    </section>
-
-    <!-- section sobre mi -->
-    <section id="sobre-mi" class="pb-4 no-seleccionable">
-        <div class="px-4">
-            <h1 class="text-size-5 fw-bold text-white p-lg-5 pb-lg-0 p-4 ps-0 pb-0" style="font-family: monospace;">➜
-                &nbsp;~
-                <span class="text-accent">&nbsp;./fetch_profile.sh</span>
-            </h1>
-            <p class="text-muted pb-4 pt-1 ps-lg-5 pt-lg-2 cli-cursor" style="font-family: monospace;">Fetching user
-                profile data...</p>
-            <!-- IDE / Terminal Profile Output -->
-            <div class="row m-0 p-0 justify-content-center">
-                <div class="c1 b-glass rounded-4 p-5 mt-3"
-                    style="width: 100%; max-width: 1300px; text-align: left; font-family: monospace; font-size: 1.2rem; line-height: 2.0; box-shadow: 0 0 40px rgba(0,0,0,0.5);">
-
-                    <div class="d-flex text-muted mb-4 pb-3"
-                        style="border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 0.95rem; cursor: pointer; user-select: none;">
-                        <span id="tab-readme" class="text-accent me-4 hover-text-white"
-                            onclick="switchProfileTab('readme')">✓ README.md</span>
-                        <span id="tab-edu" class="me-4 opacity-50 hover-text-white"
-                            onclick="switchProfileTab('edu')">education.yml</span>
-                        <span id="tab-hob" class="opacity-50 hover-text-white"
-                            onclick="switchProfileTab('hob')">hobbies.txt</span>
-                    </div>
-
-                    <div id="content-readme" class="pe-3 profile-content" style="padding-bottom: 20px;">
-                        <span class="text-primary-emphasis fs-2 fw-bold"># Ary Degtiar</span> <br><br>
-                        <span class="text-info fw-bold">## 👤 Presentación</span><br>
-                        Tengo 26 años y siempre tuve una obsesión: entender cómo funcionan las cosas desde la raíz.
-                        La tecnología me dio el espacio ideal para convertir esa curiosidad en proyectos reales, capaces
-                        de generar resultados concretos y de alto impacto.
-                        <br><br>
-                        <span class="text-info fw-bold">## 💼 Historial Profesional</span><br>
-                        <span class="text-warning"> > Ingeniero de Software (Mercado Libre)</span> —
-                        [Actualidad]<br>
-                        <i class="opacity-75 ms-3">↳ Desarrollo de microservicios de alta disponibilidad y escalabilidad
-                            utilizando Java y Spring Boot.</i><br><br>
-                    </div>
-
-                    <div id="content-edu" class="pe-3 profile-content d-none" style="padding-bottom: 20px;">
-                        <span class="text-primary-emphasis fs-2 fw-bold">education:</span> <br><br>
-                        <span class="text-info fw-bold"> university:</span><br>
-                        <span class="text-warning"> name: "Ingeniería en Sistemas de Información (UTN)"</span><br>
-                        <span class="text-muted"> status: "En Curso"</span><br>
-                        <span class="text-muted"> milestones: <br> - "Algoritmos aprobados" <br> - "Paradigmas de
-                            Programación superados"</span><br><br>
-
-                        <span class="text-info fw-bold"> academy:</span><br>
-                        <span class="text-warning"> name: "Fullstack Java (Capgemini & UTN)"</span><br>
-                        <span class="text-muted"> year: 2022</span><br>
-                        <span class="text-muted"> status: "Graduado"</span><br><br>
-
-                        <span class="text-info fw-bold"> high_school:</span><br>
-                        <span class="text-warning"> name: "Bachiller Técnico con Orientación en TIC (ORT)"</span><br>
-                        <span class="text-muted"> period: "2012 - 2017"</span><br>
-                        <span class="text-muted"> note: "Primer contacto nativo con programación y hardware"</span><br>
-                    </div>
-
-                    <div id="content-hob" class="pe-3 profile-content d-none"
-                        style="padding-bottom: 20px; color: #a1a1aa;">
-                        [SYSTEM] Loading hardware bindings... OK.<br><br>
-                        <span class="text-success-emphasis">>> 🔌 HARDWARE_ROOT/PROJECTS</span><br>
-                        ├── Domótica_Home_System<br>
-                        ├── Custom_Macropads<br>
-                        ├── Listas_Inteligentes_IoT<br>
-                        └── Batería_Electrónica_Integrada<br><br>
-
-                        <span class="text-success-emphasis">>> 🧗 ANALOG_HOBBIES (Disconnect mode)</span><br>
-                        ├── Escalar (Bouldering / Rock Climbing)<br>
-                        ├── Entrenamiento / Gimnasio<br>
-                        ├── Boxeo<br>
-                        └── Surf / Skateboarding<br>
-                    </div>
-
-                    <script>
-                        function switchProfileTab(tab) {
-                            ['readme', 'edu', 'hob'].forEach(t => {
-                                document.getElementById('content-' + t).classList.add('d-none');
-                                let tabEl = document.getElementById('tab-' + t);
-                                tabEl.classList.remove('text-accent');
-                                tabEl.classList.add('opacity-50');
-                                tabEl.innerText = tabEl.innerText.replace('✓ ', '');
-                            });
-                            document.getElementById('content-' + tab).classList.remove('d-none');
-                            let activeTab = document.getElementById('tab-' + tab);
-                            activeTab.classList.remove('opacity-50');
-                            activeTab.classList.add('text-accent');
-                            activeTab.innerText = '✓ ' + activeTab.innerText;
-                        }
-                    </script>
-                </div>
-            </div>
+        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; backdrop-filter: blur(20px);">
+          <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem;">Ubicación</div>
+          <div style="font-size: 1.2rem; font-weight: 700; color: #fff;">Buenos Aires<span style="color: var(--cyan);">, AR</span></div>
+          <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); margin-top: 0.25rem;">UTC-3 · Open to remote</div>
         </div>
-    </section>
-
-    <!-- section contacto -->
-    <section id="contacto" class="no-seleccionable">
-
-        <!-- formulario -->
-        <div class="row m-0 d-flex align-items-center text-white">
-            <div class="col-12 col-lg-6 py-5 pt-lg-0 px-lg-5" data-aos="fade-right">
-
-                <h1 class="text-size-5 fw-bold p-3" style="font-family: monospace;">➜ ~ <span
-                        class="text-accent">mail</span> -s "Contacto" root@ary</h1>
-
-                <p class="text-muted px-3 cli-cursor" style="font-family: monospace;">Enter message below. Press send to
-                    dispatch.</p>
-
-                <form action="gracias.html" name="contacto" netlify>
-                    <div class="row container w-100 p-0 m-0 g-2">
-                        <div class="col-12 col-md-6">
-                            <input placeholder="Nombre" type="text" class="form-control input" id="nombre"
-                                name="nombre">
-                        </div>
-                        <div class="col-12 col-md-6 ">
-                            <input placeholder="Email" type="text" class="form-control input" id="email" name="email">
-                        </div>
-                        <div class="col-12">
-                            <input placeholder="Asunto" type="text" class="form-control input" id="mensaje"
-                                name="asunto">
-                        </div>
-                        <div class="col-12">
-                            <textarea placeholder="Escribe tu mensaje..." id="mensaje" name="mensaje"
-                                class="form-control input w-100" style="min-height: 100px;"></textarea>
-                        </div>
-                        <div class="col-12 d-flex justify-content-end">
-                            <button type="submit" class="btn mt-3 py-3 px-5 text-uppercase fw-bold rounded-pill"
-                                style="background: linear-gradient(135deg, #ff5e00, #ea580c); border:none; box-shadow: 0 10px 25px rgba(255,94,0,0.4); color: #fff;">Enviar
-                                mensaje</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <!-- mapa -->
-            <div class="col-12 col-lg-6 p-0 m-0 mt-4 mt-lg-0" style="height: 100vh;">
-                <!--Google map-->
-                <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-                    src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=Av.%20Bartolom%C3%A9%20Mitre%201500,%20florida%20oeste+(test)&amp;t=&amp;z=10&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
-            </div>
-
+        <div style="background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(0,212,255,0.1)); border: 1px solid rgba(124,58,237,0.3); border-radius: 12px; padding: 1.5rem;">
+          <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--purple); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem;">Status</div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="width: 8px; height: 8px; background: var(--green); border-radius: 50%; box-shadow: 0 0 6px var(--green); animation: pulse 2s infinite;"></span>
+            <span style="font-weight: 700; color: var(--green);">Open to opportunities</span>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- page content -->
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       CONTACT
+  ════════════════════════════════════════ -->
+  <section id="contacto" class="section">
+    <div class="contact-wrapper">
+
+      <div class="reveal">
+        <span class="section-tag">// Contacto</span>
+        <h2 class="contact-info" style="margin-top: 1rem;">
+          <span style="font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: #fff; display: block; letter-spacing: -0.03em; margin-bottom: 1rem;">
+            Hablemos<span style="color: var(--cyan);">.</span>
+          </span>
+        </h2>
+        <p style="color: var(--muted); line-height: 1.8; font-size: 0.9rem; margin-bottom: 2rem;">
+          Tengo disponibilidad para nuevas oportunidades. Si tu proyecto necesita un ingeniero de backend sólido, escribime.
+        </p>
+
+        <div class="contact-links">
+          <a href="https://wa.me/+541134912793" class="contact-link" target="_blank">
+            <div class="contact-link-icon"><i class="bi bi-whatsapp"></i></div>
+            <div>
+              <div style="color: var(--text); font-weight: 500;">WhatsApp</div>
+              <div style="font-size: 0.65rem; opacity: 0.5;">+54 11 3491 2793</div>
+            </div>
+          </a>
+          <a href="https://www.linkedin.com/in/ary-degtiar/" class="contact-link" target="_blank">
+            <div class="contact-link-icon"><i class="bi bi-linkedin"></i></div>
+            <div>
+              <div style="color: var(--text); font-weight: 500;">LinkedIn</div>
+              <div style="font-size: 0.65rem; opacity: 0.5;">linkedin.com/in/ary-degtiar</div>
+            </div>
+          </a>
+          <a href="https://github.com/AryDegtiar" class="contact-link" target="_blank">
+            <div class="contact-link-icon"><i class="bi bi-github"></i></div>
+            <div>
+              <div style="color: var(--text); font-weight: 500;">GitHub</div>
+              <div style="font-size: 0.65rem; opacity: 0.5;">github.com/AryDegtiar</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-form reveal reveal-delay-2">
+        <div style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--cyan); margin-bottom: 1.5rem; letter-spacing: 0.1em;">
+          // Enviar mensaje
+        </div>
+        <form action="gracias.html" name="contacto" netlify>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+              <label class="form-label">Nombre</label>
+              <input type="text" name="nombre" class="form-field" placeholder="Tu nombre">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input type="email" name="email" class="form-field" placeholder="tu@email.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Asunto</label>
+            <input type="text" name="asunto" class="form-field" placeholder="¿De qué se trata?">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Mensaje</label>
+            <textarea name="mensaje" class="form-field" placeholder="Escribí tu mensaje..."></textarea>
+          </div>
+          <button type="submit" class="btn-send">Enviar Mensaje →</button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <p>Ary Degtiar · <span style="color: var(--cyan);">Software Engineer</span> · Buenos Aires, AR · 2026</p>
+    <p style="margin-top: 0.5rem; opacity: 0.4;">Built with pure HTML · CSS · JS — no frameworks</p>
+  </footer>
+
+  <!-- ── WhatsApp FAB ── -->
+  <a href="https://wa.me/+541134912793" class="whatsapp-fab" target="_blank">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <!-- ════════════════════════════════════════
+       SCRIPTS
+  ════════════════════════════════════════ -->
+  <script>
+  (function() {
+    'use strict';
+
+    /* ── Boot Sequence ── */
+    const bootLines = [
+      { text: 'BIOS v2.6.0 initializing...', cls: '' },
+      { text: 'Loading kernel modules...', cls: 'ok' },
+      { text: 'Mounting filesystem /dev/ary', cls: 'ok' },
+      { text: 'Checking network interfaces...', cls: 'ok' },
+      { text: 'Starting SSH daemon...', cls: 'ok' },
+      { text: 'Loading Java runtime environment...', cls: 'ok' },
+      { text: 'Initializing Go toolchain...', cls: 'ok' },
+      { text: 'Connecting to microservices mesh...', cls: 'warn' },
+      { text: 'Running system diagnostics...', cls: 'ok' },
+      { text: 'Welcome, guest. System ready.', cls: '' },
+    ];
+
+    const bootContainer = document.getElementById('boot-lines');
+    bootLines.forEach((line, i) => {
+      const el = document.createElement('div');
+      el.className = 'boot-line' + (line.cls ? ' ' + line.cls : '');
+      el.textContent = '> ' + line.text;
+      el.style.animationDelay = (i * 0.22) + 's';
+      bootContainer.appendChild(el);
+    });
+
+    setTimeout(() => {
+      document.getElementById('boot-screen').classList.add('hidden');
+    }, 3200);
 
 
+    /* ── Custom Cursor ── */
+    const cursor = document.getElementById('cursor');
+    const cursorRing = document.getElementById('cursor-ring');
+    let mx = 0, my = 0, rx = 0, ry = 0;
 
-    <!-- WHATSAPP -->
-    <a href="https://wa.me/+541134912793" class="whatsapp bg-green" target="_blank"> <i class="bi bi-whatsapp"></i>
-    </a>
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.left = mx + 'px';
+      cursor.style.top = my + 'px';
+    });
 
-    <!-- Three.js Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    function animateCursor() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      cursorRing.style.left = rx + 'px';
+      cursorRing.style.top = ry + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
 
-    <!-- animations with scrool -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
 
-    <script src="./assests/js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
+    /* ── Star Field Canvas ── */
+    const canvas = document.getElementById('space-canvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, stars = [], nebulae = [];
+
+    function resize() {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+
+    function initStars() {
+      stars = [];
+      for (let i = 0; i < 250; i++) {
+        stars.push({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          r: Math.random() * 1.5 + 0.2,
+          alpha: Math.random(),
+          speed: Math.random() * 0.3 + 0.05,
+          twinkleSpeed: Math.random() * 0.02 + 0.005,
+          twinkleDir: 1,
+        });
+      }
+    }
+
+    let scrollY = 0;
+    window.addEventListener('scroll', () => { scrollY = window.scrollY; });
+
+    function drawStars(t) {
+      ctx.clearRect(0, 0, W, H);
+
+      // Draw stars
+      stars.forEach(s => {
+        s.alpha += s.twinkleSpeed * s.twinkleDir;
+        if (s.alpha >= 1 || s.alpha <= 0.1) s.twinkleDir *= -1;
+
+        // Parallax with scroll
+        const yOffset = (scrollY * s.speed * 0.15) % H;
+        const drawY = (s.y - yOffset + H) % H;
+
+        ctx.beginPath();
+        ctx.arc(s.x, drawY, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(200, 220, 255, ${s.alpha})`;
+        ctx.fill();
+      });
+
+      // Draw occasional shooting star
+      if (Math.random() < 0.003) {
+        const sx = Math.random() * W;
+        const sy = Math.random() * H * 0.5;
+        const grad = ctx.createLinearGradient(sx, sy, sx + 120, sy + 60);
+        grad.addColorStop(0, 'rgba(0,212,255,0)');
+        grad.addColorStop(0.5, 'rgba(0,212,255,0.8)');
+        grad.addColorStop(1, 'rgba(0,212,255,0)');
+        ctx.beginPath();
+        ctx.moveTo(sx, sy);
+        ctx.lineTo(sx + 120, sy + 60);
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      }
+
+      requestAnimationFrame(drawStars);
+    }
+
+    window.addEventListener('resize', () => { resize(); initStars(); });
+    resize();
+    initStars();
+    requestAnimationFrame(drawStars);
+
+
+    /* ── Scroll Progress ── */
+    const progressBar = document.getElementById('scroll-progress');
+    function updateProgress() {
+      const total = document.body.scrollHeight - window.innerHeight;
+      progressBar.style.width = (window.scrollY / total * 100) + '%';
+    }
+    window.addEventListener('scroll', updateProgress);
+
+
+    /* ── Typewriter ── */
+    const phrases = [
+      'Software Engineer',
+      'Java · Go · Spring Boot',
+      'Microservices Architect',
+      'Backend Developer',
+    ];
+    let pi = 0, ci = 0, deleting = false;
+    const tw = document.getElementById('typewriter');
+
+    function type() {
+      const phrase = phrases[pi];
+      if (!deleting) {
+        tw.textContent = phrase.slice(0, ++ci);
+        if (ci === phrase.length) {
+          deleting = true;
+          setTimeout(type, 2000);
+          return;
+        }
+      } else {
+        tw.textContent = phrase.slice(0, --ci);
+        if (ci === 0) {
+          deleting = false;
+          pi = (pi + 1) % phrases.length;
+        }
+      }
+      setTimeout(type, deleting ? 40 : 70);
+    }
+    setTimeout(type, 3500);
+
+
+    /* ── Reveal on Scroll ── */
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => revealObs.observe(el));
+
+
+    /* ── Active Nav ── */
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav#nav a');
+    const navObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(a => a.classList.remove('active'));
+          const link = document.querySelector(`nav#nav a[href="#${e.target.id}"]`);
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => navObs.observe(s));
+
+
+    /* ── Horizontal Experience Scroll ── */
+    const expContainer = document.getElementById('experiencia-scroll-container');
+    const expTrack = document.getElementById('exp-track');
+    const expProgressFill = document.getElementById('exp-progress-fill');
+    const expCounter = document.getElementById('exp-counter');
+    const TOTAL_CARDS = 6;
+
+    function updateExpScroll() {
+      if (!expContainer) return;
+      const rect = expContainer.getBoundingClientRect();
+      const containerH = expContainer.offsetHeight;
+      const vh = window.innerHeight;
+
+      // Progress: 0 when section enters, 1 when section exits
+      const progress = Math.max(0, Math.min(1, (-rect.top) / (containerH - vh)));
+
+      const trackW = expTrack.scrollWidth - expTrack.parentElement.offsetWidth;
+      expTrack.style.transform = `translateX(${-progress * trackW}px)`;
+
+      const pct = Math.round(progress * 100);
+      expProgressFill.style.width = pct + '%';
+
+      const cardIdx = Math.min(TOTAL_CARDS, Math.ceil(progress * TOTAL_CARDS) + 1);
+      expCounter.textContent = String(cardIdx).padStart(2, '0') + ' / 0' + TOTAL_CARDS;
+    }
+
+    window.addEventListener('scroll', updateExpScroll, { passive: true });
+    updateExpScroll();
+
+
+    /* ── Profile Tabs ── */
+    window.switchTab = function(tab) {
+      document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+        const tabs = ['readme', 'edu', 'hob'];
+        btn.classList.toggle('active', tabs[i] === tab);
+      });
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      document.getElementById('tab-' + tab).classList.add('active');
+    };
+
+
+    /* ── Mouse Parallax on Hero ── */
+    const heroContent = document.querySelector('.hero-content');
+    document.addEventListener('mousemove', e => {
+      if (!heroContent) return;
+      const cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+      const dx = (e.clientX - cx) / cx * 8;
+      const dy = (e.clientY - cy) / cy * 4;
+      heroContent.style.transform = `translate(${dx}px, ${dy}px)`;
+    });
+
+
+    /* ── Card Tilt Effect ── */
+    document.querySelectorAll('.exp-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        const rotX = (-y / rect.height) * 8;
+        const rotY = (x / rect.width) * 8;
+        card.style.transform = `perspective(600px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-4px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+
+
+    /* ── Pulse animation for status dot ── */
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes pulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(0,255,136,0.4); }
+        50% { box-shadow: 0 0 0 6px rgba(0,255,136,0); }
+      }
+    `;
+    document.head.appendChild(style);
+
+  })();
+  </script>
+
 </body>
-
 </html>
