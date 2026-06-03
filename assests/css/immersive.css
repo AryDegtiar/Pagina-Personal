@@ -126,14 +126,52 @@ html { scroll-behavior: auto !important; }
 }
 
 /* ══════════════════════════════════════
-   EXP CARDS — depth of field on inactive
+   EXP CARDS — immersive editorial
 ══════════════════════════════════════ */
 .exp-card {
-  transition: opacity 0.35s ease, filter 0.35s ease;
+  transition: opacity 0.35s ease, filter 0.35s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+  position: relative;
+  min-height: 520px;
 }
 
 .exp-card.is-tilting {
   transition: none;
+}
+
+/* Ghost number — big decorative digit in background */
+.exp-card-bg-num {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  font-size: clamp(5rem, 7vw, 8.5rem);
+  font-weight: 900;
+  font-family: var(--font-mono);
+  color: rgba(0, 212, 255, 0.055);
+  line-height: 1;
+  pointer-events: none;
+  z-index: 0;
+  letter-spacing: -0.05em;
+  user-select: none;
+}
+
+/* Active center card — cyan border glow */
+.exp-card.is-active {
+  border-color: rgba(0, 212, 255, 0.42) !important;
+  box-shadow:
+    0 0 0 1px rgba(0, 212, 255, 0.10),
+    0 28px 80px rgba(0, 0, 0, 0.75),
+    0 0 55px rgba(0, 212, 255, 0.06) !important;
+}
+
+/* Taller image frame for more visual impact */
+.img-frame,
+.meli-img-wrap {
+  height: 200px;
+}
+
+.img-frame .exp-card-img,
+.meli-img-wrap .exp-card-img {
+  height: 240px;
 }
 
 /* ══════════════════════════════════════

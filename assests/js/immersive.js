@@ -110,6 +110,24 @@ function addHeroPhoto() {
 }
 
 /* ──────────────────────────────────────────────
+   UTILITY: inject large ghost numbers into each
+   exp-card for the editorial depth layer.
+   Numbers start hidden; GSAP reveals them when
+   the card reaches center position.
+────────────────────────────────────────────── */
+function injectCardBgNumbers(cards) {
+  cards.forEach((card, i) => {
+    if (card.querySelector('.exp-card-bg-num')) return;
+    const num = document.createElement('div');
+    num.className = 'exp-card-bg-num';
+    num.setAttribute('aria-hidden', 'true');
+    num.textContent = String(i + 1).padStart(2, '0');
+    card.appendChild(num);
+    gsap.set(num, { opacity: 0, y: 30 });
+  });
+}
+
+/* ──────────────────────────────────────────────
    UTILITY: inject scrolling marquee strip between
    the hero and the experiencia scroll container.
 ────────────────────────────────────────────── */
@@ -307,35 +325,67 @@ function init() {
 
   if (expContainer && expTrack && expCards.length) {
 
+    injectCardBgNumbers(expCards);
+
     function updateCards() {
-      const rect       = expContainer.getBoundingClientRect();
-      const containerH = expContainer.offsetHeight;
-      const vh         = window.innerHeight;
-      const progress   = Math.max(0, Math.min(1, -rect.top / (containerH - vh)));
+      const rect        = expContainer.getBoundingClientRect();
+      const containerH  = expContainer.offsetHeight;
+      const vh          = window.innerHeight;
+      const progress    = Math.max(0, Math.min(1, -rect.top / (containerH - vh)));
       const trackParent = expTrack.parentElement;
-      const trackW     = expTrack.scrollWidth - trackParent.offsetWidth;
-      const scrolledX  = progress * trackW;
-      const viewW      = trackParent.offsetWidth;
+      const trackW      = expTrack.scrollWidth - trackParent.offsetWidth;
+      const scrolledX   = progress * trackW;
+      const viewW       = trackParent.offsetWidth;
+
+      // Mobile: cards stacked vertically — skip horizontal 3D logic
+      if (trackW <= 0) return;
 
       expCards.forEach(card => {
         const cardCenter = card.offsetLeft + card.offsetWidth / 2;
         const viewCenter = scrolledX + viewW / 2;
         const delta      = cardCenter - viewCenter;
         const ratio      = Math.max(-2, Math.min(2, delta / (viewW * 0.5)));
+        const isActive   = Math.abs(ratio) < 0.42;
 
         if (!card.dataset.gsapHovered) {
-          const rotY  = ratio * 20;
+          const rotY  = ratio * 18;
           const scale = 1 - Math.abs(ratio) * 0.065;
-          const op    = Math.max(0.2, 1 - Math.abs(ratio) * 0.38);
-          // Depth-of-field: far cards get subtle blur
-          const blur  = Math.max(0, (Math.abs(ratio) - 0.6) * 2.5);
+          const op    = Math.max(0.15, 1 - Math.abs(ratio) * 0.42);
+          const blur  = Math.max(0, (Math.abs(ratio) - 0.5) * 3.2);
 
           card.style.transform = `perspective(1000px) rotateY(${rotY}deg) scale(${scale})`;
           card.style.opacity   = op;
           card.style.filter    = blur > 0 ? `blur(${blur.toFixed(1)}px)` : '';
         }
 
-        // Image: zoomed-in on side cards, natural scale on center card
+        // ── Active card: glow border + one-shot element reveals ──
+        if (isActive && !card.classList.contains('is-active')) {
+          card.classList.add('is-active');
+
+          if (!card._activated) {
+            card._activated = true;
+
+            const bgNum   = card.querySelector('.exp-card-bg-num');
+            const role    = card.querySelector('.exp-card-role');
+            const company = card.querySelector('.exp-card-company');
+            const period  = card.querySelector('.exp-card-period');
+            const desc    = card.querySelector('.exp-card-desc');
+            const footer  = card.querySelector('.exp-card-footer');
+
+            const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+
+            if (bgNum)   tl.to(bgNum,   { opacity: 1, y: 0,   duration: 1.0 }, 0);
+            if (role)    tl.fromTo(role,    { opacity: 0.4, x: -14 }, { opacity: 1, x: 0, duration: 0.55 }, 0.05);
+            if (company) tl.fromTo(company, { y: 22, filter: 'blur(5px)' },    { y: 0, filter: 'blur(0px)', duration: 0.75 }, 0.12);
+            if (period)  tl.fromTo(period,  { opacity: 0.3, x: -10 },          { opacity: 1, x: 0, duration: 0.5 }, 0.28);
+            if (desc)    tl.fromTo(desc,    { opacity: 0.2, y: 14 },            { opacity: 1, y: 0, duration: 0.65 }, 0.38);
+            if (footer)  tl.fromTo(footer,  { opacity: 0,   y: 10 },            { opacity: 1, y: 0, duration: 0.5 }, 0.52);
+          }
+        } else if (!isActive && card.classList.contains('is-active')) {
+          card.classList.remove('is-active');
+        }
+
+        // Image: zoomed-in on flanking cards, natural scale at center
         const imgEl = card.querySelector('.exp-card-img');
         if (imgEl) {
           const imgScale  = 1.0 + Math.abs(ratio) * 0.18;
