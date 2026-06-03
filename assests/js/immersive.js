@@ -299,116 +299,112 @@ function init() {
 
 
   /* ════════════════════════════════════════════
-     5.  EXPERIENCE SECTION
+     5.  EXPERIENCE — Full-screen scene system
 
-     a) Header: blur + lift reveal
-     b) Cards: rotateY barrel + opacity depth-of-
-        field (far cards blurred slightly)
-     c) Images: zoom-out expand as card centres
+     Scroll progress → scene index mapping.
+     Each scene transition fires a GSAP timeline:
+       out: old scene lifts up + fades
+       in:  new scene rises from below + content
+            elements stagger in individually.
+     Nav dots highlight the active scene.
+     Progress fill bar tracks overall position.
   ════════════════════════════════════════════ */
 
-  const expHeader = document.querySelector('.exp-header');
-  if (expHeader) {
-    gsap.fromTo(expHeader,
-      { opacity: 0, y: 50, filter: 'blur(6px)' },
-      {
-        opacity: 1, y: 0, filter: 'blur(0px)',
-        duration: 1.2, ease: 'expo.out',
-        scrollTrigger: { trigger: expHeader, start: 'top 85%', toggleActions: 'play none none none' },
-      }
-    );
-  }
-
   const expContainer = document.getElementById('experiencia-scroll-container');
-  const expTrack     = document.getElementById('exp-track');
-  const expCards     = document.querySelectorAll('.exp-card');
+  const expScenes    = gsap.utils.toArray('.exp-scene');
+  const expNavDots   = gsap.utils.toArray('.exp-nav-dot');
+  const expNavFill   = document.getElementById('exp-nav-fill');
+  const expCounter   = document.getElementById('exp-counter');
+  const expProgFill  = document.getElementById('exp-progress-fill');
 
-  if (expContainer && expTrack && expCards.length) {
+  if (expContainer && expScenes.length) {
 
-    injectCardBgNumbers(expCards);
+    let currentScene  = -1;
+    let sceneEntering = false;
 
-    function updateCards() {
-      const rect        = expContainer.getBoundingClientRect();
-      const containerH  = expContainer.offsetHeight;
-      const vh          = window.innerHeight;
-      const progress    = Math.max(0, Math.min(1, -rect.top / (containerH - vh)));
-      const trackParent = expTrack.parentElement;
-      const trackW      = expTrack.scrollWidth - trackParent.offsetWidth;
-      const scrolledX   = progress * trackW;
-      const viewW       = trackParent.offsetWidth;
+    // Pre-hide all scenes; first will be revealed on scroll entry
+    gsap.set(expScenes, { opacity: 0, y: 60, pointerEvents: 'none' });
 
-      // Mobile: cards stacked vertically — skip horizontal 3D logic
-      if (trackW <= 0) return;
+    function animateSceneElements(scene) {
+      const meta    = scene.querySelector('.exp-scene-meta');
+      const company = scene.querySelector('.exp-scene-company');
+      const period  = scene.querySelector('.exp-scene-period');
+      const desc    = scene.querySelector('.exp-scene-desc');
+      const footer  = scene.querySelector('.exp-scene-footer');
+      const imgWrap = scene.querySelector('.exp-scene-img-frame');
+      const glyph   = scene.querySelector('.exp-scene-glyph');
 
-      expCards.forEach(card => {
-        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-        const viewCenter = scrolledX + viewW / 2;
-        const delta      = cardCenter - viewCenter;
-        const ratio      = Math.max(-2, Math.min(2, delta / (viewW * 0.5)));
-        const isActive   = Math.abs(ratio) < 0.42;
-
-        if (!card.dataset.gsapHovered) {
-          const rotY  = ratio * 18;
-          const scale = 1 - Math.abs(ratio) * 0.065;
-          const op    = Math.max(0.15, 1 - Math.abs(ratio) * 0.42);
-          const blur  = Math.max(0, (Math.abs(ratio) - 0.5) * 3.2);
-
-          card.style.transform = `perspective(1000px) rotateY(${rotY}deg) scale(${scale})`;
-          card.style.opacity   = op;
-          card.style.filter    = blur > 0 ? `blur(${blur.toFixed(1)}px)` : '';
-        }
-
-        // ── Active card: glow border + one-shot element reveals ──
-        if (isActive && !card.classList.contains('is-active')) {
-          card.classList.add('is-active');
-
-          if (!card._activated) {
-            card._activated = true;
-
-            const bgNum   = card.querySelector('.exp-card-bg-num');
-            const role    = card.querySelector('.exp-card-role');
-            const company = card.querySelector('.exp-card-company');
-            const period  = card.querySelector('.exp-card-period');
-            const desc    = card.querySelector('.exp-card-desc');
-            const footer  = card.querySelector('.exp-card-footer');
-
-            const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
-
-            if (bgNum)   tl.to(bgNum,   { opacity: 1, y: 0,   duration: 1.0 }, 0);
-            if (role)    tl.fromTo(role,    { opacity: 0.4, x: -14 }, { opacity: 1, x: 0, duration: 0.55 }, 0.05);
-            if (company) tl.fromTo(company, { y: 22, filter: 'blur(5px)' },    { y: 0, filter: 'blur(0px)', duration: 0.75 }, 0.12);
-            if (period)  tl.fromTo(period,  { opacity: 0.3, x: -10 },          { opacity: 1, x: 0, duration: 0.5 }, 0.28);
-            if (desc)    tl.fromTo(desc,    { opacity: 0.2, y: 14 },            { opacity: 1, y: 0, duration: 0.65 }, 0.38);
-            if (footer)  tl.fromTo(footer,  { opacity: 0,   y: 10 },            { opacity: 1, y: 0, duration: 0.5 }, 0.52);
-          }
-        } else if (!isActive && card.classList.contains('is-active')) {
-          card.classList.remove('is-active');
-        }
-
-        // Image: zoomed-in on flanking cards, natural scale at center
-        const imgEl = card.querySelector('.exp-card-img');
-        if (imgEl) {
-          const imgScale  = 1.0 + Math.abs(ratio) * 0.18;
-          const imgDriftX = -ratio * 22;
-          imgEl.style.transform = `scale(${imgScale}) translateX(${imgDriftX}px)`;
-        }
-      });
+      const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+      if (meta)    tl.fromTo(meta,    { opacity: 0, x: -28 },                     { opacity: 1, x: 0, duration: 0.55 }, 0);
+      if (company) tl.fromTo(company, { opacity: 0, y: 55, filter: 'blur(12px)' },{ opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.85 }, 0.08);
+      if (period)  tl.fromTo(period,  { opacity: 0, x: -18 },                     { opacity: 1, x: 0, duration: 0.5 }, 0.28);
+      if (desc)    tl.fromTo(desc,    { opacity: 0, y: 22 },                       { opacity: 1, y: 0, duration: 0.6 }, 0.38);
+      if (footer)  tl.fromTo(footer,  { opacity: 0 },                              { opacity: 1, duration: 0.5 }, 0.52);
+      if (imgWrap) tl.fromTo(imgWrap, { opacity: 0, scale: 0.88, x: 40 },         { opacity: 1, scale: 1, x: 0, duration: 0.9 }, 0.12);
+      if (glyph)   tl.fromTo(glyph,   { opacity: 0, scale: 0.7 },                 { opacity: 1, scale: 1, duration: 1.0 }, 0.1);
+      return tl;
     }
 
-    window.addEventListener('scroll', updateCards, { passive: true });
-    updateCards();
+    function goToScene(nextIdx) {
+      if (nextIdx === currentScene) return;
 
-    expCards.forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        card.dataset.gsapHovered = '1';
-        card.classList.add('is-tilting');
-      });
-      card.addEventListener('mouseleave', () => {
-        delete card.dataset.gsapHovered;
-        card.classList.remove('is-tilting');
-        updateCards();
-      });
-    });
+      const isForward = nextIdx > currentScene;
+
+      // Animate out the departing scene
+      if (currentScene >= 0 && expScenes[currentScene]) {
+        gsap.to(expScenes[currentScene], {
+          opacity: 0,
+          y: isForward ? -55 : 55,
+          duration: 0.42,
+          ease: 'expo.in',
+          overwrite: true,
+          onComplete() { gsap.set(this.targets()[0], { pointerEvents: 'none' }); }
+        });
+      }
+
+      // Animate in the arriving scene
+      const next = expScenes[nextIdx];
+      gsap.set(next, { y: isForward ? 65 : -65, pointerEvents: 'auto' });
+      gsap.to(next, { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out', delay: 0.08, overwrite: true });
+      animateSceneElements(next);
+
+      // Nav dots
+      expNavDots.forEach((d, i) => d.classList.toggle('active', i === nextIdx));
+
+      // Counter
+      if (expCounter) expCounter.textContent = String(nextIdx + 1).padStart(2, '0') + ' / 06';
+
+      currentScene = nextIdx;
+    }
+
+    function updateExpScenes() {
+      const rect       = expContainer.getBoundingClientRect();
+      const containerH = expContainer.offsetHeight;
+      const vh         = window.innerHeight;
+      const progress   = Math.max(0, Math.min(1, -rect.top / (containerH - vh)));
+
+      // Progress indicators
+      if (expProgFill) expProgFill.style.width = (progress * 100) + '%';
+      if (expNavFill)  expNavFill.style.height  = (progress * 100) + '%';
+
+      // Scene switching: split 0–1 range into N equal bands
+      const idx = Math.min(expScenes.length - 1, Math.floor(progress * expScenes.length));
+      goToScene(idx);
+
+      // Subtle parallax on the active image
+      const activeScene = expScenes[currentScene];
+      if (activeScene) {
+        const img = activeScene.querySelector('.exp-scene-img');
+        if (img) {
+          const band = 1 / expScenes.length;
+          const localP = (progress - idx * band) / band;
+          img.style.transform = `translateY(${(localP - 0.5) * -12}%)`;
+        }
+      }
+    }
+
+    window.addEventListener('scroll', updateExpScenes, { passive: true });
+    // Don't call immediately — wait until user scrolls in (goToScene handles first entry)
   }
 
 

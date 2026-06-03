@@ -126,52 +126,249 @@ html { scroll-behavior: auto !important; }
 }
 
 /* ══════════════════════════════════════
-   EXP CARDS — immersive editorial
+   EXPERIENCIA — FULL-SCREEN SCENES
 ══════════════════════════════════════ */
-.exp-card {
-  transition: opacity 0.35s ease, filter 0.35s ease, box-shadow 0.5s ease, border-color 0.5s ease;
-  position: relative;
-  min-height: 520px;
-}
 
-.exp-card.is-tilting {
-  transition: none;
-}
-
-/* Ghost number — big decorative digit in background */
-.exp-card-bg-num {
+/* Fixed label top-left */
+.exp-fixed-label {
   position: absolute;
-  bottom: 0.75rem;
-  right: 0.75rem;
-  font-size: clamp(5rem, 7vw, 8.5rem);
+  top: 2rem;
+  left: 5.5rem;
+  z-index: 10;
+}
+
+/* ── Left nav rail ── */
+.exp-nav-rail {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  z-index: 10;
+  border-right: 1px solid var(--border);
+}
+
+.exp-nav-track {
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  bottom: 20%;
+  width: 1px;
+  background: var(--border);
+  transform: translateX(-50%);
+}
+
+.exp-nav-fill {
+  width: 100%;
+  background: var(--cyan);
+  height: 0%;
+  transition: height 0.2s linear;
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
+}
+
+.exp-nav-dot {
+  position: relative;
+  z-index: 1;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+}
+
+.exp-nav-dot span {
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  transition: color 0.3s;
+}
+
+.exp-nav-dot.active {
+  border-color: var(--cyan);
+  background: rgba(0, 212, 255, 0.12);
+  transform: scale(1.15);
+}
+
+.exp-nav-dot.active span {
+  color: var(--cyan);
+}
+
+/* ── Scenes container ── */
+#exp-scenes {
+  position: absolute;
+  left: 64px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.exp-scene {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 52% 48%;
+  align-items: center;
+  padding: 6rem 4vw 5rem 5vw;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Left column ── */
+.exp-scene-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  padding-right: 3vw;
+}
+
+.exp-scene-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.exp-scene-num {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--cyan);
+  letter-spacing: 0.2em;
+}
+
+.exp-scene-role {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+}
+
+/* Company name — the visual anchor of each scene */
+.exp-scene-company {
+  font-size: clamp(3.2rem, 7.5vw, 9rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  color: #fff;
+  margin: 0;
+}
+
+.exp-scene-company em {
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.exp-scene-dot {
+  color: var(--cyan);
+}
+
+.exp-scene-period {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+.exp-scene-period em {
+  font-style: normal;
+  color: var(--cyan);
+}
+
+.exp-scene-desc {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.75;
+  max-width: 440px;
+}
+
+.exp-scene-footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.exp-scene-location {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+}
+
+/* ── Right column ── */
+.exp-scene-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 2rem 0;
+}
+
+.exp-scene-img-frame {
+  width: 100%;
+  max-width: 500px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.exp-scene-img {
+  width: 100%;
+  height: 115%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.1s linear;
+}
+
+/* No-image placeholder */
+.exp-scene-no-img {
+  align-items: center;
+  justify-content: center;
+}
+
+.exp-scene-glyph {
+  font-size: clamp(5rem, 12vw, 14rem);
   font-weight: 900;
   font-family: var(--font-mono);
-  color: rgba(0, 212, 255, 0.055);
-  line-height: 1;
-  pointer-events: none;
-  z-index: 0;
+  color: rgba(0, 212, 255, 0.05);
   letter-spacing: -0.05em;
+  line-height: 1;
   user-select: none;
 }
 
-/* Active center card — cyan border glow */
-.exp-card.is-active {
-  border-color: rgba(0, 212, 255, 0.42) !important;
-  box-shadow:
-    0 0 0 1px rgba(0, 212, 255, 0.10),
-    0 28px 80px rgba(0, 0, 0, 0.75),
-    0 0 55px rgba(0, 212, 255, 0.06) !important;
+/* ── Bottom bar ── */
+.exp-bottom-bar {
+  position: absolute;
+  bottom: 1.8rem;
+  left: 80px;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
 }
 
-/* Taller image frame for more visual impact */
-.img-frame,
-.meli-img-wrap {
-  height: 200px;
-}
-
-.img-frame .exp-card-img,
-.meli-img-wrap .exp-card-img {
-  height: 240px;
+.exp-bottom-progress {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  border-radius: 1px;
+  overflow: hidden;
 }
 
 /* ══════════════════════════════════════

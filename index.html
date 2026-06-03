@@ -85,131 +85,184 @@
   </section>
 
   <!-- ════════════════════════════════════════
-       EXPERIENCIA — Horizontal Journey
+       EXPERIENCIA — Full-screen scenes
   ════════════════════════════════════════ -->
-  <div id="experiencia-scroll-container" style="height: 400vh; position: relative; overflow: clip;">
-    <section id="experiencia" style="position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center;">
+  <div id="experiencia-scroll-container" style="height: 720vh; position: relative; overflow: clip;">
+    <section id="experiencia" style="position: sticky; top: 0; height: 100vh; overflow: hidden;">
 
-      <div class="exp-header reveal">
+      <!-- Fixed label top-left -->
+      <div class="exp-fixed-label">
         <span class="section-tag">// Trayectoria profesional</span>
-        <h2 class="section-title" style="margin-top: 0.75rem;">
-          Experiencia<span style="color: var(--cyan);">.</span>
-        </h2>
-        <p style="color: var(--muted); font-family: var(--font-mono); font-size: 0.75rem; margin-top: 0.5rem;">
-          → 6 checkpoints · ~5 años de experiencia · scroll horizontal →
-        </p>
       </div>
 
-      <div id="exp-track" class="exp-track">
+      <!-- Left nav rail: numbered dots -->
+      <nav class="exp-nav-rail" aria-label="Escenas de experiencia">
+        <div class="exp-nav-track">
+          <div id="exp-nav-fill" class="exp-nav-fill"></div>
+        </div>
+        <button class="exp-nav-dot" data-scene="0"><span>01</span></button>
+        <button class="exp-nav-dot" data-scene="1"><span>02</span></button>
+        <button class="exp-nav-dot" data-scene="2"><span>03</span></button>
+        <button class="exp-nav-dot" data-scene="3"><span>04</span></button>
+        <button class="exp-nav-dot" data-scene="4"><span>05</span></button>
+        <button class="exp-nav-dot" data-scene="5"><span>06</span></button>
+      </nav>
 
-        <!-- Card 1: Mercado Libre -->
-        <div class="exp-card">
-          <div class="exp-card-number">01 / 06</div>
-          <span class="exp-card-role">Ingeniero de Software</span>
-          <h3 class="exp-card-company">Mercado Libre</h3>
-          <div class="exp-card-period">sept. 2025 — actualidad · 9 meses</div>
-          <p class="exp-card-desc">
-            <strong>Diseño y escala</strong> de microservicios críticos en Java y Spring Boot, optimizando el rendimiento para millones de transacciones diarias.<br><br>
-            <strong>Optimización de persistencia</strong> en bases de datos relacionales y NoSQL distribuidas, garantizando baja latencia y alta disponibilidad.
-          </p>
-          <div class="meli-img-wrap">
-            <img src="./assests/images/meli_1.jpg" class="exp-card-img" alt="Mercado Libre Team">
+      <!-- Scenes: each is full-section, absolutely stacked -->
+      <div id="exp-scenes">
+
+        <!-- Scene 0: Mercado Libre -->
+        <div class="exp-scene" data-scene="0">
+          <div class="exp-scene-left">
+            <div class="exp-scene-meta">
+              <span class="exp-scene-num">01 / 06</span>
+              <span class="exp-scene-role">Ingeniero de Software</span>
+            </div>
+            <h2 class="exp-scene-company">Mercado<br><em>Libre</em><span class="exp-scene-dot">.</span></h2>
+            <p class="exp-scene-period">sept. 2025 — actualidad · <em>9 meses</em></p>
+            <p class="exp-scene-desc">
+              Diseño y escala de microservicios críticos en Java y Spring Boot para millones de transacciones diarias.
+              Optimización de persistencia en bases de datos relacionales y NoSQL distribuidas.
+            </p>
+            <div class="exp-scene-footer">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" height="22" title="Go">
+              <span class="exp-scene-location">Buenos Aires, AR</span>
+            </div>
           </div>
-          <div class="exp-card-footer">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" height="20" title="Go">
-            <span class="exp-card-location">Buenos Aires, AR</span>
+          <div class="exp-scene-right">
+            <div class="exp-scene-img-frame">
+              <img src="./assests/images/meli_1.jpg" class="exp-scene-img" alt="Mercado Libre">
+            </div>
           </div>
         </div>
 
-        <!-- Card 2: EPAM -->
-        <div class="exp-card">
-          <div class="exp-card-number">02 / 06</div>
-          <span class="exp-card-role">Java Software Engineer Ssr</span>
-          <h3 class="exp-card-company">EPAM — Claro</h3>
-          <div class="exp-card-period">abr. 2025 — sept. 2025 · 6 meses</div>
-          <p class="exp-card-desc">
-            <strong>Desarrollo e integración</strong> de microservicios robustos en Java y Spring Boot para Claro, asegurando la escalabilidad del ecosistema de telecomunicaciones.<br><br>
-            <strong>Optimización de pipelines</strong> de CI/CD, reduciendo fricciones y acelerando los ciclos de entrega.
-          </p>
-          <img src="./assests/images/claro.jpg" class="exp-card-img" alt="EPAM Claro">
-          <div class="exp-card-footer">
-            <img src="./assests/images/javaLogo.png" height="20" title="Java">
-            <span class="exp-card-location">Remoto / Buenos Aires, AR</span>
+        <!-- Scene 1: EPAM — Claro -->
+        <div class="exp-scene" data-scene="1">
+          <div class="exp-scene-left">
+            <div class="exp-scene-meta">
+              <span class="exp-scene-num">02 / 06</span>
+              <span class="exp-scene-role">Java Software Engineer Ssr</span>
+            </div>
+            <h2 class="exp-scene-company">EPAM<br><em>Claro</em><span class="exp-scene-dot">.</span></h2>
+            <p class="exp-scene-period">abr. 2025 — sept. 2025 · <em>6 meses</em></p>
+            <p class="exp-scene-desc">
+              Desarrollo e integración de microservicios robustos en Java y Spring Boot para Claro,
+              asegurando la escalabilidad del ecosistema de telecomunicaciones.
+            </p>
+            <div class="exp-scene-footer">
+              <img src="./assests/images/javaLogo.png" height="22" title="Java">
+              <span class="exp-scene-location">Remoto / Buenos Aires, AR</span>
+            </div>
+          </div>
+          <div class="exp-scene-right">
+            <div class="exp-scene-img-frame">
+              <img src="./assests/images/claro.jpg" class="exp-scene-img" alt="EPAM Claro">
+            </div>
           </div>
         </div>
 
-        <!-- Card 3: Q&R -->
-        <div class="exp-card">
-          <div class="exp-card-number">03 / 06</div>
-          <span class="exp-card-role">Dev Backend Java</span>
-          <h3 class="exp-card-company">Q&R — RedRemax</h3>
-          <div class="exp-card-period">jun. 2024 — may. 2025 · 1 año</div>
-          <p class="exp-card-desc">
-            <strong>Desarrollo backend</strong> centrado en arquitecturas de microservicios en Java mejorando el rendimiento de las plataformas de RedRemax.<br><br>
-            <strong>Diseño y optimización</strong> de bases de datos relacionales SQL, acelerando consultas complejas e informes inmobiliarios.
-          </p>
-          <img src="./assests/images/qr1.png" class="exp-card-img" alt="Q&R Solutions">
-          <div class="exp-card-footer">
-            <img src="./assests/images/javaLogo.png" height="20" title="Java">
-            <span class="exp-card-location">Jornada completa</span>
+        <!-- Scene 2: Q&R — RedRemax -->
+        <div class="exp-scene" data-scene="2">
+          <div class="exp-scene-left">
+            <div class="exp-scene-meta">
+              <span class="exp-scene-num">03 / 06</span>
+              <span class="exp-scene-role">Dev Backend Java</span>
+            </div>
+            <h2 class="exp-scene-company">Q&amp;R —<br><em>RedRemax</em><span class="exp-scene-dot">.</span></h2>
+            <p class="exp-scene-period">jun. 2024 — may. 2025 · <em>1 año</em></p>
+            <p class="exp-scene-desc">
+              Arquitecturas de microservicios en Java para RedRemax.
+              Diseño y optimización de bases de datos SQL para informes inmobiliarios de alta complejidad.
+            </p>
+            <div class="exp-scene-footer">
+              <img src="./assests/images/javaLogo.png" height="22" title="Java">
+              <span class="exp-scene-location">Jornada completa</span>
+            </div>
+          </div>
+          <div class="exp-scene-right">
+            <div class="exp-scene-img-frame">
+              <img src="./assests/images/qr1.png" class="exp-scene-img" alt="Q&R Solutions">
+            </div>
           </div>
         </div>
 
-        <!-- Card 4: Sistemas Activos -->
-        <div class="exp-card">
-          <div class="exp-card-number">04 / 06</div>
-          <span class="exp-card-role">Backend Java · Spring Boot</span>
-          <h3 class="exp-card-company">Sistemas Activos — BBVA</h3>
-          <div class="exp-card-period">feb. 2023 — jun. 2024 · 1 año 5 meses</div>
-          <p class="exp-card-desc">
-            <strong>Desarrollo y mantenimiento</strong> de componentes de backend y APIs robustas con Spring Boot para BBVA.<br><br>
-            <strong>Automatización de despliegues</strong> mediante Python e integración CI/CD con Jenkins, optimizando tiempos de release.
-          </p>
-          <img src="./assests/images/año_nuevo.jpg" class="exp-card-img" alt="Sistemas Activos">
-          <div class="exp-card-footer">
-            <img src="./assests/images/javaLogo.png" height="20" title="Java">
-            <span class="exp-card-location">Remoto / Buenos Aires, AR</span>
+        <!-- Scene 3: Sistemas Activos — BBVA -->
+        <div class="exp-scene" data-scene="3">
+          <div class="exp-scene-left">
+            <div class="exp-scene-meta">
+              <span class="exp-scene-num">04 / 06</span>
+              <span class="exp-scene-role">Backend Java · Spring Boot</span>
+            </div>
+            <h2 class="exp-scene-company">Sistemas<br><em>Activos</em><span class="exp-scene-dot">.</span></h2>
+            <p class="exp-scene-period">feb. 2023 — jun. 2024 · <em>1 año 5 meses</em></p>
+            <p class="exp-scene-desc">
+              Backend y APIs con Spring Boot para BBVA.
+              Automatización de despliegues con Python e integración CI/CD con Jenkins.
+            </p>
+            <div class="exp-scene-footer">
+              <img src="./assests/images/javaLogo.png" height="22" title="Java">
+              <span class="exp-scene-location">Remoto / Buenos Aires, AR</span>
+            </div>
+          </div>
+          <div class="exp-scene-right">
+            <div class="exp-scene-img-frame">
+              <img src="./assests/images/año_nuevo.jpg" class="exp-scene-img" alt="Sistemas Activos">
+            </div>
           </div>
         </div>
 
-        <!-- Card 5: Freelance -->
-        <div class="exp-card">
-          <div class="exp-card-number">05 / 06</div>
-          <span class="exp-card-role">Desarrollador Web Freelance</span>
-          <h3 class="exp-card-company">Self Employed</h3>
-          <div class="exp-card-period">ene. 2022 — may. 2024 · 2 años 5 meses</div>
-          <p class="exp-card-desc">
-            <strong>Diseño e implementación</strong> de soluciones web a medida utilizando React, HTML5, CSS3 y JavaScript para clientes locales e internacionales.<br><br>
-            <strong>Gestión integral del ciclo de vida</strong>: desde requerimientos y diseño hasta hosting y despliegue final.
-          </p>
-          <div class="exp-card-footer">
-            <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--cyan);">React · HTML · CSS · JS</span>
-            <span class="exp-card-location">Remoto</span>
+        <!-- Scene 4: Self Employed -->
+        <div class="exp-scene" data-scene="4">
+          <div class="exp-scene-left">
+            <div class="exp-scene-meta">
+              <span class="exp-scene-num">05 / 06</span>
+              <span class="exp-scene-role">Desarrollador Web Freelance</span>
+            </div>
+            <h2 class="exp-scene-company">Self<br><em>Employed</em><span class="exp-scene-dot">.</span></h2>
+            <p class="exp-scene-period">ene. 2022 — may. 2024 · <em>2 años 5 meses</em></p>
+            <p class="exp-scene-desc">
+              Diseño e implementación de soluciones web a medida con React, HTML5, CSS3 y JS
+              para clientes locales e internacionales. Gestión integral del ciclo de vida.
+            </p>
+            <div class="exp-scene-footer">
+              <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--cyan);">React · HTML · CSS · JS</span>
+              <span class="exp-scene-location">Remoto</span>
+            </div>
+          </div>
+          <div class="exp-scene-right exp-scene-no-img">
+            <div class="exp-scene-glyph">{ }</div>
           </div>
         </div>
 
-        <!-- Card 6: MAXIREST -->
-        <div class="exp-card">
-          <div class="exp-card-number">06 / 06</div>
-          <span class="exp-card-role">Especialista Soporte Técnico</span>
-          <h3 class="exp-card-company">MAXIREST</h3>
-          <div class="exp-card-period">dic. 2020 — ene. 2022 · 1 año 1 mes</div>
-          <p class="exp-card-desc">
-            <strong>Soporte técnico especializado</strong> y mantenimiento de software crítico en entornos gastronómicos comerciales de alta demanda.<br><br>
-            <strong>Resolución de incidencias</strong> y depuración de consultas SQL para asegurar la continuidad de negocio de los clientes.
-          </p>
-          <div class="exp-card-footer">
-            <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--cyan);">SQL · Networking</span>
-            <span class="exp-card-location">Buenos Aires, AR</span>
+        <!-- Scene 5: MAXIREST -->
+        <div class="exp-scene" data-scene="5">
+          <div class="exp-scene-left">
+            <div class="exp-scene-meta">
+              <span class="exp-scene-num">06 / 06</span>
+              <span class="exp-scene-role">Especialista Soporte Técnico</span>
+            </div>
+            <h2 class="exp-scene-company">Maxi<br><em>Rest</em><span class="exp-scene-dot">.</span></h2>
+            <p class="exp-scene-period">dic. 2020 — ene. 2022 · <em>1 año 1 mes</em></p>
+            <p class="exp-scene-desc">
+              Soporte técnico especializado y mantenimiento de software crítico en entornos gastronómicos de alta demanda.
+              Resolución de incidencias y depuración de consultas SQL.
+            </p>
+            <div class="exp-scene-footer">
+              <span style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--cyan);">SQL · Networking</span>
+              <span class="exp-scene-location">Buenos Aires, AR</span>
+            </div>
+          </div>
+          <div class="exp-scene-right exp-scene-no-img">
+            <div class="exp-scene-glyph">[ ]</div>
           </div>
         </div>
 
-      </div><!-- /exp-track -->
+      </div><!-- /exp-scenes -->
 
-      <!-- Progress indicator -->
-      <div class="exp-progress">
-        <div class="exp-progress-track">
-          <div id="exp-progress-fill" class="exp-progress-fill" style="width: 0%"></div>
+      <!-- Bottom progress bar -->
+      <div class="exp-bottom-bar">
+        <div class="exp-bottom-progress">
+          <div id="exp-progress-fill" style="height:100%; background:var(--cyan); width:0%; transition:width 0.15s linear; border-radius:1px;"></div>
         </div>
         <span id="exp-counter" class="exp-counter">01 / 06</span>
       </div>
@@ -699,34 +752,7 @@
     sections.forEach(s => navObs.observe(s));
 
 
-    /* ── Horizontal Experience Scroll ── */
-    const expContainer = document.getElementById('experiencia-scroll-container');
-    const expTrack = document.getElementById('exp-track');
-    const expProgressFill = document.getElementById('exp-progress-fill');
-    const expCounter = document.getElementById('exp-counter');
-    const TOTAL_CARDS = 6;
-
-    function updateExpScroll() {
-      if (!expContainer) return;
-      const rect = expContainer.getBoundingClientRect();
-      const containerH = expContainer.offsetHeight;
-      const vh = window.innerHeight;
-
-      // Progress: 0 when section enters, 1 when section exits
-      const progress = Math.max(0, Math.min(1, (-rect.top) / (containerH - vh)));
-
-      const trackW = expTrack.scrollWidth - expTrack.parentElement.offsetWidth;
-      expTrack.style.transform = `translateX(${-progress * trackW}px)`;
-
-      const pct = Math.round(progress * 100);
-      expProgressFill.style.width = pct + '%';
-
-      const cardIdx = Math.min(TOTAL_CARDS, Math.ceil(progress * TOTAL_CARDS) + 1);
-      expCounter.textContent = String(cardIdx).padStart(2, '0') + ' / 0' + TOTAL_CARDS;
-    }
-
-    window.addEventListener('scroll', updateExpScroll, { passive: true });
-    updateExpScroll();
+    /* ── Experience scroll: handled by immersive.js ── */
 
 
     /* ── Profile Tabs ── */
@@ -751,20 +777,7 @@
     });
 
 
-    /* ── Card Tilt Effect ── */
-    document.querySelectorAll('.exp-card').forEach(card => {
-      card.addEventListener('mousemove', e => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        const rotX = (-y / rect.height) * 8;
-        const rotY = (x / rect.width) * 8;
-        card.style.transform = `perspective(600px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-4px)`;
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-      });
-    });
+    /* ── Scene tilt: handled by immersive.js ── */
 
 
     /* ── Pulse animation for status dot ── */
