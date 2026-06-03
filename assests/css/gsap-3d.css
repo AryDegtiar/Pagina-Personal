@@ -1,0 +1,99 @@
+/* ═══════════════════════════════════════════════
+   GSAP PARALLAX + 3D SCROLL
+   Branch: feat/gsap-parallax
+   ═══════════════════════════════════════════════ */
+
+/* ── Image parallax frame ─────────────────────
+   Each exp-card image gets wrapped in .img-frame
+   by GSAP init. The frame clips; the image moves. */
+.img-frame {
+  overflow: hidden;
+  border-radius: 8px;
+  margin-top: 1rem;
+  height: 140px;           /* fixed viewport window */
+  position: relative;
+}
+
+.img-frame .exp-card-img {
+  width: 100%;
+  height: 160px;           /* taller than frame = room to travel */
+  object-fit: cover;
+  border-radius: 0;
+  margin-top: 0;
+  display: block;
+  will-change: transform;
+  transition: none;        /* GSAP controls all transitions */
+}
+
+/* meli-img-wrap already exists — match its styling */
+.meli-img-wrap {
+  overflow: hidden;
+  border-radius: 8px;
+  margin-top: 1rem;
+  height: 140px;
+}
+
+.meli-img-wrap .exp-card-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 0;
+  margin-top: 0;
+  display: block;
+  will-change: transform;
+  transition: none;
+}
+
+/* ── Exp cards — 3D depth restore transition ───*/
+.exp-card {
+  transition: opacity 0.4s ease;
+}
+
+.exp-card.is-tilting {
+  transition: none;
+}
+
+/* ── Hero children — depth parallax ───────────*/
+.hero-eyebrow,
+.hero-name,
+.hero-subtitle,
+.hero-cta,
+.scroll-hint {
+  will-change: transform, opacity;
+}
+
+/* ── Section title — 3D flip-up ────────────────*/
+.section-title {
+  will-change: transform, opacity;
+  transform-origin: 50% 100%;
+}
+
+/* ── Skills grid — shared perspective context ──*/
+.skills-grid {
+  perspective: 900px;
+  perspective-origin: 50% 0;
+}
+
+.skill-chip {
+  will-change: transform, opacity;
+}
+
+/* ── About + contact ───────────────────────────*/
+.about-terminal,
+.contact-link,
+.contact-form {
+  will-change: transform, opacity;
+}
+
+/* ── Override .reveal so GSAP is sole controller─
+   GSAP sets inline opacity/transform immediately;
+   the IntersectionObserver adding .visible won't
+   override those inline styles, so this just
+   prevents a flash of the CSS transition. ────── */
+.reveal {
+  transition: none;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
