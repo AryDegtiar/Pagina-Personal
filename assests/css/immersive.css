@@ -1,0 +1,178 @@
+/* ═══════════════════════════════════════════════
+   IMMERSIVE SCROLL EXPERIENCE
+   Branch: feat/gsap-immersive
+   Inspired by: noomoagency.com · victorfuruya.com
+   ═══════════════════════════════════════════════ */
+
+/* ── Let Lenis drive scroll, not CSS ─── */
+html { scroll-behavior: auto !important; }
+
+/* ══════════════════════════════════════
+   HERO PHOTO LAYER
+══════════════════════════════════════ */
+.hero-photo-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Dark vignette so text is always legible */
+.hero-photo-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 100% at 75% 50%,
+      rgba(3, 5, 10, 0) 10%,
+      rgba(3, 5, 10, 0.7) 60%,
+      rgba(3, 5, 10, 0.95) 100%),
+    linear-gradient(to bottom,
+      rgba(3, 5, 10, 0.2) 0%,
+      rgba(3, 5, 10, 0.85) 85%);
+  z-index: 1;
+}
+
+.hero-photo {
+  width: 100%;
+  height: 115%;          /* taller than container = room for parallax travel */
+  object-fit: cover;
+  object-position: center 15%;
+  opacity: 0.38;
+  filter: grayscale(15%) contrast(1.1) brightness(0.85);
+  transform-origin: center top;
+  will-change: transform;
+}
+
+/* Ensure text sits above photo */
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* ══════════════════════════════════════
+   TEXT MASK REVEALS
+   Each .reveal-line clips its .reveal-word.
+   JS sets them up; GSAP animates translateY.
+══════════════════════════════════════ */
+.reveal-line {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  line-height: inherit;
+}
+
+.reveal-word {
+  display: inline-block;
+  /* starts at translateY(110%) via GSAP */
+}
+
+/* ══════════════════════════════════════
+   MARQUEE STRIP
+══════════════════════════════════════ */
+.marquee-strip {
+  overflow: hidden;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: rgba(0, 212, 255, 0.02);
+  position: relative;
+  z-index: 1;
+}
+
+.marquee-track {
+  display: flex;
+  animation: marqueeScroll 24s linear infinite;
+  width: max-content;
+}
+
+.marquee-track span {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ══════════════════════════════════════
+   IMAGE PARALLAX FRAMES
+══════════════════════════════════════ */
+.img-frame,
+.meli-img-wrap {
+  overflow: hidden;
+  border-radius: 8px;
+  margin-top: 1rem;
+  height: 140px;
+  position: relative;
+}
+
+.img-frame .exp-card-img,
+.meli-img-wrap .exp-card-img {
+  width: 100%;
+  height: 165px;        /* taller than frame for vertical travel */
+  object-fit: cover;
+  border-radius: 0;
+  margin-top: 0;
+  display: block;
+  transition: none;
+  will-change: transform;
+}
+
+/* ══════════════════════════════════════
+   EXP CARDS — depth of field on inactive
+══════════════════════════════════════ */
+.exp-card {
+  transition: opacity 0.35s ease, filter 0.35s ease;
+}
+
+.exp-card.is-tilting {
+  transition: none;
+}
+
+/* ══════════════════════════════════════
+   SKILLS — bloom from center
+══════════════════════════════════════ */
+.skills-grid {
+  perspective: 900px;
+  perspective-origin: 50% 0;
+}
+
+.skill-chip {
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+/* ══════════════════════════════════════
+   ABOUT TERMINAL — clip-path reveal
+══════════════════════════════════════ */
+.about-terminal {
+  will-change: clip-path, opacity;
+}
+
+/* ══════════════════════════════════════
+   CONTACT FORM — clip-path sweep
+══════════════════════════════════════ */
+.contact-form {
+  overflow: hidden;
+  will-change: clip-path, opacity;
+}
+
+/* ══════════════════════════════════════
+   OVERRIDE .reveal — GSAP is sole owner
+══════════════════════════════════════ */
+.reveal {
+  opacity: 1;          /* override the css opacity:0 so fromTo reads 1 */
+  transform: none;
+  transition: none;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
