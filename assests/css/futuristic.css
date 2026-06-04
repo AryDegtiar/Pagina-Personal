@@ -626,23 +626,23 @@ nav#nav a.active {
   animation: orbitRotate linear infinite;
 }
 
-.orbit-ring:nth-child(2) {
+.orbit-ring:nth-child(1) {
   width: 200px; height: 200px;
   animation-duration: 12s;
 }
 
-.orbit-ring:nth-child(3) {
+.orbit-ring:nth-child(2) {
   width: 320px; height: 320px;
   animation-duration: 20s;
   animation-direction: reverse;
 }
 
-.orbit-ring:nth-child(4) {
+.orbit-ring:nth-child(3) {
   width: 450px; height: 450px;
   animation-duration: 30s;
 }
 
-.orbit-ring:nth-child(5) {
+.orbit-ring:nth-child(4) {
   width: 580px; height: 580px;
   animation-duration: 45s;
   animation-direction: reverse;
